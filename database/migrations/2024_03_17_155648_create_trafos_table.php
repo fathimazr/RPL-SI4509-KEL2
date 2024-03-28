@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('trafos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('employee_id');
+            $table->string('email')->unique(); 
+            $table->string('password'); 
+            $table->string('role'); 
+            $table->string('branch_office');
         });
     }
 
