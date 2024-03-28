@@ -10,18 +10,11 @@ COPY package*.json ./
 
 # Install dependensi
 RUN npm install
-# RUN npm i axios
-# RUN npm i jsonwebtoken
-# RUN npm i node-cron
-# RUN npm i string-sanitizer
-# RUN npm i dotenv
-RUN npm i csrf
-# RUN npm run build
-# RUN php artisan migrate 
+RUN npm i csrf 
 # Menyalin kode sumber
 COPY . .
 
-# Ekspose port yang digunakan oleh aplikasi Express.js
+# Ekspose port yang digunakan oleh aplikasi
 EXPOSE 3000
 
 # Perintah untuk menjalankan aplikasi
