@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrafoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TrafoUpdateController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,6 +29,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/register', [UserController::class, 'create'])->name('register'); 
 Route::post('/register', [UserController::class, 'store']);
+
+// Route for displaying the edit form
+Route::get('/trafo/edit', [TrafoController::class, 'edit'])->name('trafo.edit');
+
+// Route for processing the form update
+Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
