@@ -16,7 +16,6 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 // Admin Route
 Route::prefix('admin')->group(function (){
     Route::get('/login',[AdminController::class, 'Index'])->name('login_form');
@@ -28,6 +27,10 @@ Route::prefix('admin')->group(function (){
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -38,6 +41,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/register', [UserController::class, 'create'])->name('register'); 
+
+Route::get('/check-email', [UserController::class, 'check_email'])->name('check-email');
+Route::get('/reset-password', [UserController::class, 'reset_password'])->name('reset-password');
+Route::get('/reset-password-complete', [UserController::class, 'reset_password_comp'])->name('reset-password-complete');
 Route::post('/register', [UserController::class, 'store']);
 
 // Route for displaying the edit form
@@ -49,8 +56,6 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+
 
 require __DIR__.'/auth.php';
