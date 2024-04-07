@@ -3,6 +3,10 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
        body {
             height: 100vh;
@@ -53,10 +57,9 @@
         }
 
         .form-title {
-            font-family: inter;
             font-size: 24px; /* Heading font size */
             color: #333; /* Heading text color */
-            font-weight: 900;
+            font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
         }
@@ -69,8 +72,6 @@
             padding: 0px; /* Add padding as needed */
             display: flex;
             align-items: center;
-            font: inter;
-            
         }
 
         .form-header-title {
@@ -78,14 +79,13 @@
             font-size: 20px;
             color: white;
             font-weight: 500;
-            font: inter;
-        
         }
 
         .form-header-icon {
             margin-left: 14px;
             padding: 1px;
         }
+
         .form-container {
             background-color: white;
             grid-column: 2 / 3;
@@ -95,6 +95,7 @@
             gap: 10px;
             overflow-y: auto; /* Enable vertical scrolling */
         }
+
         .form-group {
             margin-top: 45px; /* Add space between each line */
             margin-bottom: 45px;
@@ -103,15 +104,15 @@
             align-items: left;
             grid-template-columns: 1fr 4fr;
         }
+
         .form-group label {
             grid-column: 1 / 2;
             font-weight: 500;
             font-size: 20;
-            font: inter;
             text-align: left;
             margin-left: 49px; /* Adjust as needed */
             display: inline-block; /* Display label as inline-block */
-            width: 100px; 
+            width: 120px; 
         }
         
         .form-group select {
@@ -134,7 +135,6 @@
             border-radius: 4px;
             cursor: pointer;
             margin-left: 10px;
-            font: inter;
             font-size: 20;
             font-weight: 500;
         }
@@ -156,7 +156,7 @@
     <div class="main">
         <h1 class="form-title">REGISTER NEW USER</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "20px">
+            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
