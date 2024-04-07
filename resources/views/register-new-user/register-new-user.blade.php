@@ -12,6 +12,7 @@
             margin: 0;
             padding: 0;
             overflow: auto;
+            font-family : inter;
         } 
 
         .topbar-placeholder {
@@ -39,12 +40,6 @@
             margin-bottom: 30px;
         }
 
-        /* .sidebar-placeholder span {
-            font-size: 16px;
-            color: white;
-            font-family: "Inter";
-        } */
-
         .main {
             background-color: #f0f0f0;
             grid-column: 2 / 3;
@@ -54,14 +49,14 @@
             grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; /* Enable vertical scrolling */
-            font-family: "Inter";
+
         }
 
         .form-title {
+            font-family: inter;
             font-size: 24px; /* Heading font size */
             color: #333; /* Heading text color */
             font-weight: 900;
-            font: inter;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
         }
@@ -74,6 +69,8 @@
             padding: 0px; /* Add padding as needed */
             display: flex;
             align-items: center;
+            font: inter;
+            
         }
 
         .form-header-title {
@@ -81,7 +78,10 @@
             font-size: 20px;
             color: white;
             font-weight: 500;
+            font: inter;
+        
         }
+
         .form-header-icon {
             margin-left: 14px;
             padding: 1px;
@@ -107,14 +107,13 @@
             grid-column: 1 / 2;
             font-weight: 500;
             font-size: 20;
-            font-family: "Inter";
+            font: inter;
             text-align: left;
             margin-left: 49px; /* Adjust as needed */
             display: inline-block; /* Display label as inline-block */
-            width: 200%; 
+            width: 100px; 
         }
-        /* .form-group input[type="text"],
-        .form-group input[type="date"], */
+        
         .form-group select {
             width: 100%;
         }
@@ -126,8 +125,7 @@
                 margin-bottom: 60px;
                 margin-right: 49px;
             }
-/* 
-        .form-container .row input[type="submit"], */
+
         .form-container .row button {
             background-color: #12A2BD;
             color: white;
@@ -136,12 +134,11 @@
             border-radius: 4px;
             cursor: pointer;
             margin-left: 10px;
-            font-family: "Inter";
+            font: inter;
             font-size: 20;
             font-weight: 500;
         }
 
-        /* .form-container .row input[type="submit"]:hover, */
         .form-container .row button:hover {
             background-color: #15677B;
         }
@@ -159,7 +156,7 @@
     <div class="main">
         <h1 class="form-title">REGISTER NEW USER</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "img/Form.png" alt = "Filling Form">
+            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "20px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
@@ -169,11 +166,11 @@
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-trafoID" type="text" placeholder="Please fill with your employee ID">
                 </div>
                 <div class="form-group">
-                    <label for="inline-brand">Email</label>
+                    <label for="inline-email">Email</label>
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-brand" type="text" placeholder="Please fill with your email">
                 </div>
                 <div class="form-group">
-                    <label for="inline-city">Password</label>
+                    <label for="inline-password">Password</label>
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-city" type="text" placeholder="Please fill with your password">
                 </div>
                 <div class="form-group">
