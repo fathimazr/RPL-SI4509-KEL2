@@ -39,8 +39,12 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
 
-Route::get('/welcome', function () {
-    return view('welcome');
+Route::get('/trafo-register', function () {
+    return view('trafo.register-trafo');
+});
+
+Route::get('/trafo-register-submit', function () {
+    return view('trafo.submit-register-trafo');
 });
 
 Route::get('/new', function () {
