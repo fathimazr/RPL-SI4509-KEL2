@@ -6,7 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
        body {
             height: 100vh;
@@ -20,7 +20,7 @@
         } 
 
         .topbar-placeholder {
-            background-color: white; /* White color */
+            background-color: white; 
             grid-column: 2 / 3;
             grid-row: 1 / 2;
             margin: 0;
@@ -30,7 +30,7 @@
         }
 
         .sidebar-placeholder {
-            background-color: #12A2BD; /* Sidebar color */
+            background-color: #12A2BD; 
             grid-column: 1 / 2;
             grid-row: 1 / 3;
             margin: 0;
@@ -52,13 +52,13 @@
             grid-template-columns: 0.044fr 0.912fr 0.044fr;
             grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
             gap: 0px;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto; 
 
         }
 
         .form-title {
-            font-size: 24px; /* Heading font size */
-            color: #333; /* Heading text color */
+            font-size: 24px; 
+            color: #333;
             font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
@@ -68,8 +68,8 @@
             background-color: #12A2BD;
             grid-column: 2 / 3;
             grid-row: 3 / 4;
-            margin: 0px; /* Adjust margin as needed */
-            padding: 0px; /* Add padding as needed */
+            margin: 0px;
+            padding: 0px; 
             display: flex;
             align-items: center;
         }
@@ -90,14 +90,14 @@
             background-color: white;
             grid-column: 2 / 3;
             grid-row: 4 / 5;
-            margin: 0px; /* Adjust margin as needed */
-            padding: 0px; /* Add padding as needed */
+            margin: 0px; 
+            padding: 0px; 
             gap: 10px;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto; 
         }
 
         .form-group {
-            margin-top: 45px; /* Add space between each line */
+            margin-top: 45px; 
             margin-bottom: 45px;
             margin-right: 49px;
             display: grid;
@@ -110,8 +110,8 @@
             font-weight: 500;
             font-size: 20;
             text-align: left;
-            margin-left: 49px; /* Adjust as needed */
-            display: inline-block; /* Display label as inline-block */
+            margin-left: 49px; 
+            display: inline-block; 
             width: 120px; 
         }
         
@@ -145,6 +145,53 @@
             background-color: #15677B;
         }
 
+    .custom-swal-container {
+        display: inherit;
+        backdrop-filter: blur(2px);
+        background: rgba(0,0,0,0) !important;
+        width: 1fr;
+        height: 1fr;
+        padding: none;
+    }
+
+    .custom-swal-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: #000000;
+        margin-top: 2px;
+    }
+
+    .custom-swal-text {
+        font-size: 33px;
+        color: #000000;
+        font-weight: 500;
+    }
+
+    .custom-swal-discard-button, .custom-swal-cancel-button {
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 33px;
+        font-weight: 500;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    .custom-swal-cancel-button {
+        background-color: #000000 !important;
+        color: white !important;
+        border: 2px solid black !important;
+    }
+
+    .custom-swal-discard-button {
+        background-color: white !important;
+        color: black !important;
+        border: 2px solid black !important;
+    }
+
+    .swal2-actions {
+        display: flex;
+        flex-direction: row-reverse; 
+    }
     </style>
 </head>
 <body>
@@ -157,48 +204,105 @@
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
-        <form>
+        <!-- tambahin action ke route utk store data -->
+        <form id="form" action="" method="POST"> 
+                {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="inline-trafoID">Trafo ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-trafoID" type="text" placeholder="Please fill with your trafo's ID">
+                    <label for="ID">Trafo ID</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill with your trafo's ID">
                 </div>
                 <div class="form-group">
-                    <label for="inline-brand">Brand</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-brand" type="text" placeholder="Please fill with your trafo's brand">
+                    <label for="brand">Brand</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's brand">
                 </div>
                 <div class="form-group">
-                    <label for="inline-city">City</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-city" type="text" placeholder="Please fill with your trafo's installation city">
+                    <label for="city">City</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text" placeholder="Please fill with your trafo's installation city">
                 </div>
                 <div class="form-group">
-                    <label for="inline-phase">Phase</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-phase" placeholder="hi">
+                    <label for="phase">Phase</label>
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="phase" placeholder="">
                         <option value="" disabled selected>Select your trafo's phase</option>
                         <option value="1">Phase 1 Transformator</option>
                         <option value="2">Phase 3 Transformator</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="inline-latitude">Latitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-latitude" type="text" placeholder="Please fill with your trafo's installation latitude">
+                    <label for="latitude">Latitude</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="latitude" name="latitude" type="text" placeholder="Please fill with your trafo's installation latitude">
                 </div>
                 <div class="form-group">
-                    <label for="inline-longitude">Longitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-longitude" type="text" placeholder="Please fill with your trafo's installation longitude">
+                    <label for="longitude">Longitude</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="longitude" type="text" name="longitude" placeholder="Please fill with your trafo's installation longitude">
                 </div>
                 <div class="form-group">
-                    <label for="inline-capacity">Capacity</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-capacity" type="text" placeholder="Please fill with your trafo's capacity">
+                    <label for="capacity">Capacity</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="capacity" name="capacity" type="text" placeholder="Please fill with your trafo's capacity">
                 </div>
                 <div class="form-group">
-                    <label for="inline-date">Installation Date</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-installationDate" type="date" placeholder="Please select installation date">
+                    <label for="installationDate">Installation Date</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="installationDate" name="installationDate" type="date" placeholder="Please select installation date">
                 </div>
                 <div class="row">
-                    <button type="button">Cancel</button>
-                    <input type="submit" value="Submit">
+                    <button id="discardButton" type="button">Cancel</button>
+                    <button id="submitButton" type="button">Submit</button>
                 </div>
             </form>
             </div>
+            <script>
+
+    document.getElementById('discardButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Discard Changes?", 
+            text: 'Are you sure you want to discard your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Discard',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Masukin function untuk redirect ke dashboard 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Save Changes?", 
+            text: 'Are you sure you want to save your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Save',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // masukin function utk store data
+                document.getElementById('form').submit(); 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+</script>
 </body>
 </html>
