@@ -24,6 +24,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/trafo-data', function () {
+    return view('trafo-data');
+})->middleware(['auth', 'verified'])->name('trafo-data');
+
+Route::get('/add-performance', function () {
+    return view('trafo.add-performance');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
