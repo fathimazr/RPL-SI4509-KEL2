@@ -32,7 +32,7 @@ Route::get('/add-performance', function () {
     return view('trafo.add-performance');
 });
 
-// Route for view data trafo page
+// Route for view data trafo
 Route::get('/view-performance', function () {
     return view('trafo.view-performance');
 })->middleware(['auth', 'verified'])->name('view-performance');

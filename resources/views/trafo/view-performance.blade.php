@@ -5,7 +5,7 @@
             <h1 class="font-extrabold text-[18px]">VIEW DATA</h1>
             <div class="flex gap-2">
                 <h2>Trafo ID :</h2>
-                <h2 class="font-semibold">1102</h2>
+                <h2 class="font-semibold">1103</h2>
             </div>
         </div>
 
