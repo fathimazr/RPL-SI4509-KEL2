@@ -47,4 +47,13 @@ Route::get('/trafo-register-submit', function () {
     return view('trafo.submit-register-trafo');
 });
 
+Route::get('/new', function () {
+    return view ('register-new-user/register-new-user');
+});
+
+Route::get('/profile', function () {
+    return view ('register-new-user/profile');
+});
+
+
 require __DIR__.'/auth.php';
