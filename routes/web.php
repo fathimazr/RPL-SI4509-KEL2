@@ -32,6 +32,11 @@ Route::get('/add-performance', function () {
     return view('trafo.add-performance');
 });
 
+// Route for view data trafo page
+Route::get('/view-performance', function () {
+    return view('trafo.view-performance');
+})->middleware(['auth', 'verified'])->name('view-performance');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
