@@ -5,7 +5,7 @@
             <h1 class="font-extrabold text-[18px]">VIEW DATA</h1>
             <div class="flex gap-2">
                 <h2>Trafo ID :</h2>
-                <h2 class="font-semibold">1103</h2>
+                <h2 class="font-semibold">1101</h2>
             </div>
         </div>
 
@@ -97,7 +97,7 @@
     
                     <div class="flex flex-col gap-4">
                         <h1>Normal</h1>
-                        <h1>Warning</h1>
+                        <h1>Error</h1>
                         <h1>Normal</h1>
                         <h1>Normal</h1>
                     </div>
