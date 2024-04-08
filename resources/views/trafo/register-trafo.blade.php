@@ -3,6 +3,10 @@
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
     <style>
        body {
             height: 100vh;
@@ -12,6 +16,7 @@
             margin: 0;
             padding: 0;
             overflow: auto;
+            font-family : inter;
         } 
 
         .topbar-placeholder {
@@ -29,6 +34,14 @@
             grid-column: 1 / 2;
             grid-row: 1 / 3;
             margin: 0;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .sidebar-placeholder img {
+            display: block;
+            margin-bottom: 30px;
         }
 
         .main {
@@ -40,13 +53,13 @@
             grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; /* Enable vertical scrolling */
+
         }
 
         .form-title {
             font-size: 24px; /* Heading font size */
             color: #333; /* Heading text color */
-            font-weight: 900;
-            font: inter;
+            font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
         }
@@ -67,10 +80,12 @@
             color: white;
             font-weight: 500;
         }
+
         .form-header-icon {
             margin-left: 14px;
             padding: 1px;
         }
+
         .form-container {
             background-color: white;
             grid-column: 2 / 3;
@@ -80,6 +95,7 @@
             gap: 10px;
             overflow-y: auto; /* Enable vertical scrolling */
         }
+
         .form-group {
             margin-top: 45px; /* Add space between each line */
             margin-bottom: 45px;
@@ -88,20 +104,21 @@
             align-items: left;
             grid-template-columns: 1fr 4fr;
         }
+
         .form-group label {
             grid-column: 1 / 2;
             font-weight: 500;
             font-size: 20;
-            font: inter;
             text-align: left;
             margin-left: 49px; /* Adjust as needed */
             display: inline-block; /* Display label as inline-block */
+            width: 120px; 
         }
-        .form-group input[type="text"],
-        .form-group input[type="date"],
+        
         .form-group select {
             width: 100%;
         }
+        
         .form-container .row {
                 display: flex;
                 justify-content: flex-end;
@@ -119,7 +136,6 @@
             border-radius: 4px;
             cursor: pointer;
             margin-left: 10px;
-            font: inter;
             font-size: 20;
             font-weight: 500;
         }
@@ -132,16 +148,16 @@
     </style>
 </head>
 <body>
-    <div class="topbar-placeholder"></div>
+<div class="topbar-placeholder"></div>
     <div class="sidebar-placeholder"></div>
     <div class="main">
         <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
         <div class="form-header">
-            <img class="form-header-icon" src="/images/form.png" alt="icon">
+            <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
-            <form>
+        <form>
                 <div class="form-group">
                     <label for="inline-trafoID">Trafo ID</label>
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-trafoID" type="text" placeholder="Please fill with your trafo's ID">
