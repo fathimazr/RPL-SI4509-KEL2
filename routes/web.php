@@ -16,10 +16,17 @@ use App\Http\Controllers\TrafoUpdateController;
 |
 */
 
-
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/adm-dash', function () {
+    return view('admin.adm-dash');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -28,6 +35,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/register', [UserController::class, 'create'])->name('register'); 
+
+Route::get('/check-email', [UserController::class, 'check_email'])->name('check-email');
+Route::get('/reset-password', [UserController::class, 'reset_password'])->name('reset-password');
+Route::get('/reset-password-complete', [UserController::class, 'reset_password_comp'])->name('reset-password-complete');
 Route::post('/register', [UserController::class, 'store']);
 
 // Route for displaying the edit form
