@@ -2,8 +2,7 @@
 <html lang="en">
 <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -64,36 +63,26 @@
             grid-row: 2 / 3;
         }
 
-        .form-header {
-            background-color: #12A2BD;
-            grid-column: 2 / 3;
-            grid-row: 3 / 4;
-            margin: 0px; /* Adjust margin as needed */
-            padding: 0px; /* Add padding as needed */
-            display: flex;
-            align-items: center;
-        }
-
-        .form-header-title {
-            margin-left: 9px;
-            font-size: 20px;
-            color: white;
-            font-weight: 500;
-        }
-
-        .form-header-icon {
-            margin-left: 14px;
-            padding: 1px;
-        }
-
         .form-container {
             background-color: white;
             grid-column: 2 / 3;
-            grid-row: 4 / 5;
+            grid-row: 3 / 5;
             margin: 0px; /* Adjust margin as needed */
             padding: 0px; /* Add padding as needed */
             gap: 10px;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto; 
+            position: relative;
+        }
+
+        .form-container::after {
+           content: '';
+           position: absolute;
+           top: 0;
+           bottom: 0;
+           right: 0; /* Adjust the distance of the line from the right side */
+           width: 30px; /* Width of the line */
+           background-color: #12A2BD; /* Color of the line */
+           height: 150%;
         }
 
         .form-group {
@@ -112,7 +101,7 @@
             text-align: left;
             margin-left: 49px; /* Adjust as needed */
             display: inline-block; /* Display label as inline-block */
-            width: 110px; 
+            width: 100px; 
         }
         
         .form-group select {
@@ -198,43 +187,47 @@
     <div class="sidebar-placeholder">
         <img src = "img/gridgeoalert.png" alt = "GridGeoAlert" width = "200">
         <img src = "img/Dashboard.png" alt = "Dashboard">
+        <img src = "img/Maps.png" alt = "Maps">
         <img src = "img/TrafoData.png" alt = "Trafo Data">
-        <img src = "img/NewUser.png" alt = "Register New User">
+        <img src = "img/Maintenance.png" alt = "Maintenance">
+        <img src = "img/Statistics.png" alt = "Statistics">
     </div>
     <div class="main">
-        <h1 class="form-title">REGISTER NEW USER</h1>
-        <div class="form-header">
-            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "30px">
-            <h1 class="form-header-title">Filling Form</h1>
-        </div>
+        <h1 class="form-title">EDIT PROFILE</h1>
         <div class="form-container">
-        <!-- tambahin action ke route utk store data -->
+            <!-- tambahin action ke route utk store data -->
         <form id="form" action="" method="POST"> 
                 {{ csrf_field() }}
+                <div class="img" style=" text-align: center">
+                    <img src="img/profile.png" class="rounded-circle" style="width: 150px; margin-bottom: 10px; object-fit: cover; margin-top: 50px; border-radius: 50%;">
+                    <a href="#">
+                       <img src ="img/camera.png" style="width:30px; margin-left: -40px;">
+                    </a>
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="fullname" name = "fullname" type="text" placeholder="Muhammad Azzam">
+                </div>
                 <div class="form-group">
                     <label for="employeeID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="Please fill with your employee ID">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="199901172005072016" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" type="text" placeholder="Manajer" readonly>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="Please fill with your email">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="azam99@gmail.com">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="Please fill with your password">
-                </div>
-                <div class="form-group">
-                    <label for="phase">Role</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
-                        <option value="" disabled selected>Select your role</option>
-                        <option value="1">Manajer</option>
-                        <option value="2">Tim Teknis</option>
-                    </select>
+                    <label for="department">Department</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="department" name = "department" type="text" placeholder="Please fill with your department">
                 </div>
                 <div class="form-group">
                     <label for="phase">Branch Office</label>
                     <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
-                        <option value="" disabled selected>Select your branch office</option>
+                        <!-- <option value="" disabled selected>Select your branch office</option> -->
                         <option value="1">Branch Office 1</option>
                         <option value="2">Branch Office 2</option>
                         <option value="1">Branch Office 3</option>
@@ -243,6 +236,10 @@
                         <option value="2">Branch Office 6</option>
                         <option value="2">Branch Office 7</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="azammm123">
                 </div>
                 <div class="row">
                     <button id = "discardButton" type="button">Cancel</button>
@@ -307,3 +304,5 @@
 </script>
 </body>
 </html>
+
+

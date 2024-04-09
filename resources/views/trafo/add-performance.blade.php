@@ -127,7 +127,7 @@
                 margin-right: 49px;
             }
 
-        .form-container .row input[type="submit"],
+        .form-container .row input[type="Save"],
         .form-container .row button {
             background-color: #12A2BD;
             color: white;
@@ -140,7 +140,7 @@
             font-weight: 500;
         }
 
-        .form-container .row input[type="submit"]:hover,
+        .form-container .row input[type="Save"]:hover,
         .form-container .row button:hover {
             background-color: #15677B;
         }
@@ -198,7 +198,7 @@
 <div class="topbar-placeholder"></div>
     <div class="sidebar-placeholder"></div>
     <div class="main">
-        <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
+        <h1 class="form-title">UPDATE PERFORMANCE DATA</h1>
         <div class="form-header">
             <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
@@ -208,44 +208,28 @@
         <form id="form" action="" method="POST"> 
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="ID">Trafo ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill with your trafo's ID">
+                    <label for="ID">Voltage</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s voltage (in kVA)">
                 </div>
                 <div class="form-group">
-                    <label for="brand">Brand</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's brand">
+                    <label for="brand">Current</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s current">
                 </div>
                 <div class="form-group">
-                    <label for="city">City</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text" placeholder="Please fill with your trafo's installation city">
+                    <label for="city">Temperature</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s current">
                 </div>
                 <div class="form-group">
-                    <label for="phase">Phase</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="phase" placeholder="">
-                        <option value="" disabled selected>Select your trafo's phase</option>
-                        <option value="1">Phase 1 Transformator</option>
-                        <option value="2">Phase 3 Transformator</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="latitude" name="latitude" type="text" placeholder="Please fill with your trafo's installation latitude">
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="longitude" type="text" name="longitude" placeholder="Please fill with your trafo's installation longitude">
-                </div>
-                <div class="form-group">
-                    <label for="capacity">Capacity</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="capacity" name="capacity" type="text" placeholder="Please fill with your trafo's capacity">
-                </div>
-                <div class="form-group">
-                    <label for="installationDate">Installation Date</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="installationDate" name="installationDate" type="date" placeholder="Please select installation date">
+                    <label for="city">Temperature</label>
+                    <select id="blackout" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"> 
+                        <option selected>Pick an Option</option>
+                        <option value="US">Active</option>
+                        <option value="CA">Blackout</option>
+                      </select>
                 </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
-                    <button id="saveButton" type="button">Save</button>
+                    <button id="SaveButton" type="button">Save</button>
                 </div>
             </form>
             </div>
@@ -277,7 +261,7 @@
         })
     });
 
-    document.getElementById('saveButton').addEventListener('click', function() {
+    document.getElementById('SaveButton').addEventListener('click', function() {
         Swal.fire({
             width:'0.52fr',
             height: '0.386fr',
@@ -297,7 +281,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // masukin function utk store data
-                document.getElementById('form').submit(); 
+                document.getElementById('form').Save(); 
             } else {
                 console.log('Cancelled');
             }
