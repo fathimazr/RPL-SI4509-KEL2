@@ -24,10 +24,13 @@ Route::prefix('admin')->group(function (){
     Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
 });
 
+<<<<<<< HEAD
+=======
 
 =======
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
+>>>>>>> dev
 Route::get('/', function () {
     return view('welcome');
 });
@@ -36,12 +39,28 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+<<<<<<< HEAD
+Route::get('/trafo-data', function () {
+    return view('trafo-data');
+})->middleware(['auth', 'verified'])->name('trafo-data');
+
+Route::get('/add-performance', function () {
+    return view('trafo.add-performance');
+});
+
+// Route for view data trafo
+Route::get('/view-performance', function () {
+    return view('trafo.view-performance');
+})->middleware(['auth', 'verified'])->name('view-performance');
+
+=======
 
 Route::get('/adm-dash', function () {
     return view('admin.adm-dash');
 
 });
 
+>>>>>>> dev
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -64,9 +83,13 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
 
+<<<<<<< HEAD
+
+=======
 Route::get('/trafo-register', function () {
     return view('trafo.register-trafo');
 });
+>>>>>>> dev
 
 Route::get('/trafo-register-submit', function () {
     return view('trafo.submit-register-trafo');
