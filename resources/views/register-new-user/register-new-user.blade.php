@@ -6,7 +6,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
        body {
             height: 100vh;
@@ -112,7 +112,7 @@
             text-align: left;
             margin-left: 49px; /* Adjust as needed */
             display: inline-block; /* Display label as inline-block */
-            width: 120px; 
+            width: 110px; 
         }
         
         .form-group select {
@@ -143,6 +143,54 @@
             background-color: #15677B;
         }
 
+        .custom-swal-container {
+            display: inherit;
+            backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0) !important;
+            width: 1fr;
+            height: 1fr;
+            padding: none;
+        }
+
+        .custom-swal-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 2px;
+        }
+
+        .custom-swal-text {
+            font-size: 33px;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .custom-swal-discard-button, .custom-swal-cancel-button {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 33px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .custom-swal-cancel-button {
+            background-color: #000000 !important;
+            color: white !important;
+            border: 2px solid black !important;
+        }
+
+        .custom-swal-discard-button {
+            background-color: white !important;
+            color: black !important;
+            border: 2px solid black !important;
+        }
+
+        .swal2-actions {
+            display: flex;
+            flex-direction: row-reverse; 
+        }
+
     </style>
 </head>
 <body>
@@ -160,30 +208,32 @@
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
-            <form>
+        <!-- tambahin action ke route utk store data -->
+        <form id="form" action="" method="POST"> 
+                {{ csrf_field() }}
                 <div class="form-group">
-                    <label for="inline-employeeID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-trafoID" type="text" placeholder="Please fill with your employee ID">
+                    <label for="employeeID">Employee ID</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="Please fill with your employee ID">
                 </div>
                 <div class="form-group">
-                    <label for="inline-email">Email</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-brand" type="text" placeholder="Please fill with your email">
+                    <label for="email">Email</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="Please fill with your email">
                 </div>
                 <div class="form-group">
-                    <label for="inline-password">Password</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-city" type="text" placeholder="Please fill with your password">
+                    <label for="password">Password</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="Please fill with your password">
                 </div>
                 <div class="form-group">
-                    <label for="inline-phase">Role</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-phase" placeholder="hi">
+                    <label for="phase">Role</label>
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
                         <option value="" disabled selected>Select your role</option>
                         <option value="1">Manajer</option>
                         <option value="2">Tim Teknis</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="inline-phase">Branch Office</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-phase" placeholder="hi">
+                    <label for="phase">Branch Office</label>
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
                         <option value="" disabled selected>Select your branch office</option>
                         <option value="1">Branch Office 1</option>
                         <option value="2">Branch Office 2</option>
@@ -195,10 +245,65 @@
                     </select>
                 </div>
                 <div class="row">
-                    <button type="button">Cancel</button>
-                    <button type="button">Submit</button>
+                    <button id = "discardButton" type="button">Cancel</button>
+                    <button id = "submitButton" type="button">Save</button>
                 </div>
             </form>
             </div>
+            <script>
+
+    document.getElementById('discardButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Discard Changes?", 
+            text: 'Are you sure you want to discard your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Discard',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Masukin function untuk redirect ke dashboard 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Save Changes?", 
+            text: 'Are you sure you want to save your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Save',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // masukin function utk store data
+                document.getElementById('form').submit(); 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+</script>
 </body>
 </html>
