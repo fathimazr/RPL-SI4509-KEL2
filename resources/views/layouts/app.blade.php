@@ -25,12 +25,13 @@
                   showCancelButton: true,
                   confirmButtonColor: "#3085d6",
                   cancelButtonColor: "#d33",
-                  confirmButtonText: "Yes, delete it!"
+                  confirmButtonText: "Yes, Delete"
+                
                 }).then((result) => {
                   if (result.isConfirmed) {
                     Swal.fire({
                       title: "Deleted!",
-                      text: "Your file has been deleted.",
+                      text: "Your file has been deleted",
                       icon: "success"
                     });
                   }
