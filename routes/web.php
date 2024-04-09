@@ -5,6 +5,7 @@ use App\Http\Controllers\TrafoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrafoUpdateController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +16,17 @@ use App\Http\Controllers\TrafoUpdateController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Admin Route
+Route::prefix('admin')->group(function (){
+    Route::get('/login',[AdminController::class, 'Index'])->name('login_form');
+    Route::post('/login/owner',[AdminController::class, 'AdminLogin'])->name('admin.login');
+    // Route::get('/login/admin',[AdminController::class, 'Login'])->name('admin.login');
+    Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
+});
+
+
+=======
+// Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,12 +36,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/trafo-data', function () {
-    return view('trafo-data');
-})->middleware(['auth', 'verified'])->name('trafo-data');
 
-Route::get('/add-performance', function () {
-    return view('trafo.add-performance');
+Route::get('/adm-dash', function () {
+    return view('admin.adm-dash');
+
 });
 
 Route::middleware('auth')->group(function () {
