@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('trafos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('employee_id');
-            $table->string('email')->unique(); 
-            $table->string('password'); 
-            $table->string('role'); 
-            $table->string('branch_office');
+            $table->string('trafo_id');
+            $table->string('brand'); 
+            $table->string('city');
+            $table->enum('phase', ['blackout', 'active']); 
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('capacity');
+            $table->timestamp('installation_date');
         });
     }
 

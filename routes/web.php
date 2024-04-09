@@ -5,6 +5,7 @@ use App\Http\Controllers\TrafoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrafoUpdateController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +16,21 @@ use App\Http\Controllers\TrafoUpdateController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Admin Route
+Route::prefix('admin')->group(function (){
+    Route::get('/login',[AdminController::class, 'Index'])->name('login_form');
+    Route::post('/login/owner',[AdminController::class, 'AdminLogin'])->name('admin.login');
+    // Route::get('/login/admin',[AdminController::class, 'Login'])->name('admin.login');
+    Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
+});
 
+<<<<<<< HEAD
+=======
+
+=======
+// Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+
+>>>>>>> dev
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,6 +39,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+<<<<<<< HEAD
 Route::get('/trafo-data', function () {
     return view('trafo-data');
 })->middleware(['auth', 'verified'])->name('trafo-data');
@@ -37,6 +53,14 @@ Route::get('/view-performance', function () {
     return view('trafo.view-performance');
 })->middleware(['auth', 'verified'])->name('view-performance');
 
+=======
+
+Route::get('/adm-dash', function () {
+    return view('admin.adm-dash');
+
+});
+
+>>>>>>> dev
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -59,6 +83,31 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
 
+<<<<<<< HEAD
 
+=======
+Route::get('/trafo-register', function () {
+    return view('trafo.register-trafo');
+});
+>>>>>>> dev
+
+Route::get('/trafo-register-submit', function () {
+    return view('trafo.submit-register-trafo');
+});
+
+Route::get('/new', function () {
+    return view ('register-new-user/register-new-user');
+});
+
+Route::get('/profile', function () {
+    return view ('register-new-user/profile');
+});
+
+Route::get('/trafo-data', function () {
+    return view('trafo-data');
+})->middleware(['auth', 'verified'])->name('trafo-data');
+
+Route::get('/add-performance', function () {
+    return view('trafo.add-performance');
 
 require __DIR__.'/auth.php';

@@ -13,6 +13,18 @@ class UserController extends Controller
     {
         return view('auth.register'); 
     }
+    
+
+    public function check_email(){
+        return view('auth.check-email');
+    }
+    public function reset_password(){
+        return view('auth.reset-password');
+    }
+
+    public function reset_password_comp(){
+        return view('auth.reset-password-complete');
+    }
 
     public function store(StoreUserRequest $request) 
     {

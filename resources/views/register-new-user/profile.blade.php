@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+       body {
+            height: 100vh;
+            display: grid;  
+            grid-template-columns: 0.154fr 0.846fr;
+            grid-template-rows: 0.109fr 1fr;
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+            font-family : inter;
+        } 
+
+        .topbar-placeholder {
+            background-color: white; /* White color */
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            margin: 0;
+            z-index: 1;
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar-placeholder {
+            background-color: #12A2BD; /* Sidebar color */
+            grid-column: 1 / 2;
+            grid-row: 1 / 3;
+            margin: 0;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .sidebar-placeholder img {
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .main {
+            background-color: #f0f0f0;
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+            display: grid;
+            grid-template-columns: 0.044fr 0.912fr 0.044fr;
+            grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
+            gap: 0px;
+            overflow-y: auto; /* Enable vertical scrolling */
+
+        }
+
+        .form-title {
+            font-size: 24px; /* Heading font size */
+            color: #333; /* Heading text color */
+            font-weight: 600;
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        .form-container {
+            background-color: white;
+            grid-column: 2 / 3;
+            grid-row: 3 / 5;
+            margin: 0px; /* Adjust margin as needed */
+            padding: 0px; /* Add padding as needed */
+            gap: 10px;
+            overflow-y: auto; 
+            position: relative;
+        }
+
+        .form-container::after {
+           content: '';
+           position: absolute;
+           top: 0;
+           bottom: 0;
+           right: 0; /* Adjust the distance of the line from the right side */
+           width: 30px; /* Width of the line */
+           background-color: #12A2BD; /* Color of the line */
+           height: 150%;
+        }
+
+        .form-group {
+            margin-top: 45px; /* Add space between each line */
+            margin-bottom: 45px;
+            margin-right: 49px;
+            display: grid;
+            align-items: left;
+            grid-template-columns: 1fr 4fr;
+        }
+
+        .form-group label {
+            grid-column: 1 / 2;
+            font-weight: 500;
+            font-size: 20;
+            text-align: left;
+            margin-left: 49px; /* Adjust as needed */
+            display: inline-block; /* Display label as inline-block */
+            width: 100px; 
+        }
+        
+        .form-group select {
+            width: 100%;
+        }
+        
+        .form-container .row {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 20px;
+                margin-bottom: 60px;
+                margin-right: 49px;
+            }
+
+        .form-container .row button {
+            background-color: #12A2BD;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 20;
+            font-weight: 500;
+        }
+
+        .form-container .row button:hover {
+            background-color: #15677B;
+        }
+
+        .custom-swal-container {
+            display: inherit;
+            backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0) !important;
+            width: 1fr;
+            height: 1fr;
+            padding: none;
+        }
+
+        .custom-swal-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 2px;
+        }
+
+        .custom-swal-text {
+            font-size: 33px;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .custom-swal-discard-button, .custom-swal-cancel-button {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 33px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        .custom-swal-cancel-button {
+            background-color: #000000 !important;
+            color: white !important;
+            border: 2px solid black !important;
+        }
+
+        .custom-swal-discard-button {
+            background-color: white !important;
+            color: black !important;
+            border: 2px solid black !important;
+        }
+
+        .swal2-actions {
+            display: flex;
+            flex-direction: row-reverse; 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="topbar-placeholder"></div>
+    <div class="sidebar-placeholder">
+        <img src = "img/gridgeoalert.png" alt = "GridGeoAlert" width = "200">
+        <img src = "img/Dashboard.png" alt = "Dashboard">
+        <img src = "img/Maps.png" alt = "Maps">
+        <img src = "img/TrafoData.png" alt = "Trafo Data">
+        <img src = "img/Maintenance.png" alt = "Maintenance">
+        <img src = "img/Statistics.png" alt = "Statistics">
+    </div>
+    <div class="main">
+        <h1 class="form-title">EDIT PROFILE</h1>
+        <div class="form-container">
+            <!-- tambahin action ke route utk store data -->
+        <form id="form" action="" method="POST"> 
+                {{ csrf_field() }}
+                <div class="img" style=" text-align: center">
+                    <img src="img/profile.png" class="rounded-circle" style="width: 150px; margin-bottom: 10px; object-fit: cover; margin-top: 50px; border-radius: 50%;">
+                    <a href="#">
+                       <img src ="img/camera.png" style="width:30px; margin-left: -40px;">
+                    </a>
+                </div>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="fullname" name = "fullname" type="text" placeholder="Muhammad Azzam">
+                </div>
+                <div class="form-group">
+                    <label for="employeeID">Employee ID</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="199901172005072016" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" type="text" placeholder="Manajer" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="azam99@gmail.com">
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="department" name = "department" type="text" placeholder="Please fill with your department">
+                </div>
+                <div class="form-group">
+                    <label for="phase">Branch Office</label>
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+                        <!-- <option value="" disabled selected>Select your branch office</option> -->
+                        <option value="1">Branch Office 1</option>
+                        <option value="2">Branch Office 2</option>
+                        <option value="1">Branch Office 3</option>
+                        <option value="2">Branch Office 4</option>
+                        <option value="1">Branch Office 5</option>
+                        <option value="2">Branch Office 6</option>
+                        <option value="2">Branch Office 7</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="azammm123">
+                </div>
+                <div class="row">
+                    <button id = "discardButton" type="button">Cancel</button>
+                    <button id = "submitButton" type="button">Save</button>
+                </div>
+            </form>
+            </div>
+            <script>
+
+    document.getElementById('discardButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Discard Changes?", 
+            text: 'Are you sure you want to discard your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Discard',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Masukin function untuk redirect ke dashboard 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Save Changes?", 
+            text: 'Are you sure you want to save your changes?',            
+            showCancelButton: true,
+            cancelButtonText: 'No, Cancel',
+            confirmButtonText: 'Yes, Save',
+            b: 'black',
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button',
+                container: 'custom-swal-container',
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // masukin function utk store data
+                document.getElementById('form').submit(); 
+            } else {
+                console.log('Cancelled');
+            }
+        })
+    });
+</script>
+</body>
+</html>
+
+
