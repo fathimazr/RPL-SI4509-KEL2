@@ -80,5 +80,11 @@ Route::get('/profile', function () {
     return view ('register-new-user/profile');
 });
 
+Route::get('/trafo-data', function () {
+    return view('trafo-data');
+})->middleware(['auth', 'verified'])->name('trafo-data');
+
+Route::get('/add-performance', function () {
+    return view('trafo.add-performance');
 
 require __DIR__.'/auth.php';
