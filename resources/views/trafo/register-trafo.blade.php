@@ -245,7 +245,7 @@
                 </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
-                    <button id="submitButton" type="button">Submit</button>
+                    <button id="saveButton" type="button">Save</button>
                 </div>
             </form>
             </div>
@@ -277,7 +277,7 @@
         })
     });
 
-    document.getElementById('submitButton').addEventListener('click', function() {
+    document.getElementById('saveButton').addEventListener('click', function() {
         Swal.fire({
             width:'0.52fr',
             height: '0.386fr',
