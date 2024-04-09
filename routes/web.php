@@ -24,6 +24,8 @@ Route::prefix('admin')->group(function (){
     Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
 });
 
+
+=======
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 Route::get('/', function () {
@@ -34,8 +36,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::get('/adm-dash', function () {
     return view('admin.adm-dash');
+
 });
 
 Route::middleware('auth')->group(function () {
