@@ -25,7 +25,6 @@ Route::prefix('admin')->group(function (){
 });
 
 
-=======
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 Route::get('/', function () {
@@ -96,9 +95,11 @@ Route::get('/profile', function () {
 
 Route::get('/trafo-data', function () {
     return view('trafo-data');
-})->middleware(['auth', 'verified'])->name('trafo-data');
+});
+// })->middleware(['auth', 'verified'])->name('trafo-data');
 
 Route::get('/add-performance', function () {
     return view('trafo.add-performance');
+});
 
 require __DIR__.'/auth.php';
