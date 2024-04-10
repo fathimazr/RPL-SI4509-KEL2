@@ -13,15 +13,14 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<<<<<<< HEAD
         <!-- Script confirmation box delete -->
         <script type="text/javascript"> 
-        function confirmation(ev){
-                ev.preventDefault();
-                var urlToRedirect=ev.currentTarget.getAttribute('href');
+            function confirmation(ev) {
+              ev.preventDefault();
+              var urlToRedirect = ev.currentTarget.getAttribute('href');
 
-                console.log(urlToRedirect);
-                Swal.fire({
+              console.log(urlToRedirect);
+              Swal.fire({
                   title: "Are you sure?",
                   text: "You won't be able to revert this!",
                   icon: "warning",
@@ -29,17 +28,17 @@
                   confirmButtonColor: "#3085d6",
                   cancelButtonColor: "#d33",
                   confirmButtonText: "Yes, Delete"
-                
-                }).then((result) => {
+              }).then((result) => {
                   if (result.isConfirmed) {
-                    Swal.fire({
-                      title: "Deleted!",
-                      text: "Your file has been deleted",
-                      icon: "success"
-                    });
-=======
-        <script type="text/javascript">
-            
+                      Swal.fire({
+                          title: "Deleted!",
+                          text: "Your file has been deleted",
+                          icon: "success"
+                      });
+                  }
+              }); 
+          }
+
             // Script Pop Up Message Discard Changes
             function cancelconfirmation(ev){
                 ev.preventDefault();
@@ -80,15 +79,11 @@
                     Swal.fire("Saved!", "", "success");
                   } else if (result.isDenied) {
                     Swal.fire("Changes are not saved", "", "info");
->>>>>>> dev
                   }
                 });
             }
         </script>
-<<<<<<< HEAD
 
-=======
->>>>>>> dev
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
