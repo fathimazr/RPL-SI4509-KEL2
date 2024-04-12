@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\Trafo;
+use Carbon\Carbon;
 return new class extends Migration
 {
     /**
@@ -16,12 +17,20 @@ return new class extends Migration
             $table->string('trafo_id');
             $table->string('brand'); 
             $table->string('city');
-            $table->enum('phase', ['blackout', 'active']); 
+            $table->enum('phase', [1, 3]); 
             $table->string('latitude');
             $table->string('longitude');
-            $table->string('capacity');
-            $table->timestamp('installation_date');
+            $table->integer('capacity');
+            $table->date('installation_date');
         });
+
+        $trafos = Trafo::all();
+        foreach ($trafos as $trafo) {
+            if ($trafo->installation_date) {
+                $installationDate = Carbon::createFromFormat('Y-m-d', $trafo->installation_date)->format('d-m-Y');
+                $trafo->update(['installation_date' => $installationDate]);
+            }
+        }
     }
 
     /**

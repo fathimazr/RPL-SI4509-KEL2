@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -11,9 +10,10 @@ class Trafo extends Model
         'current',
         'temperature',
         'blackout_status',
+        'installation_date',
     ];
 
     protected $casts = [
-        'blackout_status' => 'boolean',
+        'installation_date' => 'date:Y-m-d'
     ];
 }
