@@ -43,7 +43,7 @@ DB_PASSWORD=<kalo ada password>
 
 4. Migrate (Untuk register dan Login)
 ```sh
-php artisan migrate
+php artisan migrate --seed
 ```
 
 ## Jalanin Project

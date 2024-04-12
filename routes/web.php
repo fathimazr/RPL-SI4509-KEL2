@@ -28,8 +28,8 @@ Route::prefix('admin')->group(function (){
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

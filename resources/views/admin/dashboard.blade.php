@@ -1,12 +1,4 @@
 <x-app-layout>
-<<<<<<< HEAD:resources/views/trafo-data.blade.php
-    <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
-        <div class="self-end">
-            <div class="">
-                <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
-                    Add New Transformator
-                </button>
-=======
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Admin Dashboard') }}
@@ -19,7 +11,6 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
->>>>>>> dev:resources/views/admin/dashboard.blade.php
             </div>
         </div>
 
