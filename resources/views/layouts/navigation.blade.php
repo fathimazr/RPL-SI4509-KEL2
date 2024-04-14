@@ -1,3 +1,54 @@
+<!-- custom style for logout popup -->
+
+<style>
+    .custom-swal-container {
+        backdrop-filter: blur(2px);
+        background: rgba(0,0,0,0) !important;
+        width: 1fr;
+        height: 1fr;
+        padding: none;
+    }
+
+    .custom-swal-title {
+        font-size: 40px;
+        font-weight: 700;
+        color: #000000;
+        margin-top: 2px;
+    }
+
+    .custom-swal-text {
+        font-size: 33px;
+        color: #000000;
+        font-weight: 500;
+    }
+
+    .custom-swal-discard-button, .custom-swal-cancel-button {
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 33px;
+        font-weight: 500;
+        cursor: pointer;
+        margin: 10px;
+    }
+
+    .custom-swal-cancel-button {
+        background-color: #000000 !important;
+        color: white !important;
+        border: 2px solid black !important;
+    }
+
+    .custom-swal-discard-button {
+        background-color: white !important;
+        color: black !important;
+        border: 2px solid black !important;
+    }
+
+    .swal2-actions {
+        display: flex;
+        flex-direction: row-reverse; 
+    }
+</style>
+
 <div class="flex">
     <aside class="w-[250px] h-full bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
         <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
@@ -84,14 +135,14 @@
             </div>
             
             <div class="self-center">
-                <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+            <form id="logoutForm" method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                     @csrf
-                    <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
-                            onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        <h1 class="text-[#FFFFFF] text-[15px] font-semibold">
+                    <a href="#" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+                    <button type="button" onclick="confirmLogout()" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+                    <h1 class="text-[#FFFFFF] text-[15px] font-semibold">
                             Log Out
                         </h1>
+                        </button>
                     </a>
                 </form>
             </div>
@@ -99,3 +150,26 @@
         </div>
     </aside>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Are you sure you want to log out?',
+            showCancelButton: true,
+            confirmButtonText: 'Log Out',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                container: 'custom-swal-container',
+                title: 'custom-swal-title',
+                content: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                cancelButton: 'custom-swal-cancel-button'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('logoutForm').submit();
+            }
+        });
+    }
+</script>

@@ -11,7 +11,7 @@
        body {
             height: 100vh;
             display: grid;  
-            grid-template-columns: 0.154fr 0.846fr;
+            grid-template-columns: 0.154fr 1fr;
             grid-template-rows: 0.109fr 1fr;
             margin: 0;
             padding: 0;
@@ -37,11 +37,6 @@
             padding: 10px;
             display: inline-block;
             vertical-align: top;
-        }
-
-        .sidebar-placeholder img {
-            display: block;
-            margin-bottom: 30px;
         }
 
         .main {
@@ -195,8 +190,10 @@
     </style>
 </head>
 <body>
-<div class="topbar-placeholder"></div>
-    <div class="sidebar-placeholder"></div>
+<div class="topbar-placeholder">
+</div>
+<div class="sidebar-placeholder">
+</div>
     <div class="main">
         <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
         <div class="form-header">
