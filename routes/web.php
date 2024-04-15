@@ -78,12 +78,9 @@ Route::resource('trafo', TrafoController::class)->middleware('auth');
 
 
 Route::get('/trafo-register', function () {
+    // Logic for handling the request or rendering the view
     return view('trafo.register-trafo');
-});
-
-Route::get('/trafo-register-submit', function () {
-    return view('trafo.submit-register-trafo');
-});
+})->name('trafo-register');
 
 Route::get('/new', function () {
     return view ('register-new-user/register-new-user');
@@ -95,7 +92,7 @@ Route::get('/profile', function () {
 
 Route::get('/trafo-data', function () {
     return view('trafo-data');
-});
+})->name('trafo-data');
 // })->middleware(['auth', 'verified'])->name('trafo-data');
 
 Route::get('/add-performance', function () {

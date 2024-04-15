@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +8,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-       body {
+       /* body {
             height: 100vh;
+            width: 100vw;
             display: grid;  
             grid-template-columns: 0.154fr 1fr;
             grid-template-rows: 0.109fr 1fr;
@@ -17,9 +18,9 @@
             padding: 0;
             overflow: auto;
             font-family : inter;
-        } 
+        }  */
 
-        .topbar-placeholder {
+        /* .topbar-placeholder {
             background-color: white; 
             grid-column: 2 / 3;
             grid-row: 1 / 2;
@@ -35,19 +36,20 @@
             grid-row: 1 / 3;
             margin: 0;
             padding: 10px;
-            display: inline-block;
+            display: grid;
             vertical-align: top;
-        }
+            height: 100vh;
+            overflow: auto;
+        } */
 
         .main {
-            background-color: #f0f0f0;
-            grid-column: 2 / 3;
-            grid-row: 2 / 3;
+            background-color: #E5E7EB;
             display: grid;
             grid-template-columns: 0.044fr 0.912fr 0.044fr;
             grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; 
+            width: 100%;
 
         }
 
@@ -141,7 +143,6 @@
         }
 
     .custom-swal-container {
-        display: inherit;
         backdrop-filter: blur(2px);
         background: rgba(0,0,0,0) !important;
         width: 1fr;
@@ -189,11 +190,12 @@
     }
     </style>
 </head>
-<body>
-<div class="topbar-placeholder">
+<!-- <body> -->
+<!-- <div class="topbar-placeholder">
 </div>
-<div class="sidebar-placeholder">
-</div>
+<div class="sidebar-placeholder"> 
+</div> -->
+<x-app-layout>
     <div class="main">
         <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
         <div class="form-header">
@@ -248,7 +250,7 @@
             </div>
             <script>
 
-    document.getElementById('discardButton').addEventListener('click', function() {
+        document.getElementById('discardButton').addEventListener('click', function() {
         Swal.fire({
             width:'0.52fr',
             height: '0.386fr',
@@ -267,7 +269,7 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                // Masukin function untuk redirect ke dashboard 
+                window.location.href = "{{ route('trafo-data') }}";
             } else {
                 console.log('Cancelled');
             }
@@ -301,5 +303,6 @@
         })
     });
 </script>
-</body>
+</x-app-layout>
+<!-- </body> -->
 </html>
