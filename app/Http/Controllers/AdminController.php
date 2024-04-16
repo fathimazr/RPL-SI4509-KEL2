@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -12,7 +13,7 @@ class AdminController extends Controller
     }
 
     public function AdminDashboard(){
-        return view('admin.dashboard');
+        return view('admin.adm-dash');
     }
 
     public function AdminLogin(Request $request){
@@ -25,9 +26,20 @@ class AdminController extends Controller
             'employee_id' => $check['employee_id'],
             'password' => $check['password']
         ])){
-            return redirect()->route('admin.dashboard')->with('error', 'Admin Lgin Successfully');
+            return redirect()->route('admin.dashboard')->with('error', 'Admin Login Successfully');
         }else{
             return back()->with('error', 'Invalid ID or Password');
         };
+    }
+
+    public function AdminLogout(Request $request): RedirectResponse
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }

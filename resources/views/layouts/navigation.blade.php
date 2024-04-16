@@ -86,7 +86,7 @@
             <div class="self-center">
                 <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                     @csrf
-                    <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+                    <a href="{{route('logout')}}" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
                         <h1 class="text-[#FFFFFF] text-[15px] font-semibold">

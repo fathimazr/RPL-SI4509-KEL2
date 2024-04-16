@@ -16,43 +16,73 @@ use App\Http\Controllers\AdminController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Admin Route
-Route::prefix('admin')->group(function (){
-    Route::get('/login',[AdminController::class, 'Index'])->name('login_form');
-    Route::post('/login/owner',[AdminController::class, 'AdminLogin'])->name('admin.login');
-    // Route::get('/login/admin',[AdminController::class, 'Login'])->name('admin.login');
-    Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
-});
 
+Route::get('/', function () {
+    return redirect()->route('login');
+
+});
+// Admin Middleware
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
+    Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
+    Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware(['auth', 'verified']);   
+    Route::get('/trafo-data', function () {
+        return view('trafo-data');
+    })->middleware(['auth', 'verified'])->name('trafo-data');
+    
+});
 
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
-Route::get('/', function () {
-    return redirect('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'role:manager'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    Route::get('/trafo-data', function () {
+        return view('trafo-data');
+    })->middleware(['auth', 'verified'])->name('trafo-data');
+    
+    Route::get('/add-performance', function () {
+        return view('trafo.add-performance');
+    });
+    
+    // Route for view data trafo
+    Route::get('/view-performance', function () {
+        return view('trafo.view-performance');
+    })->middleware(['auth', 'verified'])->name('view-performance');
 
-Route::get('/trafo-data', function () {
-    return view('trafo-data');
-})->middleware(['auth', 'verified'])->name('trafo-data');
-
-Route::get('/add-performance', function () {
-    return view('trafo.add-performance');
+    Route::get('/trafo-register', function () {
+        return view('trafo.register-trafo');
+    })->middleware(['auth', 'verified'])->name('trafo-register');
+    
 });
 
-// Route for view data trafo
-Route::get('/view-performance', function () {
-    return view('trafo.view-performance');
-})->middleware(['auth', 'verified'])->name('view-performance');
+Route::middleware(['auth', 'role:tim_teknis'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    Route::get('/trafo-data', function () {
+        return view('trafo-data');
+    })->middleware(['auth', 'verified'])->name('trafo-data');
+    
+    Route::get('/add-performance', function () {
+        return view('trafo.add-performance');
+    });
+    
+    // Route for view data trafo
+    Route::get('/view-performance', function () {
+        return view('trafo.view-performance');
+    })->middleware(['auth', 'verified'])->name('view-performance');
 
-
-Route::get('/adm-dash', function () {
-    return view('admin.adm-dash');
-
+    Route::get('/trafo-register', function () {
+        return view('trafo.register-trafo');
+    });
+    
 });
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -77,9 +107,7 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 Route::resource('trafo', TrafoController::class)->middleware('auth');
 
 
-Route::get('/trafo-register', function () {
-    return view('trafo.register-trafo');
-});
+
 
 Route::get('/trafo-register-submit', function () {
     return view('trafo.submit-register-trafo');
@@ -93,9 +121,9 @@ Route::get('/profile', function () {
     return view ('register-new-user/profile');
 });
 
-Route::get('/trafo-data', function () {
-    return view('trafo-data');
-});
+// Route::get('/trafo-data', function () {
+//     return view('trafo-data');
+// });
 // })->middleware(['auth', 'verified'])->name('trafo-data');
 
 Route::get('/add-performance', function () {
