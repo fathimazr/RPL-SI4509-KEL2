@@ -18,7 +18,7 @@
         </form>
     </div>
 
-    <a href="#">
+    <a href="/profile">
         <img aria-hidden="true" class="w-[40px] h-[40px] self-center"
             src="{{ asset('images/icon.png') }}"
             alt=""/>
