@@ -1,13 +1,16 @@
 <x-app-layout>
+    <div class="main" style="display: grid; overflow-y: auto; max-width: 100%;">
     <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
         <div class="self-end">
             <div class="">
+            <a href="{{ route('trafo-register') }}">
                 <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
                     Add New Transformator
                 </button>
             </div>
+            </a>
         </div>
-
+        </div>
         <div class="bg-white overflow-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">

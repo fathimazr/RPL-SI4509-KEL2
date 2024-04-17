@@ -6,45 +6,17 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-        <link rel="shortcut icon" href="{{ asset('logo_gga.png') }}" type="image/png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-        <!-- Script confirmation box delete -->
-        <script type="text/javascript"> 
-            function confirmation(ev) {
-              ev.preventDefault();
-              var urlToRedirect = ev.currentTarget.getAttribute('href');
-
-              console.log(urlToRedirect);
-              Swal.fire({
-                  title: "Are you sure?",
-                  text: "You won't be able to revert this!",
-                  icon: "warning",
-                  showCancelButton: true,
-                  confirmButtonColor: "#3085d6",
-                  cancelButtonColor: "#d33",
-                  confirmButtonText: "Yes, Delete"
-              }).then((result) => {
-                  if (result.isConfirmed) {
-                      Swal.fire({
-                          title: "Deleted!",
-                          text: "Your file has been deleted",
-                          icon: "success"
-                      });
-                  }
-              }); 
-          }
-
-            // Script Pop Up Message Discard Changes
+        
+        <script type="text/javascript">
+            
             function cancelconfirmation(ev){
                 ev.preventDefault();
                 var discard=ev.currentTarget.getAttribute('href');
-                
-                console.log(discard);
+               
                 Swal.fire({
                   title: "Discard Changes?",
                   text: "Are you sure you want to discard your changes?",
@@ -52,7 +24,6 @@
                   confirmButtonText: "Yes, Discard",
                   denyButtonText: No, Cancel
                 }).then((result) => {
-                  /* Read more about isConfirmed, isDenied below */
                   if (result.isConfirmed) {
                     Swal.fire("Discard Succeed!", "", "success");
                   } else if (result.isDenied) {
@@ -61,12 +32,10 @@
                 });
             }
 
-            // Script Pop Up Message Save Changes
             function saveconfirmation(ev){
                 ev.preventDefault();
                 var link=ev.currentTarget.getAttribute('href');
                 
-                console.log(link);
                 Swal.fire({
                   title: "Save Changes?",
                   text: "Are you sure you want to save your changes?",
@@ -74,8 +43,7 @@
                   confirmButtonText: "Yes, Save",
                   denyButtonText: No, Cancel
                 }).then((result) => {
-                  /* Read more about isConfirmed, isDenied below */
-                  if (result.isConfirmed) {
+                    if (result.isConfirmed) {
                     Swal.fire("Saved!", "", "success");
                   } else if (result.isDenied) {
                     Swal.fire("Changes are not saved", "", "info");
@@ -83,7 +51,6 @@
                 });
             }
         </script>
-
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -108,7 +75,7 @@
                         {{ $slot }}
                     </div>
                 </main>
-            </div>
+            </div>
         </div>
     </body>
 </html>

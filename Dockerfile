@@ -11,6 +11,8 @@ COPY package*.json ./
 # Install dependensi
 RUN npm install
 RUN npm i csrf 
+RUN npm i -D tailwindcss postcss autoprefixer
+RUN npm install sweetalert2
 # Menyalin kode sumber
 COPY . .
 
@@ -19,5 +21,7 @@ EXPOSE 3000
 
 # Perintah untuk menjalankan aplikasi
 RUN ["npm", "run", "build"]
-# RUN ["php", "artisan", "migrate"]
+RUN ["php", "artisan", "migrate"]
+RUN ["php", "artisan", "key:generate"]
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=3000"]
+
