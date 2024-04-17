@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang=en>
 <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="preconnect" href="https://fonts.googleapis.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-       body {
+       /* body {
             height: 100vh;
             display: grid;  
             grid-template-columns: 0.154fr 0.846fr;
@@ -20,17 +22,17 @@
 
         .topbar-placeholder {
             background-color: white; /* White color */
-            grid-column: 2 / 3;
+            /* grid-column: 2 / 3;
             grid-row: 1 / 2;
             margin: 0;
             z-index: 1;
             position: sticky;
             top: 0;
-        }
+        } */
 
-        .sidebar-placeholder {
+        /* .sidebar-placeholder {
             background-color: #12A2BD; /* Sidebar color */
-            grid-column: 1 / 2;
+            /* grid-column: 1 / 2;
             grid-row: 1 / 3;
             margin: 0;
             padding: 10px;
@@ -41,10 +43,10 @@
         .sidebar-placeholder img {
             display: block;
             margin-bottom: 30px;
-        }
+        } */ 
 
         .main {
-            background-color: #f0f0f0;
+            background-color: #E5E7EB;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
             display: grid;
@@ -52,6 +54,7 @@
             grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; /* Enable vertical scrolling */
+            width: 100%;
 
         }
 
@@ -82,7 +85,7 @@
            right: 0; /* Adjust the distance of the line from the right side */
            width: 30px; /* Width of the line */
            background-color: #12A2BD; /* Color of the line */
-           height: 150%;
+           height: auto;
         }
 
         .form-group {
@@ -90,7 +93,7 @@
             margin-bottom: 45px;
             margin-right: 49px;
             display: grid;
-            align-items: left;
+            align-items: center;
             grid-template-columns: 1fr 4fr;
         }
 
@@ -182,8 +185,8 @@
 
     </style>
 </head>
-<body>
-    <div class="topbar-placeholder"></div>
+<!-- <body> -->
+    <!-- <div class="topbar-placeholder"></div>
     <div class="sidebar-placeholder">
         <img src = "img/gridgeoalert.png" alt = "GridGeoAlert" width = "200">
         <img src = "img/Dashboard.png" alt = "Dashboard">
@@ -191,18 +194,16 @@
         <img src = "img/TrafoData.png" alt = "Trafo Data">
         <img src = "img/Maintenance.png" alt = "Maintenance">
         <img src = "img/Statistics.png" alt = "Statistics">
-    </div>
+    </div> -->
+<x-app-layout>
     <div class="main">
         <h1 class="form-title">EDIT PROFILE</h1>
         <div class="form-container">
             <!-- tambahin action ke route utk store data -->
         <form id="form" action="" method="POST"> 
                 {{ csrf_field() }}
-                <div class="img" style=" text-align: center">
-                    <img src="img/profile.png" class="rounded-circle" style="width: 150px; margin-bottom: 10px; object-fit: cover; margin-top: 50px; border-radius: 50%;">
-                    <a href="#">
-                       <img src ="img/camera.png" style="width:30px; margin-left: -40px;">
-                    </a>
+                <div class="img" style=" display: flex; justify-content: center; align-items: center;">
+                    <img src="img/blank-profile.jpg" class="rounded-circle" style="width: 150px; margin-bottom: 10px; object-fit: cover; margin-top: 50px; border-radius: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
@@ -302,7 +303,8 @@
         })
     });
 </script>
-</body>
+</x-app-layout>
+<!-- </body> -->
 </html>
 
 
