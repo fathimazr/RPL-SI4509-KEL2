@@ -8,43 +8,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
-       /* body {
-            height: 100vh;
-            display: grid;  
-            grid-template-columns: 0.154fr 0.846fr;
-            grid-template-rows: 0.109fr 1fr;
-            margin: 0;
-            padding: 0;
-            overflow: auto;
-            font-family : inter;
-        } 
-
-        .topbar-placeholder {
-            background-color: white; /* White color */
-            /* grid-column: 2 / 3;
-            grid-row: 1 / 2;
-            margin: 0;
-            z-index: 1;
-            position: sticky;
-            top: 0;
-        } */
-
-        /* .sidebar-placeholder {
-            background-color: #12A2BD; /* Sidebar color */
-            /* grid-column: 1 / 2;
-            grid-row: 1 / 3;
-            margin: 0;
-            padding: 10px;
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        .sidebar-placeholder img {
-            display: block;
-            margin-bottom: 30px;
-        } */ 
-
+       
         .main {
             background-color: #E5E7EB;
             grid-column: 2 / 3;
@@ -183,18 +149,16 @@
             flex-direction: row-reverse; 
         }
 
+        .swal2-popup {
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) !important;
+        }
+
     </style>
 </head>
 <!-- <body> -->
-    <!-- <div class="topbar-placeholder"></div>
-    <div class="sidebar-placeholder">
-        <img src = "img/gridgeoalert.png" alt = "GridGeoAlert" width = "200">
-        <img src = "img/Dashboard.png" alt = "Dashboard">
-        <img src = "img/Maps.png" alt = "Maps">
-        <img src = "img/TrafoData.png" alt = "Trafo Data">
-        <img src = "img/Maintenance.png" alt = "Maintenance">
-        <img src = "img/Statistics.png" alt = "Statistics">
-    </div> -->
+    
 <x-app-layout>
     <div class="main">
         <h1 class="form-title">EDIT PROFILE</h1>
@@ -240,7 +204,8 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="azammm123">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="pass_log_id" name="password" type="password" placeholder="Please fill with your password">
+                    <span toggle="#pass_log_id" class="fa fa-fw fa-eye field_icon toggle-password"></span>
                 </div>
                 <div class="row">
                     <button id = "discardButton" type="button">Cancel</button>
@@ -301,6 +266,16 @@
                 console.log('Cancelled');
             }
         })
+    });
+    $("body").on('click','.toggle-password',function(){
+        $(this).toggleClass("fa-eye fa-eye-slash");
+
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") === "password") {
+            input.attr("type", "text");
+        } else {
+            input.attr("type", "password");
+        }
     });
 </script>
 </x-app-layout>
