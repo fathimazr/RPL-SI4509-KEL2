@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Trafo;
 use Illuminate\Http\Request;
 
 class TrafoController extends Controller
@@ -12,6 +13,8 @@ class TrafoController extends Controller
     public function index()
     {
         //
+        $trafo = Trafo::all();
+        return view('trafo-data', compact(['trafo']));
     }
 
     /**
@@ -19,7 +22,7 @@ class TrafoController extends Controller
      */
     public function create()
     {
-        //
+        return view('trafo.register-trafo');
     }
 
     /**
@@ -28,6 +31,8 @@ class TrafoController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request->except(['_token', 'submit']));
+        Trafo::create($request->except(['_token', 'submit']));
     }
 
     /**

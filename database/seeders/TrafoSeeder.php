@@ -23,7 +23,28 @@ class TrafoSeeder extends Seeder
                 'latitude' => 1.043496628353671,
                 'longitude' => 107.38636884737015,
                 'capacity' => 200,
-                'installation_date' => '3-8-2023' 
+                'installation_date' => '3-8-2023',
+                'user_id' => 1 
+            ],[
+                'trafo_id' => '1102',
+                'brand' => 'STARBOY',
+                'city' => 'BANDUNG',
+                'phase' => 3,
+                'latitude' => 1.043496628353671,
+                'longitude' => 107.38636884737015,
+                'capacity' => 200,
+                'installation_date' => '3-8-2023',
+                'user_id' => 2 
+            ],[
+                'trafo_id' => '1103',
+                'brand' => 'STARLITE',
+                'city' => 'JAKARTA',
+                'phase' => 1,
+                'latitude' => 1.043496628353671,
+                'longitude' => 107.38636884737015,
+                'capacity' => 200,
+                'installation_date' => '3-8-2023',
+                'user_id' => 1 
             ]
         ];
 

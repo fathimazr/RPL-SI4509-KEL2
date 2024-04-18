@@ -209,39 +209,39 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="" method="POST"> 
-                {{ csrf_field() }}
+        <form id="form" action="{{route('admin.regist')}}" method="POST"> 
+                @csrf
                 <div class="form-group">
                     <label for="employeeID">Employee ID</label>
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="Please fill with your employee ID">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="Please fill with your email">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="email" placeholder="Please fill with your email">
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="Please fill with your password">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="password" placeholder="Please fill with your password">
                 </div>
                 <div class="form-group">
                     <label for="phase">Role</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" placeholder="">
                         <option value="" disabled selected>Select your role</option>
-                        <option value="1">Manajer</option>
-                        <option value="2">Tim Teknis</option>
+                        <option value="manager">Manajer</option>
+                        <option value="tim_teknis">Tim Teknis</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="phase">Branch Office</label>
                     <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
                         <option value="" disabled selected>Select your branch office</option>
-                        <option value="1">Branch Office 1</option>
-                        <option value="2">Branch Office 2</option>
-                        <option value="1">Branch Office 3</option>
-                        <option value="2">Branch Office 4</option>
-                        <option value="1">Branch Office 5</option>
-                        <option value="2">Branch Office 6</option>
-                        <option value="2">Branch Office 7</option>
+                        <option value="Branch Office 1">Branch Office 1</option>
+                        <option value="Branch Office 2">Branch Office 2</option>
+                        <option value="Branch Office 3">Branch Office 3</option>
+                        <option value="Branch Office 4">Branch Office 4</option>
+                        <option value="Branch Office 5">Branch Office 5</option>
+                        <option value="Branch Office 6">Branch Office 6</option>
+                        <option value="Branch Office 7">Branch Office 7</option>
                     </select>
                 </div>
                 <div class="row">
@@ -279,6 +279,7 @@
     });
 
     document.getElementById('submitButton').addEventListener('click', function() {
+        console.log('Save button clicked!');
         Swal.fire({
             width:'0.52fr',
             height: '0.386fr',

@@ -1,0 +1,1147 @@
+commit 586815ef40a84c64e1b6f8a4773926028a71e003
+Merge: a30cffb 5b3d805
+Author: ryanmuhs <ryansatria@student.telkomuniversity.ac.id>
+Date:   Thu Apr 18 23:32:22 2024 +0700
+
+    On dev: db
+
+diff --cc resources/views/layouts/navigation.blade.php
+index 8e9cd74,8e9cd74..4127b0b
+--- a/resources/views/layouts/navigation.blade.php
++++ b/resources/views/layouts/navigation.blade.php
+@@@ -85,7 -85,7 +85,7 @@@
+                                           alt=""/>
+                                      </div>
+                  
+--                                    <a href="/trafo-data" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+++                                    <a href="/trafo" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                                          <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+                                      </a>
+                                  </div>
+@@@ -128,7 -128,7 +128,7 @@@
+                                   alt=""/>
+                              </div>
+          
+--                            <a href="/trafo-data" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+++                            <a href="/trafo" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                                  <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+                              </a>
+                          </div>
+diff --cc resources/views/register-new-user/register-new-user.blade.php
+index d0d9878,d0d9878..8e6f1a0
+--- a/resources/views/register-new-user/register-new-user.blade.php
++++ b/resources/views/register-new-user/register-new-user.blade.php
+@@@ -209,39 -209,39 +209,39 @@@
+          </div>
+          <div class="form-container">
+          <!-- tambahin action ke route utk store data -->
+--        <form id="form" action="" method="POST"> 
+--                {{ csrf_field() }}
+++        <form id="form" action="{{route('admin.regist')}}" method="POST"> 
+++                @csrf
+                  <div class="form-group">
+                      <label for="employeeID">Employee ID</label>
+                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="Please fill with your employee ID">
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+--                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="Please fill with your email">
+++                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="email" placeholder="Please fill with your email">
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+--                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="text" placeholder="Please fill with your password">
+++                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="password" name = "password" type="password" placeholder="Please fill with your password">
+                  </div>
+                  <div class="form-group">
+                      <label for="phase">Role</label>
+--                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+++                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" placeholder="">
+                          <option value="" disabled selected>Select your role</option>
+--                        <option value="1">Manajer</option>
+--                        <option value="2">Tim Teknis</option>
+++                        <option value="manager">Manajer</option>
+++                        <option value="tim_teknis">Tim Teknis</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="phase">Branch Office</label>
+                      <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+                          <option value="" disabled selected>Select your branch office</option>
+--                        <option value="1">Branch Office 1</option>
+--                        <option value="2">Branch Office 2</option>
+--                        <option value="1">Branch Office 3</option>
+--                        <option value="2">Branch Office 4</option>
+--                        <option value="1">Branch Office 5</option>
+--                        <option value="2">Branch Office 6</option>
+--                        <option value="2">Branch Office 7</option>
+++                        <option value="Branch Office 1">Branch Office 1</option>
+++                        <option value="Branch Office 2">Branch Office 2</option>
+++                        <option value="Branch Office 3">Branch Office 3</option>
+++                        <option value="Branch Office 4">Branch Office 4</option>
+++                        <option value="Branch Office 5">Branch Office 5</option>
+++                        <option value="Branch Office 6">Branch Office 6</option>
+++                        <option value="Branch Office 7">Branch Office 7</option>
+                      </select>
+                  </div>
+                  <div class="row">
+@@@ -279,6 -279,6 +279,7 @@@
+      });
+  
+      document.getElementById('submitButton').addEventListener('click', function() {
+++        console.log('Save button clicked!');
+          Swal.fire({
+              width:'0.52fr',
+              height: '0.386fr',
+diff --cc resources/views/trafo-data.blade.php
+index 97cef12,97cef12..9e5c7ce
+--- a/resources/views/trafo-data.blade.php
++++ b/resources/views/trafo-data.blade.php
+@@@ -3,7 -3,7 +3,7 @@@
+      <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
+          <div class="self-end">
+              <div class="">
+--            <a href="{{ route('trafo-register') }}">
+++            <a href="/trafo/create">
+                  <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                      Add New Transformator
+                  </button>
+@@@ -50,131 -50,131 +50,135 @@@
+                          </th>
+                      </tr>
+                  </thead>
+--                <tbody>
+--                    <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+--                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+--                            1101
+--                        </th>
+--                        <td class="px-6 py-4">
+--                            STARLITE
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            JAKARTA
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            3
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            1.043496628353671
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            107.38636884737015
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            200 kVA
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-red-100">
+--                                <p class=" text-red-600 font-bold">Error</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            03-08-2023
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-green-100">
+--                                <p class=" text-green-700 font-bold">Complete</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4 flex gap-7 items-center">
+--                            <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+--                            <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+--                            <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+--                        </td>
+--                    </tr>
+--                    <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+--                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+--                            1102
+--                        </th>
+--                        <td class="px-6 py-4">
+--                            STARBOY
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            BANDUNG
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            3
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            1.043496628353671
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            107.38636884737015
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            200 kVA
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-yellow-200">
+--                                <p class=" text-yellow-700 font-bold">Warning</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            03-08-2023
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-green-100">
+--                                <p class=" text-green-700 font-bold">Complete</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4 flex gap-7 items-center">
+--                            <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+--                            <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+--                            <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+--                        </td>
+--                    </tr>
+--                    <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+--                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+--                            1103
+--                        </th>
+--                        <td class="px-6 py-4">
+--                            STARLITE
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            JAMBI
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            3
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            1.043496628353671
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            107.38636884737015
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            200 kVA
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-green-100">
+--                                <p class=" text-green-700 font-bold">Normal</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            03-08-2023
+--                        </td>
+--                        <td class="px-6 py-4">
+--                            <div class="px-4 rounded-full bg-green-100">
+--                                <p class=" text-green-700 font-bold">Complete</p>
+--                            </div>
+--                        </td>
+--                        <td class="px-6 py-4 flex gap-7 items-center">
+--                            <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+--                            <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+--                            <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+--                        </td>
+--                    </tr>
+--                </tbody>
+++                @foreach ($trafo as $t)
+++                    <tbody>
+++                            
+++                        <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+++                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+++                                {{$t->trafo_id}}
+++                            </th>
+++                            <td class="px-6 py-4">
+++                                {{$t->brand}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->city}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->phase}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->latitude}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->longitude}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->capacity}} kVA
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-red-100">
+++                                    <p class=" text-red-600 font-bold">Error</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                {{$t->installation_date}}
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-green-100">
+++                                    <p class=" text-green-700 font-bold">Complete</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4 flex gap-7 items-center">
+++                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+++                                <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+++                                <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+++                            </td>
+++                        </tr>
+++                        
+++                        <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+++                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+++                                1102
+++                            </th>
+++                            <td class="px-6 py-4">
+++                                STARBOY
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                BANDUNG
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                3
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                1.043496628353671
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                107.38636884737015
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                200 kVA
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-yellow-200">
+++                                    <p class=" text-yellow-700 font-bold">Warning</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                03-08-2023
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-green-100">
+++                                    <p class=" text-green-700 font-bold">Complete</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4 flex gap-7 items-center">
+++                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+++                                <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+++                                <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+++                            </td>
+++                        </tr>
+++                        <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+++                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+++                                1103
+++                            </th>
+++                            <td class="px-6 py-4">
+++                                STARLITE
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                JAMBI
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                3
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                1.043496628353671
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                107.38636884737015
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                200 kVA
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-green-100">
+++                                    <p class=" text-green-700 font-bold">Normal</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                03-08-2023
+++                            </td>
+++                            <td class="px-6 py-4">
+++                                <div class="px-4 rounded-full bg-green-100">
+++                                    <p class=" text-green-700 font-bold">Complete</p>
+++                                </div>
+++                            </td>
+++                            <td class="px-6 py-4 flex gap-7 items-center">
+++                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
+++                                <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+++                                <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
+++                            </td>
+++                        </tr>
+++                    </tbody>
+++                @endforeach
+              </table>
+          </div>
+      </div>
+diff --cc resources/views/trafo/register-trafo.blade.php
+index f5121cb,f5121cb..ae7d36a
+--- a/resources/views/trafo/register-trafo.blade.php
++++ b/resources/views/trafo/register-trafo.blade.php
+@@@ -204,8 -204,8 +204,8 @@@
+          </div>
+          <div class="form-container">
+          <!-- tambahin action ke route utk store data -->
+--        <form id="form" action="" method="POST"> 
+--                {{ csrf_field() }}
+++        <form id="form" action="{{ route('trafo.store') }}" method="POST"> 
+++                @csrf
+                  <div class="form-group">
+                      <label for="ID">Trafo ID</label>
+                      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill with your trafo's ID">
+@@@ -269,7 -269,7 +269,7 @@@
+              }
+          }).then((result) => {
+              if (result.isConfirmed) {
+--                window.location.href = "{{ route('trafo-data') }}";
+++                window.location.href = "trafo/store";
+              } else {
+                  console.log('Cancelled');
+              }
+diff --cc routes/web.php
+index 02fb5ee,02fb5ee..c72cd2d
+--- a/routes/web.php
++++ b/routes/web.php
+@@@ -25,9 -25,9 +25,9 @@@ Route::get('/', function () 
+  Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
+      Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
+      Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware(['auth', 'verified']);   
+--    Route::get('/trafo-data', function () {
+--        return view('trafo-data');
+--    })->middleware(['auth', 'verified'])->name('trafo-data');
+++    Route::get('/trafo-data', [TrafoController::class, 'index'])->middleware(['auth', 'verified'])->name('trafo-data');
+++    Route::get('/new', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('register-user');
+++    Route::post('/new', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.regist');
+      
+  });
+  
+@@@ -63,9 -63,9 +63,7 @@@ Route::middleware(['auth', 'role:tim_te
+          return view('dashboard');
+      })->middleware(['auth', 'verified'])->name('dashboard');
+      
+--    Route::get('/trafo-data', function () {
+--        return view('trafo-data');
+--    })->middleware(['auth', 'verified'])->name('trafo-data');
+++    Route::get('/trafo-data', [TrafoController::class, 'index']);
+      
+      Route::get('/add-performance', function () {
+          return view('trafo.add-performance');
+@@@ -107,22 -107,22 +105,17 @@@ Route::post('/trafo', [TrafoController:
+  Route::resource('trafo', TrafoController::class)->middleware('auth');
+  
+  
+--Route::get('/trafo-register', function () {
+--    // Logic for handling the request or rendering the view
+--    return view('trafo.register-trafo');
+--})->name('trafo-register');
+++// Route::get('/trafo-register', function () {
+++//     // Logic for handling the request or rendering the view
+++//     return view('trafo.register-trafo');
+++// })->name('trafo-register');
+  
+--Route::get('/new', function () {
+--    return view ('register-new-user/register-new-user');
+--});
+  
+  Route::get('/profile', function () {
+--    return view ('register-new-user/profile');
+++    return view ('register-new-user.profile');
+  });
+  
+--Route::get('/trafo-data', function () {
+--    return view('trafo-data');
+--})->name('trafo-data');
+++Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data');
+  // })->middleware(['auth', 'verified'])->name('trafo-data');
+  
+  Route::get('/add-performance', function () {
+
+tree 696126d1ac5f99545a784f5c7ff4fc4d38f36a9e
+
+.editorconfig
+.gitattributes
+.gitignore
+Dockerfile
+README.md
+app/
+artisan
+bootstrap/
+composer.json
+composer.lock
+config/
+database/
+package-lock.json
+package.json
+phpunit.xml
+postcss.config.js
+public/
+resources/
+routes/
+storage/
+tailwind.config.js
+tests/
+vite.config.js
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('REGISTER NEW USER') }}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    {{ __("Filling Form") }}
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
+
+commit 104a9c57b3040ab13c8c9e0058096ab5b81a6162
+Merge: f95e444 6c8bfe8
+Author: ryanmuhs <ryansatria@student.telkomuniversity.ac.id>
+Date:   Tue Apr 16 22:17:27 2024 +0700
+
+    WIP on dev: f95e444 fix : ganti routingan
+
+diff --cc resources/views/admin/adm-dash.blade.php
+index c5cd8c3,c5cd8c3..372be97
+--- a/resources/views/admin/adm-dash.blade.php
++++ b/resources/views/admin/adm-dash.blade.php
+@@@ -72,80 -72,80 +72,7 @@@
+          :class="{ 'overflow-hidden': isSideMenuOpen }"
+          >
+          <!-- Desktop sidebar -->
+--        <div class="flex">
+--            <aside class="w-[250px] h-full bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
+--                <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
+--                    <div class="flex flex-col gap-5 items-center">
+--                        <div class="">
+--                            <a href="{{route('dashboard')}}">
+--                                <img aria-hidden="true" class="w-full h-full"
+--                                    src="{{ asset('images/logo-grid-geo-alert.png') }}"
+--                                    alt=""/>
+--                            </a>
+--                        </div>
+--                        
+--                        <ul class="space-y-2 font-medium">
+--                            <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                                <div class="flex gap-1">
+--                                    <div class="self-center">
+--                                        <img aria-hidden="true" class="w-full h-full"
+--                                        src="{{ asset('images/Home.png') }}"
+--                                        alt=""/>
+--                                    </div>
+--                                
+--                                    <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+--                                        <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Dashboard</h1>
+--                                    </a>
+--                                </div>
+--                            </li>
+--                
+--                            <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                                <div class="flex gap-1">
+--                                    <div class="self-center">
+--                                        <img aria-hidden="true" class="w-full h-full"
+--                                         src="{{ asset('images/file.png') }}"
+--                                         alt=""/>
+--                                    </div>
+--                
+--                                    <a href="{{ route('trafo-data') }}" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+--                                        <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+--                                    </a>
+--                                </div>
+--                            </li>
+--                
+--                            <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                                <div class="flex gap-1">
+--                                    <div class="self-center">
+--                                        <img aria-hidden="true" class="w-full h-full"
+--                                            src="{{ asset('images/setting.png') }}"
+--                                            alt=""/>
+--                                    </div>
+--                
+--                                    <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+--                                        <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Register New User</h1>
+--                                    </a>
+--                                </div>
+--                            </li>
+--                
+--                            
+--                        </ul>
+--                    </div>
+--                    
+--                    <div class="self-center">
+--            <form id="logoutForm" method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+--                    @csrf
+--                    <a href="#" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+--                    <button type="button" onclick="confirmLogout()" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group">
+--                    <h1 class="text-[#FFFFFF] text-[15px] font-semibold">
+--                            Log Out
+--                        </h1>
+--                        </button>
+--                    </a>
+--                </form>
+--            </div>
+--
+--            </aside>
+--        </div>
+++        @include('admin.layouts.sidebar')
+             
+              <div class="flex flex-col  w-full bg-gray-200">
+                  <div class="w-full h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10 bg-white">
+diff --cc routes/web.php
+index 02fb5ee,02fb5ee..0c24da0
+--- a/routes/web.php
++++ b/routes/web.php
+@@@ -17,14 -17,14 +17,10 @@@ use App\Http\Controllers\AdminControlle
+  |
+  */
+  
+--Route::get('/', function () {
+--    return redirect()->route('login');
+--
+--});
+  // Admin Middleware
+--Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
+--    Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
+--    Route::get('/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware(['auth', 'verified']);   
+++Route::middleware(['auth', 'role:admin'])->group(function(){
+++    Route::get('/admin/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
+++    Route::get('/admin/logout',[AdminController::class, 'AdminLogout'])->name('admin.logout')->middleware(['auth', 'verified']);   
+      Route::get('/trafo-data', function () {
+          return view('trafo-data');
+      })->middleware(['auth', 'verified'])->name('trafo-data');
+
+commit 11caef6dea35af55900c14d9d19802f781b79fbf
+Merge: 84b4da5 18f4a7c
+Author: ryanmuhs <ryansatria@student.telkomuniversity.ac.id>
+Date:   Thu Apr 11 06:04:38 2024 +0700
+
+    WIP on dev: 84b4da5 Merge branch 'dev' of https://github.com/fathimazr/RPL-SI4509-KEL2 into dev
+
+diff --cc resources/views/admin/dashboard.blade.php
+index a8d85f3,a8d85f3..bc236dd
+--- a/resources/views/admin/dashboard.blade.php
++++ b/resources/views/admin/dashboard.blade.php
+@@@ -1,25 -1,25 +1,10 @@@
+  <x-app-layout>
+--<<<<<<< HEAD:resources/views/trafo-data.blade.php
+      <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
+          <div class="self-end">
+              <div class="">
+                  <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                      Add New Transformator
+                  </button>
+--=======
+--    <x-slot name="header">
+--        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+--            {{ __('Admin Dashboard') }}
+--        </h2>
+--    </x-slot>
+--
+--    <div class="py-12">
+--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+--            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+--                <div class="p-6 text-gray-900 dark:text-gray-100">
+--                    {{ __("You're logged in!") }}
+--                </div>
+-->>>>>>> dev:resources/views/admin/dashboard.blade.php
+              </div>
+          </div>
+  
+diff --cc resources/views/layouts/app.blade.php
+index bf0b745,bf0b745..0e2ff0e
+--- a/resources/views/layouts/app.blade.php
++++ b/resources/views/layouts/app.blade.php
+@@@ -13,31 -13,31 +13,6 @@@
+          <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+--<<<<<<< HEAD
+--        <!-- Script confirmation box delete -->
+--        <script type="text/javascript"> 
+--        function confirmation(ev){
+--                ev.preventDefault();
+--                var urlToRedirect=ev.currentTarget.getAttribute('href');
+--
+--                console.log(urlToRedirect);
+--                Swal.fire({
+--                  title: "Are you sure?",
+--                  text: "You won't be able to revert this!",
+--                  icon: "warning",
+--                  showCancelButton: true,
+--                  confirmButtonColor: "#3085d6",
+--                  cancelButtonColor: "#d33",
+--                  confirmButtonText: "Yes, Delete"
+--                
+--                }).then((result) => {
+--                  if (result.isConfirmed) {
+--                    Swal.fire({
+--                      title: "Deleted!",
+--                      text: "Your file has been deleted",
+--                      icon: "success"
+--                    });
+--=======
+          <script type="text/javascript">
+              
+              // Script Pop Up Message Discard Changes
+@@@ -80,15 -80,15 +55,10 @@@
+                      Swal.fire("Saved!", "", "success");
+                    } else if (result.isDenied) {
+                      Swal.fire("Changes are not saved", "", "info");
+-->>>>>>> dev
+                    }
+                  });
+              }
+          </script>
+--<<<<<<< HEAD
+--
+--=======
+-->>>>>>> dev
+          <!-- Scripts -->
+          @vite(['resources/css/app.css', 'resources/js/app.js'])
+      </head>
+diff --cc resources/views/layouts/nav-main.blade.php
+index 9cda138,9cda138..2f80f91
+--- a/resources/views/layouts/nav-main.blade.php
++++ b/resources/views/layouts/nav-main.blade.php
+@@@ -1,4 -1,4 +1,3 @@@
+--<<<<<<< HEAD
+  <div class="w-full">
+      <div class="h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10">
+          <div class="flex gap-6 h-full items-center px-10">
+@@@ -59,31 -59,31 +58,4 @@@
+              </x-dropdown>
+          </div> --}}
+      </div>
+--=======
+--<div class="w-full h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10 bg-white">
+--    <div class="flex gap-6 h-full items-center px-2">
+--        <div class="self-center w-[30px] h-[30px]">
+--            <img aria-hidden="true" class="w-full h-full"
+--            src="{{ asset('images/notification.png') }}"
+--            alt=""/>
+--        </div>
+--
+--        <form class="w-[678px] rounded-full">   
+--            <div class="relative ">
+--                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+--                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+--                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+--                    </svg>
+--                </div>
+--                <input type="search" id="default-search" class=" rounded-full block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+--            </div>
+--        </form>
+--    </div>
+--
+--    <a href="#">
+--        <img aria-hidden="true" class="w-[40px] h-[40px] self-center"
+--            src="{{ asset('images/icon.png') }}"
+--            alt=""/>
+--    </a>
+-->>>>>>> dev
+  </div>
+diff --cc resources/views/layouts/navigation.blade.php
+index e07ab03,e07ab03..3013684
+--- a/resources/views/layouts/navigation.blade.php
++++ b/resources/views/layouts/navigation.blade.php
+@@@ -1,92 -1,92 +1,4 @@@
+  <div class="flex">
+--<<<<<<< HEAD
+--    <aside class=" w-[250px] h-full overflow-y-auto bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
+--        <div class="max-h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl">
+--            <div class="">
+--                <a href="/dashboard">
+--                    <img aria-hidden="true" class="w-full h-full"
+--                        src="{{ asset('images/logo-grid-geo-alert.png') }}"
+--                        alt=""/>
+--                </a>
+--            </div>
+--            
+--            <ul class="space-y-2 font-medium">
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                            src="{{ asset('images/Home.png') }}"
+--                            alt=""/>
+--                        </div>
+--                    
+--                        <a href="/dashboard" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Dashboard</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                            src="{{ asset('images/map.png') }}"
+--                            alt=""/>
+--                        </div>
+--                   
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Maps</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                             src="{{ asset('images/file.png') }}"
+--                             alt=""/>
+--                        </div>
+--    
+--                        <a href="/trafo-data" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                                src="{{ asset('images/setting.png') }}"
+--                                alt=""/>
+--                        </div>
+--    
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B]  group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Maintenance</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                                src="{{ asset('images/chart.png') }}"
+--                                alt=""/>
+--                        </div>
+--    
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Statistics</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--            </ul>
+--
+--            <div class="">
+--                <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-2 text-gray-900 rounded-full  hover:bg-[#15677B]  group">
+--                    @csrf
+--                    <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg  group"
+--=======
+      <aside class="w-[250px] h-full bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
+          <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
+              <div class="flex flex-col gap-5 items-center">
+@@@ -175,7 -175,7 +87,6 @@@
+                  <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                      @csrf
+                      <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+-->>>>>>> dev
+                              onclick="event.preventDefault();
+                                          this.closest('form').submit();">
+                          <h1 class="text-[#FFFFFF] text-[15px] font-semibold">
+diff --cc routes/web.php
+index 25e0f1d,25e0f1d..31c08a7
+--- a/routes/web.php
++++ b/routes/web.php
+@@@ -24,8 -24,8 +24,6 @@@ Route::prefix('admin')->group(function 
+      Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
+  });
+  
+--
+--=======
+  // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+  
+  Route::get('/', function () {
+@@@ -100,5 -100,5 +98,6 @@@ Route::get('/trafo-data', function () 
+  
+  Route::get('/add-performance', function () {
+      return view('trafo.add-performance');
+++});
+  
+  require __DIR__.'/auth.php';
+
+tree 74dbb3a4730fc3f9930a4841ee421c7edc713c5d
+
+.editorconfig
+.gitattributes
+.gitignore
+Dockerfile
+README.md
+app/
+artisan
+bootstrap/
+composer.json
+composer.lock
+config/
+database/
+package-lock.json
+package.json
+phpunit.xml
+postcss.config.js
+public/
+resources/
+routes/
+storage/
+tailwind.config.js
+tests/
+vite.config.js
+
+commit 2dac8bba5a4d129458f09acd4b1d4c9afc6bd698
+Merge: 203929e 3f1f107
+Author: ryanmuhs <ryansatria@student.telkomuniversity.ac.id>
+Date:   Thu Apr 11 00:37:15 2024 +0700
+
+    WIP on dev: 203929e Merge branch 'dev' of https://github.com/fathimazr/RPL-SI4509-KEL2 into dev
+
+diff --cc resources/views/admin/dashboard.blade.php
+index a8d85f3,a8d85f3..bc236dd
+--- a/resources/views/admin/dashboard.blade.php
++++ b/resources/views/admin/dashboard.blade.php
+@@@ -1,25 -1,25 +1,10 @@@
+  <x-app-layout>
+--<<<<<<< HEAD:resources/views/trafo-data.blade.php
+      <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
+          <div class="self-end">
+              <div class="">
+                  <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                      Add New Transformator
+                  </button>
+--=======
+--    <x-slot name="header">
+--        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+--            {{ __('Admin Dashboard') }}
+--        </h2>
+--    </x-slot>
+--
+--    <div class="py-12">
+--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+--            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+--                <div class="p-6 text-gray-900 dark:text-gray-100">
+--                    {{ __("You're logged in!") }}
+--                </div>
+-->>>>>>> dev:resources/views/admin/dashboard.blade.php
+              </div>
+          </div>
+  
+diff --cc resources/views/layouts/app.blade.php
+index bf0b745,bf0b745..0e2ff0e
+--- a/resources/views/layouts/app.blade.php
++++ b/resources/views/layouts/app.blade.php
+@@@ -13,31 -13,31 +13,6 @@@
+          <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+--<<<<<<< HEAD
+--        <!-- Script confirmation box delete -->
+--        <script type="text/javascript"> 
+--        function confirmation(ev){
+--                ev.preventDefault();
+--                var urlToRedirect=ev.currentTarget.getAttribute('href');
+--
+--                console.log(urlToRedirect);
+--                Swal.fire({
+--                  title: "Are you sure?",
+--                  text: "You won't be able to revert this!",
+--                  icon: "warning",
+--                  showCancelButton: true,
+--                  confirmButtonColor: "#3085d6",
+--                  cancelButtonColor: "#d33",
+--                  confirmButtonText: "Yes, Delete"
+--                
+--                }).then((result) => {
+--                  if (result.isConfirmed) {
+--                    Swal.fire({
+--                      title: "Deleted!",
+--                      text: "Your file has been deleted",
+--                      icon: "success"
+--                    });
+--=======
+          <script type="text/javascript">
+              
+              // Script Pop Up Message Discard Changes
+@@@ -80,15 -80,15 +55,10 @@@
+                      Swal.fire("Saved!", "", "success");
+                    } else if (result.isDenied) {
+                      Swal.fire("Changes are not saved", "", "info");
+-->>>>>>> dev
+                    }
+                  });
+              }
+          </script>
+--<<<<<<< HEAD
+--
+--=======
+-->>>>>>> dev
+          <!-- Scripts -->
+          @vite(['resources/css/app.css', 'resources/js/app.js'])
+      </head>
+diff --cc resources/views/layouts/nav-main.blade.php
+index 9cda138,9cda138..2f80f91
+--- a/resources/views/layouts/nav-main.blade.php
++++ b/resources/views/layouts/nav-main.blade.php
+@@@ -1,4 -1,4 +1,3 @@@
+--<<<<<<< HEAD
+  <div class="w-full">
+      <div class="h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10">
+          <div class="flex gap-6 h-full items-center px-10">
+@@@ -59,31 -59,31 +58,4 @@@
+              </x-dropdown>
+          </div> --}}
+      </div>
+--=======
+--<div class="w-full h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10 bg-white">
+--    <div class="flex gap-6 h-full items-center px-2">
+--        <div class="self-center w-[30px] h-[30px]">
+--            <img aria-hidden="true" class="w-full h-full"
+--            src="{{ asset('images/notification.png') }}"
+--            alt=""/>
+--        </div>
+--
+--        <form class="w-[678px] rounded-full">   
+--            <div class="relative ">
+--                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+--                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+--                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+--                    </svg>
+--                </div>
+--                <input type="search" id="default-search" class=" rounded-full block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Mockups, Logos..." required />
+--            </div>
+--        </form>
+--    </div>
+--
+--    <a href="#">
+--        <img aria-hidden="true" class="w-[40px] h-[40px] self-center"
+--            src="{{ asset('images/icon.png') }}"
+--            alt=""/>
+--    </a>
+-->>>>>>> dev
+  </div>
+diff --cc resources/views/layouts/navigation.blade.php
+index e07ab03,e07ab03..3013684
+--- a/resources/views/layouts/navigation.blade.php
++++ b/resources/views/layouts/navigation.blade.php
+@@@ -1,92 -1,92 +1,4 @@@
+  <div class="flex">
+--<<<<<<< HEAD
+--    <aside class=" w-[250px] h-full overflow-y-auto bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
+--        <div class="max-h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl">
+--            <div class="">
+--                <a href="/dashboard">
+--                    <img aria-hidden="true" class="w-full h-full"
+--                        src="{{ asset('images/logo-grid-geo-alert.png') }}"
+--                        alt=""/>
+--                </a>
+--            </div>
+--            
+--            <ul class="space-y-2 font-medium">
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                            src="{{ asset('images/Home.png') }}"
+--                            alt=""/>
+--                        </div>
+--                    
+--                        <a href="/dashboard" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Dashboard</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                            src="{{ asset('images/map.png') }}"
+--                            alt=""/>
+--                        </div>
+--                   
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Maps</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                             src="{{ asset('images/file.png') }}"
+--                             alt=""/>
+--                        </div>
+--    
+--                        <a href="/trafo-data" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                                src="{{ asset('images/setting.png') }}"
+--                                alt=""/>
+--                        </div>
+--    
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B]  group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Maintenance</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--    
+--                <li class="hover:bg-[#15677B] p-2 rounded-xl">
+--                    <div class="flex gap-1">
+--                        <div class="self-center">
+--                            <img aria-hidden="true" class="w-full h-full"
+--                                src="{{ asset('images/chart.png') }}"
+--                                alt=""/>
+--                        </div>
+--    
+--                        <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg  hover:bg-[#15677B] group">
+--                            <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Statistics</h1>
+--                        </a>
+--                    </div>
+--                </li>
+--            </ul>
+--
+--            <div class="">
+--                <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-2 text-gray-900 rounded-full  hover:bg-[#15677B]  group">
+--                    @csrf
+--                    <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg  group"
+--=======
+      <aside class="w-[250px] h-full bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
+          <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
+              <div class="flex flex-col gap-5 items-center">
+@@@ -175,7 -175,7 +87,6 @@@
+                  <form method="POST" action="{{ route('logout') }}" class="w-full flex bg-gradient-to-r from-cyan-500 to-blue-500 ... items-center px-5 text-gray-900 rounded-full dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                      @csrf
+                      <a href="route('logout')" class="w-full flex items-center p-1 text-gray-900 rounded-lg dark:text-white dark:hover:bg-gray-700 group"
+-->>>>>>> dev
+                              onclick="event.preventDefault();
+                                          this.closest('form').submit();">
+                          <h1 class="text-[#FFFFFF] text-[15px] font-semibold">
+diff --cc routes/web.php
+index 25e0f1d,25e0f1d..31c08a7
+--- a/routes/web.php
++++ b/routes/web.php
+@@@ -24,8 -24,8 +24,6 @@@ Route::prefix('admin')->group(function 
+      Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.dashboard')->middleware('admin');   
+  });
+  
+--
+--=======
+  // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+  
+  Route::get('/', function () {
+@@@ -100,5 -100,5 +98,6 @@@ Route::get('/trafo-data', function () 
+  
+  Route::get('/add-performance', function () {
+      return view('trafo.add-performance');
+++});
+  
+  require __DIR__.'/auth.php';

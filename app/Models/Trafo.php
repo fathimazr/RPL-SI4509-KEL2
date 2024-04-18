@@ -16,4 +16,13 @@ class Trafo extends Model
     protected $casts = [
         'installation_date' => 'date:Y-m-d'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function trafo_performance(){
+        return $this->hasOne(TrafoPerformance::class);
+    }
 }

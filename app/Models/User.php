@@ -21,7 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'employee_id'
+        'employee_id',
+        'branch_office'
     ];
 
     /**
@@ -43,4 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function trafos(){
+        return $this->hasMany(Trafo::class, 'user_id', 'id');
+    }
 }

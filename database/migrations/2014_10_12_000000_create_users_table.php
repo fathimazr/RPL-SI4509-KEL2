@@ -18,8 +18,17 @@ return new class extends Migration
             $table->string('employee_id')->unique()->nullable();
             $table->enum('role', ['admin', 'manager', 'tim_teknis']);
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('branch_office')->default('-');
+            $table->enum('branch_office', [
+                'Branch Office 1',
+                'Branch Office 2',
+                'Branch Office 3',
+                'Branch Office 4',
+                'Branch Office 5',
+                'Branch Office 6',
+                'Branch Office 7',
+            ])->default('Branch Office 1');
             $table->string('password');
+            $table->string('department')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

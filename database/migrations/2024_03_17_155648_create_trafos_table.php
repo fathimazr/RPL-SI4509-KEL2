@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('longitude');
             $table->integer('capacity');
             $table->date('installation_date');
+            $table->unsignedBigInteger('trafo_performance_id')->default(0);
+            $table->unsignedBigInteger('user_id')->default(0);
+            $table->foreign('trafo_performance_id')->references('id')->on('trafo_performances')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
 
         $trafos = Trafo::all();

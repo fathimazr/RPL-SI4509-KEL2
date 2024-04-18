@@ -21,7 +21,7 @@ class UsersSeeder extends Seeder
                 'email' => 'user1@email.com',
                 'employee_id' => 'admin1',
                 'role' => 'admin',
-                'branch_office' => 'Bandung',
+                'branch_office' => 'Branch Office 1',
                 'password' => Hash::make('admin1pass')
             ],
             // Manager
@@ -30,7 +30,7 @@ class UsersSeeder extends Seeder
                 'email' => 'manager1@email.com',
                 'employee_id' => 'manager1',
                 'role' => 'manager',
-                'branch_office' => 'Bandung',
+                'branch_office' => 'Branch Office 1',
                 'password' => Hash::make('manager1pass')
             ],
             // Teknis
@@ -39,7 +39,7 @@ class UsersSeeder extends Seeder
                 'email' => 'teknis1@email.com',
                 'employee_id' => 'teknis1',
                 'role' => 'tim_teknis',
-                'branch_office' => 'Bandung',
+                'branch_office' => 'Branch Office 2',
                 'password' => Hash::make('teknis1pass')
             ],
         ]);
