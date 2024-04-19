@@ -38,6 +38,6 @@ class UserController extends Controller
         ]);
         // dd($request->all());
         $user->save();
-        return redirect('dashboard');
+        return redirect('/admin/new');
     }
 }
