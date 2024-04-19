@@ -52,6 +52,8 @@ class TrafoController extends Controller
     public function show(string $id)
     {
         //
+        $trafo = Trafo::find($id);
+        return view('trafo.view-performance', compact(['trafo']));
     }
 
     /**
@@ -76,5 +78,8 @@ class TrafoController extends Controller
     public function destroy(string $id)
     {
         //
+        $trafo = Trafo::find($id);
+        $trafo->delete();
+        return redirect('/trafo');
     }
 }
