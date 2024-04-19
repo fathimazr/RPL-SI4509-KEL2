@@ -90,7 +90,7 @@
                             </td>
                             <td class="px-6 py-4 flex gap-7 items-center">
                                 <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
-                                <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+                                <a href="/add-performance/{{ $t->id }}" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
                                 <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
                             </td>
                         </tr>

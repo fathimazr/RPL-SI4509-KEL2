@@ -204,26 +204,27 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="" method="POST"> 
-                {{ csrf_field() }}
+        <form id="form" action="{{ route('trafo-performance-store', ['id' => $trafo->id]) }}" method="POST">
+                @csrf
+                <input type="hidden" name="trafo_id" value="{{ $trafo->id }}">
                 <div class="form-group">
                     <label for="ID">Voltage</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s voltage (in kVA)">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="voltage" type="text" placeholder="Please fill your trafo’s voltage (in kVA)">
                 </div>
                 <div class="form-group">
                     <label for="brand">Current</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s current">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="current" type="text" placeholder="Please fill your trafo’s current">
                 </div>
                 <div class="form-group">
                     <label for="city">Temperature</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill your trafo’s temperature">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="temperature" type="text" placeholder="Please fill your trafo’s temperature">
                 </div>
                 <div class="form-group">
                     <label for="city">Blackout Status</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="phase" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="blackout_status" placeholder="">
                         <option selected>Pick an Option</option>
-                        <option value="US">Active</option>
-                        <option value="CA">Blackout</option>
+                        <option value="Active">Active</option>
+                        <option value="Blackout">Blackout</option>
                     </select>
                 </div>
                 <div class="row">
