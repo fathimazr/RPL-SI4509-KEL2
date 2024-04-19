@@ -102,6 +102,7 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
+// Route::delete('/trafo/{id}', [TrafoController::class, 'destroy'])->name('trafo.destroy');
 
 
 // Route::get('/trafo-register', function () {
