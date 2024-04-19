@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('blackout_status', ['Blackout', 'Active']);
             $table->enum('status', ['Normal', 'Warning', 'Error']);
             $table->unsignedBigInteger('trafo_id')->default(0);
-            $table->foreign('trafo_id')->references('id')->on('trafos')->onDelete('cascade');
+            $table->foreign('trafo_id')->references('id')->on('trafos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

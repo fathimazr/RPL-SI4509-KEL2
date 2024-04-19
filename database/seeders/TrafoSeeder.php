@@ -24,7 +24,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.38636884737015,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
-                'user_id' => 1 
+                // 'user_id' => 1 
             ],[
                 'trafo_id' => '1102',
                 'brand' => 'STARBOY',
@@ -34,7 +34,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.38636884737015,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
-                'user_id' => 2 
+                // 'user_id' => 2 
             ],[
                 'trafo_id' => '1103',
                 'brand' => 'STARLITE',
@@ -44,7 +44,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.38636884737015,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
-                'user_id' => 1 
+                // 'user_id' => 1 
             ]
         ];
 

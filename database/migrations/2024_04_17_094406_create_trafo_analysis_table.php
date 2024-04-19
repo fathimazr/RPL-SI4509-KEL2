@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum('current_regulation_analysis', ['Normal', 'Warning', 'Error']);
             $table->enum('blackout_status_analysis', ['Normal', 'Error']);
             $table->unsignedBigInteger('trafo_id')->default(0);
-            $table->foreign('trafo_id')->references('id')->on('trafos')->onDelete('cascade');
+            $table->foreign('trafo_id')->references('id')->on('trafos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trafo_analyses');
+        Schema::dropIfExists('trafo_analysis');
     }
 };

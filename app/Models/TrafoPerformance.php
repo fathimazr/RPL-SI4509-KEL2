@@ -11,6 +11,6 @@ class TrafoPerformance extends Model
     use HasFactory;
 
     public function trafo(){
-        return $this->hasOne(Trafo::class);
+        return $this->belongsTo(Trafo::class);
     }
 }
