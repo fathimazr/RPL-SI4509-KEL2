@@ -18,9 +18,8 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
-
-});
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 // Admin Middleware
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
