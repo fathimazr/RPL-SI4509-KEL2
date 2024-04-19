@@ -241,7 +241,23 @@
             }
         })
     });
-
+    function showSuccessNotification() {
+        Swal.fire({
+            width:'0.52fr',
+            height: '0.386fr',
+            title: "Success", 
+            text: 'Data has been successfully submitted!',            
+            icon: 'success',
+            b: 'black',
+            timer: 2000,
+            customClass: {
+                title: 'custom-swal-title',
+                text: 'custom-swal-text',
+                confirmButton: 'custom-swal-discard-button',
+                container: 'custom-swal-container',
+            }
+        });
+    }
     document.getElementById('submitButton').addEventListener('click', function() {
         console.log('Save button clicked!');
         Swal.fire({
@@ -267,6 +283,8 @@
             } else {
                 console.log('Cancelled');
             }
+        }).then(() => {
+            showSuccessNotification();
         })
     });
     $("body").on('click','.toggle-password',function(){
