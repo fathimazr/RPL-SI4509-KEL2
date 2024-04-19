@@ -28,14 +28,16 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request) 
     {
-        // User::create([
-        //     'employee_id' => $request->employee_id,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password), 
-        //     'role' => $request->role,
-        //     'branch_office' => $request->branch_office,
-        // ]);
-        dd($request->all());
-        // return redirect('/')->with('success', 'User registered successfully!'); 
+
+        $user = new User([
+            'employee_id' => $request->employee_id,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => $request->role,
+            'branch_office' => $request->branch_office,
+        ]);
+        // dd($request->all());
+        $user->save();
+        return redirect('dashboard');
     }
 }

@@ -32,7 +32,18 @@ class TrafoController extends Controller
     {
         //
         // dd($request->except(['_token', 'submit']));
-        Trafo::create($request->except(['_token', 'submit']));
+        $trafo = new Trafo;
+        $trafo->trafo_id = $request->trafo_id;
+        $trafo->brand = $request->brand;
+        $trafo->city = $request->city;
+        $trafo->phase = $request->phase;
+        $trafo->latitude = $request->latitude;
+        $trafo->longitude = $request->longitude;
+        $trafo->capacity = $request->capacity;
+        $trafo->installation_date = $request->installation_date;
+        $trafo->save();
+        return redirect('trafo-data');
+        // Trafo::create($request->except(['_token', 'submit']));
     }
 
     /**

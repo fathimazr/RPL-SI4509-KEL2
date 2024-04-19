@@ -208,7 +208,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="ID">Trafo ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="ID" type="text" placeholder="Please fill with your trafo's ID">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" type="text" placeholder="Please fill with your trafo's ID">
                 </div>
                 <div class="form-group">
                     <label for="brand">Brand</label>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="form-group">
                     <label for="installationDate">Installation Date</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="installationDate" name="installationDate" type="date" placeholder="Please select installation date">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="installationDate" name="installation_date" type="date" placeholder="Please select installation date">
                 </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>

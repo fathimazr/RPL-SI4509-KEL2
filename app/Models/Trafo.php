@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Trafo extends Model
 {
     protected $fillable = [
+        'trafo_id', // Assuming you have a column named trafo_id in the trafo_performances table
         'voltage',
         'current',
         'temperature',

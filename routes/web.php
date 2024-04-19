@@ -118,8 +118,12 @@ Route::get('/profile', function () {
 Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data');
 // })->middleware(['auth', 'verified'])->name('trafo-data');
 
-Route::get('/add-performance', function () {
-    return view('trafo.add-performance');
-});
+// Route::get('/add-performance', function () {
+//     return view('trafo.add-performance');
+// });
+
+Route::get('/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
+
+Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
 require __DIR__.'/auth.php';

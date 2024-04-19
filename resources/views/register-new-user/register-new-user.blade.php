@@ -175,7 +175,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="employeeID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="Please fill with your employee ID">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employee_id" type="text" placeholder="Please fill with your employee ID">
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -197,7 +197,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phase">Branch Office</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "branch_office" placeholder="">
                         <option value="" disabled selected>Select your branch office</option>
                         <option value="Branch Office 1">Branch Office 1</option>
                         <option value="Branch Office 2">Branch Office 2</option>
