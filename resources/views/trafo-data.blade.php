@@ -95,7 +95,7 @@
                             </td>
                         </tr>
                         
-                        <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+                        <!-- <tr class="odd:bg-white  even:bg-gray-50  border-b ">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                 1102
                             </th>
@@ -176,7 +176,7 @@
                                 <a href="/add-performance" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
                                 <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 @endforeach
             </table>
