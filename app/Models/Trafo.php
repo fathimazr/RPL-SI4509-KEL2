@@ -12,6 +12,10 @@ class Trafo extends Model
         'temperature',
         'blackout_status',
         'installation_date',
+        'voltage',
+        'current',
+        'temperature',
+        'blackout_status'
     ];
 
     protected $casts = [
