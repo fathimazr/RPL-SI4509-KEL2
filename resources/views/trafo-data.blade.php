@@ -1,15 +1,16 @@
 <x-app-layout>
     <div class="main" style="display: grid; overflow-y: auto; max-width: 100%;">
-    <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
-        <div class="self-end">
-            <div class="">
-            <a href="/trafo/create">
-                <button class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
-                    Add New Transformator
-                </button>
+        <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
+            <div class="self-end">
+                <div class="">
+                    <a href="/trafo/create">
+                        <button
+                            class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                            Add New Transformator
+                        </button>
+                </div>
+                </a>
             </div>
-            </a>
-        </div>
         </div>
         <div class="bg-white overflow-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-center rtl:text-right text-gray-500 ">
@@ -51,51 +52,59 @@
                     </tr>
                 </thead>
                 @foreach ($trafo as $t)
-                    <tbody>
-                            
-                        <tr class="odd:bg-white  even:bg-gray-50  border-b ">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                {{$t->trafo_id}}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{$t->brand}}
+                <tbody>
+
+                    <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                            {{$t->trafo_id}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{$t->brand}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->city}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->phase}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->latitude}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->longitude}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->capacity}} kVA
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="px-4 rounded-full bg-red-100">
+                                <p class=" text-red-600 font-bold">Error</p>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$t->installation_date}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="px-4 rounded-full bg-green-100">
+                                <p class=" text-green-700 font-bold">Complete</p>
+                            </div>
+                        </td>
+                        <!-- Menggunakan formulir untuk metode DELETE -->
+                        <td class="px-6 py-4 flex gap-7 items-center">
+                            <a href="/trafo/{{$t->id}}"
+                                class="font-bold text-blue-800 text-decoration-none">View</a>
+                                <a href="/trafo/add-performance/{{ $t->id }}"
+                                    class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+                                <form id="deleteForm" action="{{route('trafo.destroy', $t->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="#" class="font-bold text-red-700 text-decoration-none" data-url="{{ route('trafo.destroy', $t->id) }}" onclick="confirmation(event)">Delete</a>
+                                </form>
                             </td>
-                            <td class="px-6 py-4">
-                                {{$t->city}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$t->phase}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$t->latitude}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$t->longitude}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$t->capacity}} kVA
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="px-4 rounded-full bg-red-100">
-                                    <p class=" text-red-600 font-bold">Error</p>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4">
-                                {{$t->installation_date}}
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="px-4 rounded-full bg-green-100">
-                                    <p class=" text-green-700 font-bold">Complete</p>
-                                </div>
-                            </td>
-                            <td class="px-6 py-4 flex gap-7 items-center">
-                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none">View</a>
-                                <a href="/add-performance/{{ $t->id }}" class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
-                                <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
-                            </td>
-                        </tr>
-                        
-                        <!-- <tr class="odd:bg-white  even:bg-gray-50  border-b ">
+
+                    </tr>
+
+                    <!-- <tr class="odd:bg-white  even:bg-gray-50  border-b ">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                 1102
                             </th>
@@ -177,7 +186,7 @@
                                 <a href="#" class="font-bold text-red-700 text-decoration-none" onclick="confirmation(event)">Delete</a>
                             </td>
                         </tr> -->
-                    </tbody>
+                </tbody>
                 @endforeach
             </table>
         </div>

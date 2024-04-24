@@ -18,9 +18,8 @@ use App\Http\Controllers\AdminController;
 */
 
 Route::get('/', function () {
-    return redirect()->route('login');
-
-});
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 // Admin Middleware
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::get('/dashboard',[AdminController::class, 'AdminDashboard'])->name('admin.adm-dash')->middleware(['auth', 'verified']);   
@@ -103,6 +102,7 @@ Route::post('/trafo', [TrafoController::class, 'update'])->name('trafo.update');
 
 // routing untuk trafo --> pake resource biar lebih ringkas
 Route::resource('trafo', TrafoController::class)->middleware('auth');
+// Route::delete('/trafo/{id}', [TrafoController::class, 'destroy'])->name('trafo.destroy');
 
 
 // Route::get('/trafo-register', function () {
