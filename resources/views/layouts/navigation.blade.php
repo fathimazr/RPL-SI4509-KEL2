@@ -54,7 +54,7 @@
         <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
             <div class="flex flex-col gap-5 items-center">
                 <div class="">
-                    <a href="/dashboard">
+                    <a href="/">
                         <img aria-hidden="true" class="w-full h-full"
                             src="{{ asset('images/logo-grid-geo-alert.png') }}"
                             alt=""/>
@@ -70,7 +70,7 @@
                                 alt=""/>
                             </div>
                         
-                            <a href="/dashboard" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                            <a href="/" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                 <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Dashboard</h1>
                             </a>
                         </div>
