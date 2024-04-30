@@ -12,6 +12,13 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+  <!-- Maps  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+
+  <!-- {{-- Leaflet Script --}} -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script type="text/javascript">
             function confirmation(ev) {
               ev.preventDefault();
@@ -38,29 +45,14 @@
                       'Content-Type': 'application/json', // Set content type if needed
                       'Accept': 'application/json' // Set accept type if needed
                     }
-                  })
-                  .then(response => {
-                    if (response.status === 200 || response.status === 204) {
-                      // Data successfully deleted
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      );
-                      // You may want to reload the page or update the UI after successful deletion
-                      window.location.reload(); // Uncomment this line to reload the page
-                    } else {
-                      // Handle non-200 response status (e.g., server error)
-                      throw new Error('Failed to delete data: ' + response.statusText);
-                    }
-                  })
-                  .catch(error => {
-                    // Handle fetch error (e.g., network error)
+                  }).then(response => {
                     Swal.fire(
-                      'Failed to delete data',
-                      error.message,
-                      'error'
-                    );
+                       'Deleted!',
+                       'Your file has been deleted.',
+                       'success'
+                     ).then(function(){
+                        window.location.reload();
+                     });
                   });
                 }
               });
