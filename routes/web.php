@@ -45,6 +45,10 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::get('/add-performance', function () {
         return view('trafo.add-performance');
     });
+
+    Route::get('/maps', function () {
+        return view('tracking.maps');
+    })->middleware(['auth', 'verified'])->name('maps');
     
     // Route for view data trafo
     Route::get('/view-performance', function () {
