@@ -95,6 +95,6 @@ class TrafoController extends Controller
         //
         $trafo = Trafo::find($id);
         $trafo->delete();
-        return redirect('/trafo');
+        return response('', 204); // Empty response with status code 204 (No Content)
     }
 }

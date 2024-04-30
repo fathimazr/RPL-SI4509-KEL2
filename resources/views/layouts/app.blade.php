@@ -40,24 +40,22 @@
                     }
                   })
                   .then(response => {
-                    if (!response.ok) {
-                      throw new Error('Network response was not ok');
+                    if (response.status === 200 || response.status === 204) {
+                      // Data successfully deleted
+                      Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      );
+                      // You may want to reload the page or update the UI after successful deletion
+                      window.location.reload(); // Uncomment this line to reload the page
+                    } else {
+                      // Handle non-200 response status (e.g., server error)
+                      throw new Error('Failed to delete data: ' + response.statusText);
                     }
-                    return response.json();
-                  })
-                  .then(data => {
-                    // Handle the response data here
-                    // For example, show a success message
-                    Swal.fire(
-                      'Deleted!',
-                      'Your file has been deleted.',
-                      'success'
-                    );
-                    // You may want to reload the page or update the UI after successful deletion
-                    // window.location.reload(); // Uncomment this line to reload the page
                   })
                   .catch(error => {
-                    // Handle errors here
+                    // Handle fetch error (e.g., network error)
                     Swal.fire(
                       'Failed to delete data',
                       error.message,
