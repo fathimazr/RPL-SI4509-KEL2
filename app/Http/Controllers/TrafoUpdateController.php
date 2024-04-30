@@ -40,9 +40,9 @@ class TrafoUpdateController extends Controller
         if ($latestPerformance) {
             // Calculate analysis data
             $load_demand = $latestPerformance->voltage * $latestPerformance->current / $trafo->capacity;
-            $unbalanced_load = 1 - ($latestPerformance->current * $latestPerformance->voltage / $trafo-> capacity);
-            $unbalanced_voltage = ((($trafo->capacity/$latestPerformance->current) - $latestPerformance->voltage) / $latestPerformance->voltage);
-            $current_regulation = ($latestPerformance->current - ($trafo->capacity/$latestPerformance->voltage));
+            $unbalanced_load = (($latestPerformance->voltage - $trafo->capacity) / $trafo->capacity);
+            $unbalanced_voltage = (($latestPerformance->voltage - ($trafo->capacity / $latestPerformance->current)) / $latestPerformance->voltage);
+            $current_regulation = ($latestPerformance->voltage - ($trafo->capacity / $latestPerformance->current)) / $latestPerformance->voltage;
 
             // Determine analysis based on calculated values
             $temperature_analysis = 'Normal'; 
@@ -138,6 +138,27 @@ class TrafoUpdateController extends Controller
 
         // dd($trafoAnalysis);
         $trafoAnalysis->save();
+
+        $overall_status = collect([
+            $load_demand_analysis,
+            $unbalanced_load_analysis,
+            $unbalanced_voltage_analysis,
+            $current_regulation_analysis,
+            $temperature_analysis,
+            $blackout_status_analysis
+        ])->contains('Error') ? 'Error' : (
+            collect([
+                $load_demand_analysis,
+                $unbalanced_load_analysis,
+                $unbalanced_voltage_analysis,
+                $current_regulation_analysis,
+                $temperature_analysis,
+                $blackout_status_analysis
+            ])->contains('Warning') ? 'Warning' : 'Normal');
+
+        $trafoPerformance->status = $overall_status;
+        $trafoPerformance->save();
+
         return redirect('trafo-data');
     }
 }
