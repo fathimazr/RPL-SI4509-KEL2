@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TrafoPerformance; // Replace with your Trafo model
+// use App\Event\AnalyzeTrafoPerformance;
+// use App\Listeners\AnalyzeTrafoPerformance;
 use App\Models\Trafo; // Replace with your Trafo model
+use App\Models\TrafoPerformance; // Replace with your Trafo model
 
 class TrafoUpdateController extends Controller
 {
@@ -22,14 +24,34 @@ class TrafoUpdateController extends Controller
     
     public function store(Request $request, $id)
     {
-        $trafoPerformance = new TrafoPerformance;
-        $trafoPerformance->trafo_id = $request->trafo_id;
-        $trafoPerformance->voltage = $request->voltage;
-        $trafoPerformance->current = $request->current;
-        $trafoPerformance->temperature = $request->temperature;
-        $trafoPerformance->blackout_status = $request->blackout_status;
+        // Temukan data performa trafo yang sudah ada berdasarkan trafo_id
+        $trafoPerformance = TrafoPerformance::where('trafo_id', $id)->first();
 
-        $trafoPerformance->save();
+        if ($trafoPerformance) {
+            // Jika data performa trafo sudah ada, perbarui data tersebut
+            $trafoPerformance->voltage = $request->voltage;
+            $trafoPerformance->current = $request->current;
+            $trafoPerformance->temperature = $request->temperature;
+            $trafoPerformance->blackout_status = $request->blackout_status;
+            $trafoPerformance->save();
+
+            // Panggil event untuk menganalisis performa trafo yang telah diperbarui
+            event(new AnalyzeTrafoPerformance($trafoPerformance->trafo));
+        } else {
+            // Jika data performa trafo belum ada, buat data performa trafo baru
+            $trafoPerformance = new TrafoPerformance;
+            $trafoPerformance->trafo_id = $id; // Gunakan $id dari parameter
+            $trafoPerformance->voltage = $request->voltage;
+            $trafoPerformance->current = $request->current;
+            $trafoPerformance->temperature = $request->temperature;
+            $trafoPerformance->blackout_status = $request->blackout_status;
+            $trafoPerformance->save();
+
+            // Panggil event untuk menganalisis performa trafo yang baru dibuat
+            event(new AnalyzeTrafoPerformance($trafoPerformance->trafo));
+        }
+
+        // Kembalikan respons sukses atau arahkan pengguna ke halaman yang sesuai
         return redirect('trafo-data');
             
     }
