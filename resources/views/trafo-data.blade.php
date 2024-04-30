@@ -77,17 +77,36 @@
                             {{$t->capacity}} kVA
                         </td>
                         <td class="px-6 py-4">
-                            <div class="px-4 rounded-full bg-red-100">
-                                <p class=" text-red-600 font-bold">Error</p>
+                        @if($t->status == 'Normal')
+                            <div class="px-4 rounded-full bg-green-100">
+                                <p class=" text-green-700 font-bold">Normal</p>
                             </div>
+                        @elseif($t->status == 'Warning')
+                            <div class="px-4 rounded-full bg-yellow-100">
+                                <p class=" text-yellow-700 font-bold">Warning</p>
+                            </div>
+                        @elseif($t->status == 'Error')
+                            <div class="px-4 rounded-full bg-red-100">
+                                <p class=" text-red-700 font-bold">Error</p>
+                            </div>
+                        @else
+                            <div class="px-4 rounded-full bg-grey-100">
+                                <p class="text-white-600 font-bold">Empty</p>
+                            </div>
+                        @endif
                         </td>
                         <td class="px-6 py-4">
                             {{$t->installation_date}}
                         </td>
                         <td class="px-6 py-4">
+                            @if($t->trafo_performance)
                             <div class="px-4 rounded-full bg-green-100">
                                 <p class=" text-green-700 font-bold">Complete</p>
+                            @else
+                            <div class="px-4 rounded-full bg-red-100">
+                                <p class="text-red-600 font-bold">Empty</p>
                             </div>
+                            @endif
                         </td>
                         <!-- Menggunakan formulir untuk metode DELETE -->
                         <td class="px-6 py-4 flex gap-7 items-center">

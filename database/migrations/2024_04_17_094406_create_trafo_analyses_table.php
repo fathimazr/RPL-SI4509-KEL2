@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trafo_analysis', function (Blueprint $table) {
+        Schema::create('trafo_analyses', function (Blueprint $table) {
             $table->id();
             $table->float('load_demand');
             $table->float('unbalanced_load');
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trafo_analysis');
+        Schema::dropIfExists('trafo_analyses');
     }
 };
