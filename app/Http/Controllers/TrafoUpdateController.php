@@ -124,6 +124,7 @@ class TrafoUpdateController extends Controller
         // Update or create TrafoAnalysis
 
         $trafoAnalysis = new TrafoAnalysis;
+        $trafoAnalysis->trafo_id = $request->trafo_id;
         $trafoAnalysis->load_demand = $load_demand;
         $trafoAnalysis->unbalanced_load = $unbalanced_load;
         $trafoAnalysis->unbalanced_voltage = $unbalanced_voltage;
