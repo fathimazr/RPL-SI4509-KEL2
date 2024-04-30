@@ -77,15 +77,15 @@
                             {{$t->capacity}} kVA
                         </td>
                         <td class="px-6 py-4">
-                        @if($t->status == 'Normal')
+                        @if($t->status=='Normal')
                             <div class="px-4 rounded-full bg-green-100">
                                 <p class=" text-green-700 font-bold">Normal</p>
                             </div>
-                        @elseif($t->status == 'Warning')
+                        @elseif($t->status=='Warning')
                             <div class="px-4 rounded-full bg-yellow-100">
                                 <p class=" text-yellow-700 font-bold">Warning</p>
                             </div>
-                        @elseif($t->status == 'Error')
+                        @elseif($t->status=='Error')
                             <div class="px-4 rounded-full bg-red-100">
                                 <p class=" text-red-700 font-bold">Error</p>
                             </div>

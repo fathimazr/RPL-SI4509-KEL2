@@ -116,9 +116,8 @@ Route::resource('trafo', TrafoController::class)->middleware('auth');
 // })->name('trafo-register');
 
 
-Route::get('/profile', function () {
-    return view ('register-new-user.profile');
-});
+Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data');
 // })->middleware(['auth', 'verified'])->name('trafo-data');
@@ -127,8 +126,7 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 //     return view('trafo.add-performance');
 // });
 
-Route::get('/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
-
+Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
 require __DIR__.'/auth.php';
