@@ -12,6 +12,20 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+  {{-- Maps --}}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+
+  {{-- Leaflet Script --}}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  {{-- Leaflet CSS --}}
+  <style>
+    img.huechange { filter: hue-rotate(250deg); }
+    /* #map { height: 550px; } */
+  </style>
+
   <script type="text/javascript">
             function confirmation(ev) {
               ev.preventDefault();
@@ -38,32 +52,40 @@
                       'Content-Type': 'application/json', // Set content type if needed
                       'Accept': 'application/json' // Set accept type if needed
                     }
-                  })
-                  .then(response => {
-                    if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                  })
-                  .then(data => {
-                    // Handle the response data here
-                    // For example, show a success message
+                  }).then(response => {
                     Swal.fire(
-                      'Deleted!',
-                      'Your file has been deleted.',
-                      'success'
-                    );
-                    // You may want to reload the page or update the UI after successful deletion
-                    // window.location.reload(); // Uncomment this line to reload the page
-                  })
-                  .catch(error => {
-                    // Handle errors here
-                    Swal.fire(
-                      'Failed to delete data',
-                      error.message,
-                      'error'
-                    );
+                       'Deleted!',
+                       'Your file has been deleted.',
+                       'success'
+                     ).then(function(){
+                        window.location.reload();
+                     });
                   });
+                  // .then(response => {
+                  //   if (!response.ok) {
+                  //     throw new Error('Network response was not ok');
+                  //   }
+                  //   return response.json();
+                  // })
+                  // .then(data => {
+                  //   // Handle the response data here
+                  //   // For example, show a success message
+                  //   Swal.fire(
+                  //     'Deleted!',
+                  //     'Your file has been deleted.',
+                  //     'success'
+                  //   );
+                  //   // You may want to reload the page or update the UI after successful deletion
+                  //   // window.location.reload(); // Uncomment this line to reload the page
+                  // })
+                  // .catch(error => {
+                  //   // Handle errors here
+                  //   Swal.fire(
+                  //     'Failed to delete data',
+                  //     error.message,
+                  //     'error'
+                  //   );
+                  // });
                 }
               });
             }
