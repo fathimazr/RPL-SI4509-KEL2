@@ -12,6 +12,21 @@
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+  <!-- Maps  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+  crossorigin=""/>
+
+  <!-- {{-- Leaflet Script --}} -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+
+  {{-- Leaflet CSS --}}
+  <style>
+    img.huechange { filter: hue-rotate(250deg); }
+    /* #map { height: 550px; } */
+  </style>
+
   <script type="text/javascript">
             function confirmation(ev) {
               ev.preventDefault();
@@ -67,7 +82,6 @@
                 }
               });
             }
-
             
             function cancelconfirmation(ev){
                 ev.preventDefault();

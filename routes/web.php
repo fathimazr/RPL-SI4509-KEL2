@@ -45,7 +45,12 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::get('/add-performance', function () {
         return view('trafo.add-performance');
     });
-    
+
+    // Routing for maps trafo
+    Route::get('/maps', function () {
+        return view('tracking.maps');
+    })->middleware(['auth', 'verified'])->name('maps');
+
     // Route for view data trafo
     Route::get('/view-performance', function () {
         return view('trafo.view-performance');
@@ -122,7 +127,6 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 // });
 
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
-
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
 require __DIR__.'/auth.php';
