@@ -164,34 +164,33 @@
         <h1 class="form-title">EDIT PROFILE</h1>
         <div class="form-container">
             <!-- tambahin action ke route utk store data -->
-        <form id="form" action="" method="POST"> 
-                {{ csrf_field() }}
+        <form id="form" action="{{ route('profile.update')  }}" method="POST" enctype="application/x-www-form-urlencoded"> 
+            @method('patch')    
+            @csrf
                 <div class="img" style=" display: flex; justify-content: center; align-items: center;">
                     <img src="img/blank-profile.jpg" class="rounded-circle" style="width: 150px; margin-bottom: 10px; object-fit: cover; margin-top: 50px; border-radius: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="fullname">Full Name</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="fullname" name = "fullname" type="text" placeholder="Muhammad Azzam">
+                    {{-- <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name" name = "name" type="text" placeholder="Muhammad Azzam"> --}}
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="name" name = "name" type="text" value="{{ $data->name }}">
                 </div>
                 <div class="form-group">
                     <label for="employeeID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="199901172005072016" readonly>
+                    {{-- <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employeeID" type="text" placeholder="199901172005072016" > --}}
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employee_id" name = "employee_id" type="text" value="{{ $data->employee_id }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="role">Role</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" type="text" placeholder="Manajer" readonly>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="role" name = "role" type="text" value="{{ $data->role }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" placeholder="azam99@gmail.com">
-                </div>
-                <div class="form-group">
-                    <label for="department">Department</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="department" name = "department" type="text" placeholder="Please fill with your department">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="email" name = "email" type="text" value="{{ $data->email }}" disabled>
                 </div>
                 <div class="form-group">
                     <label for="phase">Branch Office</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "phase" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="branch_office" name = "branch_office" value="{{ $data->branch_office }}">
                         <!-- <option value="" disabled selected>Select your branch office</option> -->
                         <option value="1">Branch Office 1</option>
                         <option value="2">Branch Office 2</option>
