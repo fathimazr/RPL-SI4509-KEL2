@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Event\AnalyzeTrafoPerformance;
-// use App\Listeners\AnalyzeTrafoPerformance;
-use App\Models\Trafo; // Replace with your Trafo model
 use App\Models\TrafoPerformance; // Replace with your Trafo model
+use App\Models\Trafo; // Replace with your Trafo model
+use App\Models\TrafoAnalysis; // Replace with your Trafo model
 
 class TrafoUpdateController extends Controller
 {
@@ -24,18 +23,14 @@ class TrafoUpdateController extends Controller
     
     public function store(Request $request, $id)
     {
-        // Temukan data performa trafo yang sudah ada berdasarkan trafo_id
-        $trafoPerformance = TrafoPerformance::where('trafo_id', $id)->first();
+        // Create or update TrafoPerformance
+        $trafoPerformance = new TrafoPerformance;
+        $trafoPerformance->trafo_id = $request->trafo_id;
+        $trafoPerformance->voltage = $request->voltage;
+        $trafoPerformance->current = $request->current;
+        $trafoPerformance->temperature = $request->temperature;
+        $trafoPerformance->blackout_status = $request->blackout_status;
 
-<<<<<<< HEAD
-        if ($trafoPerformance) {
-            // Jika data performa trafo sudah ada, perbarui data tersebut
-            $trafoPerformance->voltage = $request->voltage;
-            $trafoPerformance->current = $request->current;
-            $trafoPerformance->temperature = $request->temperature;
-            $trafoPerformance->blackout_status = $request->blackout_status;
-            $trafoPerformance->save();
-=======
         $trafoPerformance->save();
         // return redirect('trafo-data');
         
@@ -112,27 +107,20 @@ class TrafoUpdateController extends Controller
             if ($latestPerformance->blackout_status == 'Blackout'){
                 $blackout_status_analysis = 'Error';
             }
->>>>>>> b71006248649375468981b9f9588b8ab389b99df
 
-            // Panggil event untuk menganalisis performa trafo yang telah diperbarui
-            event(new AnalyzeTrafoPerformance($trafoPerformance->trafo));
         } else {
-            // Jika data performa trafo belum ada, buat data performa trafo baru
-            $trafoPerformance = new TrafoPerformance;
-            $trafoPerformance->trafo_id = $id; // Gunakan $id dari parameter
-            $trafoPerformance->voltage = $request->voltage;
-            $trafoPerformance->current = $request->current;
-            $trafoPerformance->temperature = $request->temperature;
-            $trafoPerformance->blackout_status = $request->blackout_status;
-            $trafoPerformance->save();
-
-            // Panggil event untuk menganalisis performa trafo yang baru dibuat
-            event(new AnalyzeTrafoPerformance($trafoPerformance->trafo));
+            $load_demand = 0.8;
+            $unbalanced_load = 0.1;
+            $unbalanced_voltage = 0.8;
+            $current_regulation = -5;
+            $temperature_analysis = 'Normal'; 
+            $load_demand_analysis = 'Normal'; 
+            $unbalanced_load_analysis = 'Normal'; 
+            $unbalanced_voltage_analysis = 'Normal'; 
+            $current_regulation_analysis = 'Normal'; 
+            $blackout_status_analysis = 'Normal';
         }
 
-<<<<<<< HEAD
-        // Kembalikan respons sukses atau arahkan pengguna ke halaman yang sesuai
-=======
         // Update or create TrafoAnalysis
 
         $trafoAnalysis = new TrafoAnalysis;
@@ -171,8 +159,6 @@ class TrafoUpdateController extends Controller
         $trafoPerformance->status = $overall_status;
         $trafoPerformance->save();
 
->>>>>>> b71006248649375468981b9f9588b8ab389b99df
         return redirect('trafo-data');
-            
     }
 }
