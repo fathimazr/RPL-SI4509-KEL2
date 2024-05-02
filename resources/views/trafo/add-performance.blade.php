@@ -209,19 +209,19 @@
                 <input type="hidden" name="trafo_id" value="{{ $trafo->id }}">
                 <div class="form-group">
                     <label for="ID">Voltage</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="voltage" type="text" placeholder="Please fill your trafo’s voltage (in kVA)">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="voltage" type="text" placeholder="Please fill your trafo’s voltage (in kVA)" required>
                 </div>
                 <div class="form-group">
                     <label for="brand">Current</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="current" type="text" placeholder="Please fill your trafo’s current">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="current" type="text" placeholder="Please fill your trafo’s current" required>
                 </div>
                 <div class="form-group">
                     <label for="city">Temperature</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="temperature" type="text" placeholder="Please fill your trafo’s temperature">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="temperature" type="text" placeholder="Please fill your trafo’s temperature" required>
                 </div>
                 <div class="form-group">
                     <label for="city">Blackout Status</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="blackout_status" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="blackout_status" placeholder="" required>
                         <option selected>Pick an Option</option>
                         <option value="Active">Active</option>
                         <option value="Blackout">Blackout</option>

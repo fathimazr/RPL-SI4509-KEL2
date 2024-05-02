@@ -16,6 +16,7 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "leaflet": "^1.9.4",
         "sweetalert2": "^11.10.7"
     }
 }

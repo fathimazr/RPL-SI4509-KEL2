@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('trafo_analysis', function (Blueprint $table) {
             $table->id();
-            $table->float('load_demand');
-            $table->float('unbalanced_load');
-            $table->float('unbalanced_voltage');
-            $table->float('current_regulation');
-            $table->enum('temperature_analysis', ['Normal', 'Warning', 'Error']);
-            $table->enum('load_demand_analysis', ['Normal', 'Warning', 'Error']);
-            $table->enum('unbalanced_load_analysis', ['Normal', 'Warning', 'Error']);
-            $table->enum('unbalanced_voltage_analysis', ['Normal', 'Warning', 'Error']);
-            $table->enum('current_regulation_analysis', ['Normal', 'Warning', 'Error']);
-            $table->enum('blackout_status_analysis', ['Normal', 'Error']);
+            $table->float('load_demand')->nullable();
+            $table->float('unbalanced_load')->nullable();
+            $table->float('unbalanced_voltage')->nullable();
+            $table->float('current_regulation')->nullable();
+            $table->enum('temperature_analysis', ['Normal', 'Warning', 'Error'])->nullable();
+            $table->enum('load_demand_analysis', ['Normal', 'Warning', 'Error'])->nullable();
+            $table->enum('unbalanced_load_analysis', ['Normal', 'Warning', 'Error'])->nullable();
+            $table->enum('unbalanced_voltage_analysis', ['Normal', 'Warning', 'Error'])->nullable();
+            $table->enum('current_regulation_analysis', ['Normal', 'Warning', 'Error'])->nullable();
+            $table->enum('blackout_status_analysis', ['Normal', 'Error'])->nullable();
             $table->unsignedBigInteger('trafo_id')->default(0);
             $table->foreign('trafo_id')->references('id')->on('trafos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
