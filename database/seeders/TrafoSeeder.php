@@ -40,8 +40,8 @@ class TrafoSeeder extends Seeder
                 'brand' => 'STARLITE',
                 'city' => 'JAKARTA',
                 'phase' => '1',
-                'latitude' => -6.962190,
-                'longitude' => 107.572324,
+                'latitude' => -7.0116,
+                'longitude' => 107.5905,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
                 // 'user_id' => 1 

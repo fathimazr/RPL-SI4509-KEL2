@@ -102,6 +102,7 @@ class TrafoController extends Controller
     {
         //
         $trafo = Trafo::all();
+        // dd($trafo);
         return view('tracking.maps', compact(['trafo']));
     }
 }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trafo_analysis', function (Blueprint $table) {
+        Schema::create('trafo_analyses', function (Blueprint $table) {
             $table->id();
             $table->float('load_demand')->nullable();
             $table->float('unbalanced_load')->nullable();
