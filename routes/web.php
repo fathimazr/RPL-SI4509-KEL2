@@ -124,6 +124,10 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 //     return view('trafo.add-performance');
 // });
 
+Route::get('/view-all', function () {
+    return view ('notification.view-all');
+});
+
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
