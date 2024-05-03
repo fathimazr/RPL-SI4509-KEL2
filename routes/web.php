@@ -130,4 +130,4 @@ Route::get('/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->nam
 
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
-require _DIR_.'/auth.php';
+require __DIR__.'/auth.php';
