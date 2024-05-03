@@ -25,18 +25,16 @@
         }).addTo(map);
 
         // pinpoints maps trafo
-        var marker = L.marker([-6.966776, 107.656769]).addTo(map);
+        var marker = L.marker([-7.1384470, 107.4812439]).addTo(map);
 
-        var marker = L.marker([-6.962316, 107.639987]).addTo(map);
+        var marker = L.marker([-6.9982514, 107.4945808]).addTo(map);
         
-        var marker = L.marker([-6.962190, 107.572324]).addTo(map);
+        var marker = L.marker([-7.0773577, 107.5866264]).addTo(map);
 
-        var marker = L.marker([-6.977094, 107.612429]).addTo(map);
+        var marker = L.marker([-7.0924224, 107.5839274]).addTo(map);
 
-        var marker = L.marker([-6.9922,107.5457]).addTo(map);
+        var marker = L.marker([-7.1210729,107.5817180]).addTo(map);
 
-        var marker = L.marker([-7.0116,107.5905]).addTo(map);
-
-        var marker = L.marker([-7.0106,107.6640]).addTo(map);
+        
     </script>
 </x-app-layout>
