@@ -53,34 +53,19 @@
                       'Content-Type': 'application/json', // Set content type if needed
                       'Accept': 'application/json' // Set accept type if needed
                     }
-                  })
-                  .then(response => {
-                    if (response.status === 200 || response.status === 204) {
-                      // Data successfully deleted
-                      Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                      );
-                      // You may want to reload the page or update the UI after successful deletion
-                      window.location.reload(); // Uncomment this line to reload the page
-                    } else {
-                      // Handle non-200 response status (e.g., server error)
-                      throw new Error('Failed to delete data: ' + response.statusText);
-                    }
-                  })
-                  .catch(error => {
-                    // Handle fetch error (e.g., network error)
+                  }).then(response => {
                     Swal.fire(
-                      'Failed to delete data',
-                      error.message,
-                      'error'
-                    );
+                       'Deleted!',
+                       'Your file has been deleted.',
+                       'success'
+                     ).then(function(){
+                        window.location.reload();
+                     });
                   });
                 }
               });
-            }
-            
+            }                
+
             function cancelconfirmation(ev){
                 ev.preventDefault();
                 var discard=ev.currentTarget.getAttribute('href');

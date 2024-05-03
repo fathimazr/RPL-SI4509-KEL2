@@ -47,9 +47,7 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     });
 
     // Routing for maps trafo
-    Route::get('/maps', function () {
-        return view('tracking.maps');
-    })->middleware(['auth', 'verified'])->name('maps');
+    Route::get('/maps', [TrafoController::class, 'pin'])->middleware(['auth', 'verified'])->name('maps');
 
     // Route for view data trafo
     Route::get('/view-performance', function () {
