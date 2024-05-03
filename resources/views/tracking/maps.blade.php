@@ -1,22 +1,22 @@
 <x-app-layout>
     <div class="flex flex-col gap-6 p-6 rounded-xl bg-white mt-6">
         <div class="self-end">
-            <button class="bg-[#12A2BD] hover:bg-blue-800 text-white font-bold py-2 px-4 rounded">
-                <a href="/trafo">
+            <button class="bg-[#12A2BD] hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
+                <a href="/maps/on">
                     Turn on Status View
                 </a>
             </button>
         </div>
-        <div id="map" class=" rounded-xl h-[600px] shadow-lg"></div>
+        <div id="map" class=" rounded-xl h-[500px] shadow-lg"></div>
     </div>
-    
-    @foreach($trafo as $t)
+
+    {{-- Leaflet Script Set --}}
     <script>
         var map = L.map('map', {
             maxZoom: 20,
             minZoom: 6,
             zoomControl: false
-        }).setView([-6.9861,107.6049], 13);
+        }).setView([-7.0610,107.5000], 12);
         L.control.zoom({
             position: 'bottomright'
         }).addTo(map);
@@ -25,22 +25,16 @@
           attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
 
-        // pinpoints maps trafo
-        var marker = L.marker([{{ $t->latitude }}, {{ $t->longitude }}]).addTo(map);
+        var marker = L.marker([-7.1384470, 107.4812439]).addTo(map);
+
+        var marker = L.marker([-6.9982514, 107.4945808]).addTo(map);
         
-        // var marker = L.marker([-6.966776, 107.656769]).addTo(map);
+        var marker = L.marker([-7.0773577, 107.5866264]).addTo(map);
         
-        // var marker = L.marker([-6.962316, 107.639987]).addTo(map);
+        var marker = L.marker([-7.0924224,107.5839274]).addTo(map);
         
-        // var marker = L.marker([-6.962190, 107.572324]).addTo(map);
+        var marker = L.marker([-7.1210729,107.5817180]).addTo(map);
         
-        // var marker = L.marker([-6.977094, 107.612429]).addTo(map);
-        
-        // var marker = L.marker([-6.9922,107.5457]).addTo(map);
-        
-        // var marker = L.marker([-7.0116,107.5905]).addTo(map);
-        
-        // var marker = L.marker([-7.0106,107.6640]).addTo(map);
-        </script>
-        @endforeach
+    </script>
+    
 </x-app-layout>
