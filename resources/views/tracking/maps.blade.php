@@ -7,10 +7,9 @@
                 </a>
             </button>
         </div>
-        <div id="map" class=" rounded-xl h-[600px] shadow-lg"></div>
+        <div id="map" class=" rounded-xl h-[500px] shadow-lg"></div>
     </div>
-    
-    @foreach($trafo as $t)
+
     <script>
         var map = L.map('map', {
             maxZoom: 20,
@@ -26,6 +25,7 @@
         }).addTo(map);
 
         // pinpoints maps trafo
+
         var marker = L.marker([-7.1384470, 107.4812439]).addTo(map);
 
         var marker = L.marker([-6.9982514, 107.4945808]).addTo(map);
@@ -36,6 +36,5 @@
 
         var marker = L.marker([-7.1210729,107.5817180]).addTo(map);
 
-        
     </script>
 </x-app-layout>
