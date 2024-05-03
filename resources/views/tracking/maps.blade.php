@@ -9,7 +9,8 @@
         </div>
         <div id="map" class=" rounded-xl h-[600px] shadow-lg"></div>
     </div>
-
+    
+    @foreach($trafo as $t)
     <script>
         var map = L.map('map', {
             maxZoom: 20,

@@ -97,4 +97,11 @@ class TrafoController extends Controller
         $trafo->delete();
         return response('', 204); // Empty response with status code 204 (No Content)
     }
+
+    public function pin()
+    {
+        //
+        $trafo = Trafo::all();
+        return view('tracking.maps', compact(['trafo']));
+    }
 }
