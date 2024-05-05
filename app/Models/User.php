@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\DatabaseNotification;
+
+
 
 class User extends Authenticatable
 {
@@ -49,4 +53,10 @@ class User extends Authenticatable
     public function trafos(){
         return $this->hasMany(Trafo::class, 'user_id', 'id');
     }
+
+    // public function notifications()
+    // {
+    //     return $this->hasMany(DatabaseNotification::class, 'user_id', );
+    // }
+
 }

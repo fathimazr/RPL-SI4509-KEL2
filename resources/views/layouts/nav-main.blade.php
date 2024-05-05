@@ -4,7 +4,7 @@
     <div class="self-center w-[30px] h-[30px]">
         <img id="notificationButton" aria-hidden="true" class="w-full h-full" src="{{ asset('images/notification.png') }}" alt=""/>
     </div>
-    <div id="notificationPopup" class="hidden absolute top-[65px] left-4 bg-white border border-gray-300 shadow-md rounded-md w-80">
+    <div id="notificationPopup" class="hidden absolute top-[65px] left-4 bg-white border border-gray-300 shadow-md rounded-md w-80 z-100">
         <div style="background:#12A2BD;" class="px-4 py-2 rounded-t-md">
             <h3 class="text-white font-semibold">Notification</h3>
         </div>

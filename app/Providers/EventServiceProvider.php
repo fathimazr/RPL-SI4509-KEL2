@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Listeners\SendTrafoNotification;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -17,10 +18,11 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+            SendTrafoNotification::class
         ],
-        'App\Events\AnalyzeTrafoPerformance' => [
-            'App\Listeners\AnalyzeTrafoPerformance',
-        ],
+        'App\Events\TrafoPerformanceStored' => [
+            'App\Listeners\SendTrafoNotification', // Adjusted to SendTrafoNotification
+            ],
     ];
 
     /**

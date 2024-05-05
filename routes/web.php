@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrafoUpdateController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NotificationController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -129,11 +131,12 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 //     return view('trafo.add-performance');
 // });
 
-Route::get('/view-all', function () {
-    return view ('notification.view-all');
-});
+
+Route::get('/view-all', [NotificationController::class, 'index'])->name('notification.view-all');
 
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
+
+Route::post('/mark-as-read', 'NotificationController@markAsRead')->name('markAsRead');
 
 require __DIR__.'/auth.php';

@@ -21,25 +21,26 @@
                         </th>
                     </tr>
                 </thead>
+                @foreach ($notifications as $notification)
                     <tbody>
                     <tr class="odd:bg-white  even:bg-gray-50  border-b ">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                01/02/2024
+                            {{$notification->updated_at}}
                             </th>
                             <td class="px-6 py-4">
-                                1101
+                            {{$notification->data['trafo_number']}}
                             </td>
                             <td class="px-6 py-4">
-                                There is an error on your transformator
+                            {{$notification->data['message']}}
                             </td>
                             <td class="px-6 py-4 flex justify-center gap-7 items-center">
                                 <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
-                                <a href="#" class="font-bold text-blue-800 text-decoration-none underline" >Mark as Read</a>
+                                <a href="/mark-as-read" class="font-bold text-blue-800 text-decoration-none underline" >Mark as Read</a>
                                
                             </td>
                         </tr>
 
-                        <tr class="odd:bg-white even:bg-gray-50  border-b ">
+                        <!-- <tr class="odd:bg-white even:bg-gray-50  border-b ">
                             <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
                                 03/02/2024
                             </th>
@@ -71,11 +72,34 @@
                                 <a href="#" class="font-bold text-blue-800 text-decoration-none underline">Mark as Read</a>
                                
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
-                
+                    @endforeach
             </table>
         </div>
                 
     </div> 
+
+    <script>
+        $(document).on('click', '.mark-as-read', function() {
+            var notificationId = $(this).data('notification-id');
+
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('markAsRead') }}",
+                data: {
+                    id: notificationId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    $(this).closest('tr').remove();
+                    return('notification.view-all');
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+
 </x-app-layout>
