@@ -5,9 +5,10 @@ namespace App\Listeners;
 use App\Models\User;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Log; // Import Log facade
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\NewTrafoNotification;
-use App\Events\TrafoPerformanceStored; // Make sure to import the TrafoPerformanceStored event
+use App\Events\TrafoPerformanceStored; 
 
 class SendTrafoNotification implements ShouldQueue
 {
@@ -15,12 +16,21 @@ class SendTrafoNotification implements ShouldQueue
 
     public function handle(TrafoPerformanceStored $event)
     {
-        // Find users with roles 'tim_teknis' or 'manager'
-        $users = User::where('role', 'tim_teknis')
-        ->orWhere('role', 'manager')
-        ->get();
+        $trafoPerformance = $event->trafoPerformance;
 
-        // Send notification to the found users
-        Notification::send($users, new NewTrafoNotification($event->trafoPerformance));
+        // Check if $trafoPerformance is not null and has data
+        if ($trafoPerformance !== null && isset($trafoPerformance->data)) {
+            Log::info('Sending notification for TrafoPerformance: ' . $trafoPerformance->id);
+
+            // Find users with roles 'tim_teknis' or 'manager'
+            $users = User::where('role', 'tim_teknis')
+                ->orWhere('role', 'manager')
+                ->get();
+
+            // Send notification to the found users
+            Notification::send($users, new NewTrafoNotification($trafoPerformance));
+        } else {
+            Log::warning('Invalid TrafoPerformance data: ' . json_encode($trafoPerformance));
+        }
     }
 }
