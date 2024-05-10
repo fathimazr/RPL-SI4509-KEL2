@@ -19,7 +19,7 @@ class SendTrafoNotification implements ShouldQueue
         $trafoPerformance = $event->trafoPerformance;
 
         // Check if $trafoPerformance is not null and has data
-        if ($trafoPerformance !== null && isset($trafoPerformance->data)) {
+        if ($trafoPerformance->status === 'Warning' || $trafoPerformance->status === 'Error') {
             Log::info('Sending notification for TrafoPerformance: ' . $trafoPerformance->id);
 
             // Find users with roles 'tim_teknis' or 'manager'
@@ -30,7 +30,7 @@ class SendTrafoNotification implements ShouldQueue
             // Send notification to the found users
             Notification::send($users, new NewTrafoNotification($trafoPerformance));
         } else {
-            Log::warning('Invalid TrafoPerformance data: ' . json_encode($trafoPerformance));
+            Log::info('No notification sent for TrafoPerformance: ' . $trafoPerformance->id . ', Status: ' . $trafoPerformance->status);
         }
     }
 }
