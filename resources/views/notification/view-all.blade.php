@@ -41,7 +41,7 @@
                             {{$notification->data['message']}}
                         </td>
                         <td class="px-6 py-4 flex flex-col justify-center items-center gap-3">
-                            <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
+                            <a href="/trafo/{{$notification->data['trafo_id']}}" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
                             <form action="{{ route('markNotification') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $notification->id }}">
