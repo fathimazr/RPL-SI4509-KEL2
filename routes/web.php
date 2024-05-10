@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrafoUpdateController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\NotificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,8 +63,10 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     Route::get('/trafo-register', function () {
         return view('trafo.register-trafo');
     })->middleware(['auth', 'verified'])->name('trafo-register');
-    
 });
+
+Route::post('/mark-as-read', [NotificationController::class, 'markAsRead'])->name('markNotification');    
+
 
 Route::middleware(['auth', 'role:tim_teknis'])->group(function () {
     Route::get('/dashboard', function () {
@@ -83,8 +86,10 @@ Route::middleware(['auth', 'role:tim_teknis'])->group(function () {
 
     Route::get('/trafo-register', function () {
         return view('trafo.register-trafo');
-    });
-    
+        });
+
+    // Route::post('/mark-as-read', [NotificationController::class, 'markAsRead'])->name('markNotification');    
+
 });
 
 
@@ -129,9 +134,7 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 //     return view('trafo.add-performance');
 // });
 
-Route::get('/view-all', function () {
-    return view ('notification.view-all');
-});
+Route::get('/view-all', [NotificationController::class, 'index'])->name('notification.view-all');
 
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
