@@ -16,7 +16,9 @@ class SendTrafoNotification implements ShouldQueue
     public function handle(TrafoPerformanceStored $event)
     {
         // Find users with roles 'tim_teknis' or 'manager'
-        $users = User::all();
+        $users = User::where('role', 'tim_teknis')
+        ->orWhere('role', 'manager')
+        ->get();
 
         // Send notification to the found users
         Notification::send($users, new NewTrafoNotification($event->trafoPerformance));

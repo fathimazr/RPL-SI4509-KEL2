@@ -16,6 +16,7 @@ class NewTrafoNotification extends Notification implements ShouldQueue
     public function __construct($trafoPerformance)
     {
         $this->trafoPerformance = $trafoPerformance;
+
     }
 
     public function via($notifiable)
@@ -25,6 +26,10 @@ class NewTrafoNotification extends Notification implements ShouldQueue
 
     public function toDatabase($notifiable)
     {
+        if ($this->trafoPerformance->status === 'Normal') {
+            return null; // Do not create notification for Normal status
+        }
+
         $trafo = $this->trafoPerformance->trafo; // Assuming you have defined the relationship in the TrafoPerformance model
     
         return [

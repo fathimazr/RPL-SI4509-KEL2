@@ -54,9 +54,20 @@ class User extends Authenticatable
         return $this->hasMany(Trafo::class, 'user_id', 'id');
     }
 
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('role', 'admin')->exists();
+    }
+
     // public function notifications()
     // {
-    //     return $this->hasMany(DatabaseNotification::class, 'user_id', );
+    //     return $this->hasMany(DatabaseNotification::class);
+    // }
+
+
+    // public function notifications()
+    // {
+    //     return $this->hasMany(\App\Models\Notification::class);
     // }
 
 }

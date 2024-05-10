@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-    }
+        view()->composer('layouts.nav-main', function ($view) {
+            $notifications = auth()->user()->notifications;
+            $view->with('notifications', $notifications);
+            });
+}
 }

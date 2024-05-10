@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Notifications\NewTrafoNotification;
-use App\Models\User;
+use Illuminate\Support\Carbon;
+use Illuminate\Notifications\DatabaseNotification;
+use Illuminate\Http\JsonResponse;
 
 class NotificationController extends Controller
 {
@@ -15,12 +16,30 @@ class NotificationController extends Controller
         return view('notification.view-all', ['notifications' => $notifications],  compact('notifications'));
     }
 
+    public function unreadNotifications()
+    {
+        // $notifications = auth()->user()->unreadNotifications;
+        $notifications = auth()->user()->unreadnotifications;
+        return view('layouts.nav-main')->with('unreadNotifications', $notifications);
+    }
+
     public function markAsRead(Request $request)
     {
+        // $notificationId = $request->input('id');
+        // dd($notificationId);
+
+        // auth()->user()
+        // ->unreadNotifications
+        // ->when($request->input('id'), function ($query) use ($request) {
+        //     return $query->where('id', $request->input('id'));
+        // })
+        // ->update(['read_at' => Carbon::now()]); // Use Carbon to get the current timestamp
+
         $notificationId = $request->input('id');
-        $notification = auth()->user()->notifications()->findOrFail($notificationId);
+        
+        $notification = DatabaseNotification::findOrFail($notificationId);
         $notification->markAsRead();
 
-        return response()->noContent();
+        return redirect()->route('notification.view-all');
     }
 }
