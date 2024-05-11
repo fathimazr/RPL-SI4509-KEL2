@@ -20,6 +20,9 @@
   {{-- Leaflet Script --}}
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
+  {{-- JQuery Script --}}
+  <script src="{{ mix('js/app.js') }}" defer></script>
+
   <style>
     img.redchange { filter: hue-rotate(140deg); }
     img.greenchange { filter: hue-rotate(250deg); }

@@ -77,16 +77,16 @@
                             {{$t->capacity}} kVA
                         </td>
                         <td class="px-6 py-4">
-                        @if($t->trafo_performance)
-                        @if ($t->trafo_performance->status === 'Normal')
+                        @if($latestPerformance = $t->trafo_performance()->latest()->first())
+                        @if ($latestPerformance->status === 'Normal')
                             <div class="px-4 rounded-full bg-green-100">
                                 <p class=" text-green-700 font-bold">Normal</p>
                             </div>
-                        @elseif ($t->trafo_performance->status === 'Warning')
+                        @elseif ($latestPerformance->status === 'Warning')
                             <div class="px-4 rounded-full bg-yellow-100">
                                 <p class=" text-yellow-700 font-bold">Warning</p>
                             </div>
-                        @elseif($t->trafo_performance->status === 'Error')
+                        @elseif($latestPerformance->status === 'Error')
                             <div class="px-4 rounded-full bg-red-100">
                                 <p class=" text-red-700 font-bold">Error</p>
                             </div>

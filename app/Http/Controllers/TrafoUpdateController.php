@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\TrafoPerformance; // Replace with your Trafo model
 use App\Models\Trafo; // Replace with your Trafo model
 use App\Models\TrafoAnalysis; // Replace with your Trafo model
+use App\Notifications\NewTrafoNotification;
+use App\Events\TrafoPerformanceStored;
+use Illuminate\Notifications\Notifiable;
+
 
 class TrafoUpdateController extends Controller
 {
@@ -165,7 +169,8 @@ class TrafoUpdateController extends Controller
 
         $trafoPerformance->status = $overall_status;
         $trafoPerformance->save();
-
+        event(new TrafoPerformanceStored($trafoPerformance));
+  
         return redirect('trafo-data');
     }
 }
