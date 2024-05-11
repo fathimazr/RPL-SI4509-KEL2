@@ -32,17 +32,22 @@
             </center>
         </div>
     </div>
-    <div id="notificationButton" class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full cursor-pointer"></div>
+    <div id="notificationIndicator" class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full cursor-pointer hidden"></div>
 </div>
 
 <script>
     // Get the notification button and popup
     const notificationButton = document.getElementById('notificationButton');
     const notificationPopup = document.getElementById('notificationPopup');
+    const notificationIndicator = document.getElementById('notificationIndicator');
 
     // Function to toggle popup visibility
     function togglePopup() {
         notificationPopup.classList.toggle('hidden');
+        //Hide the indicator when the popup is opened
+        if (!notificationPopup.classList.contains('hidden')) {
+            notificationIndicator.classList.add('hidden');
+        }
     }
 
     // Add click event listener to the notification button
@@ -54,6 +59,13 @@
             notificationPopup.classList.add('hidden');
         }
     });
+
+    //Function to show the notification indicator
+    function showNotificationindicator() {
+        notificationIndicator.classList.remove('hidden');
+    }
+
+    setTimeout(showNotificationIndicator, 3000);
 </script>
 
 

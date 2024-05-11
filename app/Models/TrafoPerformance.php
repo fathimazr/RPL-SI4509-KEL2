@@ -15,11 +15,8 @@ class TrafoPerformance extends Model
         'current',
         'temperature',
         'blackout_status',
+        'status',
         'installation_date',
-        'voltage',
-        'current',
-        'temperature',
-        'blackout_status'
     ];
 
     public function trafo(){

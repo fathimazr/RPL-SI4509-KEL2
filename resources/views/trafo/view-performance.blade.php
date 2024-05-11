@@ -6,7 +6,7 @@
             <h1 class="font-extrabold text-[18px]">VIEW DATA</h1>
             <div class="flex gap-2">
                 <h2>Trafo ID :</h2>
-                <h2 class="font-semibold">{{ $trafoIndex->trafo_id }}</h2>
+                <h2 class="font-semibold">{{ $trafo->trafo_id }}</h2>
             </div>
         </div>
         
@@ -87,10 +87,10 @@
                         <h1>Normal</h1>
                         <h1>Normal</h1>
                         <h1>Normal</h1> --}}
-                        <h1>{{$trafo->load_demand}}</h1>
-                        <h1>{{$trafo->unbalanced_load}}</h1>
-                        <h1>{{$trafo->unbalanced_voltage}}</h1>
-                        <h1>{{$trafo->current_regulation}}</h1>
+                        <h1>{{$trafoAnalysis->load_demand}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_load}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_voltage}}</h1>
+                        <h1>{{$trafoAnalysis->current_regulation}}</h1>
                     </div>
                 </div>
             </div>
@@ -113,10 +113,10 @@
                         <h1>20</h1>
                         <h1>20</h1>
                         <h1>20</h1> --}}
-                        <h1>{{$trafo->temperature_analysis}}</h1>
-                        <h1>{{$trafo->load_demand_analysis}}</h1>
-                        <h1>{{$trafo->unbalanced_load_analysis}}</h1>
-                        <h1>{{$trafo->unbalanced_voltage_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->temperature_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->load_demand_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_load_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_voltage_analysis}}</h1>
                     </div>
                 </div>
 
@@ -129,8 +129,8 @@
                     <div class="flex flex-col gap-4">
                         {{-- <h1>Normal</h1>
                         <h1>Normal</h1> --}}
-                        <h1>{{$trafo->blackout_status_analysis}}</h1>
-                        <h1>{{$trafo->blackout_status_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->current_regulation_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->blackout_status_analysis}}</h1>
                     </div>
                 </div>
             </div>
