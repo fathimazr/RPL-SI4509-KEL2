@@ -160,6 +160,7 @@
         }
 
     </style>
+
 </head>
 <!-- <body> -->
 <x-app-layout>
@@ -175,7 +176,19 @@
                 @csrf
                 <div class="form-group">
                     <label for="employeeID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employee_id" type="text" placeholder="Please fill with your employee ID">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employee_id" type="text" placeholder="">
+                        <option value="" disabled selected>Select your employee id</option>
+                        <option value="Employee ID 1">M001-1</option>
+                        <option value="Employee ID 2">M002-2</option>
+                        <option value="Employee ID 3">T016-1</option>
+                        <option value="Employee ID 4">T100-0</option>
+                        <option value="Employee ID 5">T087-8</option>
+                        <option value="Employee ID 6">M098-1</option>
+                        <option value="Employee ID 7">M120-2</option>
+                        <option value="Employee ID 8">M220-3</option>
+                        <option value="Employee ID 9">T089-2</option>
+                        <option value="Employee ID 10">T450-7</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -214,6 +227,7 @@
                 </div>
             </form>
             </div>
+            
             <script>
 
     document.getElementById('discardButton').addEventListener('click', function() {
