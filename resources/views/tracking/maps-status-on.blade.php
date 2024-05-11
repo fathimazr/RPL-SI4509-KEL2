@@ -29,12 +29,25 @@
 
     @foreach ($data_trafo as $dt)
         var marker = L.marker([{{ $dt->latitude }}, {{ $dt->longitude }}]).addTo(map);
+
+        // pewarnaan marker berdasarkan kondisi trafo
+        @if($latestPerformance = $dt->trafo_performance()->latest()->first())
+        @if($latestPerformance->status == 'Normal')
+            marker._icon.classList.add("greenchange");
+        @elseif($latestPerformance->status == 'Warning')
+            marker._icon.classList.add("yellowchange");
+        @elseif($latestPerformance->status == 'Error')
+            marker._icon.classList.add("redchange");
+        @elseif($latestPerformance->status == '')
+            marker._icon.classList.add("bluechange");
+        @endif
+        @endif
         marker.bindPopup(`
             Trafo ID    : {{ $dt->trafo_id }}<br>
             City        : {{ $dt->city }}<br>
             Lat         : {{ $dt->latitude }}<br>
             Long        : {{ $dt->longitude }}<br>
-            Status      : {{ $dt->status }}<br>
+            Status      : {{$dt->trafo_performance()->latest()->first()->status ?? 'N/A' }}<br>
             <br>
             <a href="/trafo/{{$dt->id}}">View Data</a>
         `);

@@ -117,7 +117,7 @@
                             <a href="/trafo/{{$t->id}}"
                                 class="font-bold text-blue-800 text-decoration-none">View</a>
                                 <a href="/trafo/add-performance/{{ $t->id }}"
-                                    class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+                                    class="font-bold text-blue-800 text-decoration-none">Edit Performance</a>
                                 <form id="deleteForm" action="{{route('trafo.destroy', $t->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')
