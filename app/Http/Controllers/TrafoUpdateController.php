@@ -21,8 +21,15 @@ class TrafoUpdateController extends Controller
             return view('trafo.add-performance', compact('trafo'));
 
         } else {
-            return redirect()->route('dashboard')->withErrors(['error' => 'Invalid request']);
+            return redirect()->route('/')->withErrors(['error' => 'Invalid request']);
         }
+    }
+
+    public function show($id)
+    {
+        $trafoPerformance = TrafoPerformance::where('trafo_id', $id)->first();
+        $trafoAnalysis = TrafoAnalysis::where('trafo_id', $id)->first();
+        return redirect()->route('trafo.show', ['id' => $id, 'trafoPerformance' => $trafoPerformance, 'trafoAnalysis' => $trafoAnalysis]);
     }
     
     public function store(Request $request, $id)

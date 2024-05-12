@@ -1,3 +1,8 @@
+<style>
+    #notificationPopup {
+        z-index: 1000;
+    }
+</style>
 <div class="w-full h-[110px] flex items-center border-b-2 border-b-gray-200 justify-between px-6 pr-10 bg-white">
     <div class="flex h-full items-center">
         <div class="relative mr-6">
@@ -10,7 +15,7 @@
                 </div>
                 <div class="p-4">
                     @foreach ($notifications as $notification)
-                        @if ($notification->date_time === null)
+                        @if ($notification->read_at === null)
                             <div class="items-center mb-2 px-4 py-2 @if($notification->read_at) bg-white @else bg-gray-100 @endif">
                                 <div class="flex justify-between items-center">
                                     <h1 class="font-bold" style="color: black; font-size: 16px; margin-right: 10px;">Trafo ID {{ $notification->data['trafo_number'] }}</h1>

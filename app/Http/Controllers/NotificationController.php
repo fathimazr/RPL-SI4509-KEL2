@@ -19,7 +19,7 @@ class NotificationController extends Controller
     public function unreadNotifications()
     {
         // $notifications = auth()->user()->unreadNotifications;
-        $notifications = auth()->user()->unreadnotifications;
+        $notifications = auth()->user()->unreadNotifications;
         return view('layouts.nav-main')->with('unreadNotifications', $notifications);
     }
 
