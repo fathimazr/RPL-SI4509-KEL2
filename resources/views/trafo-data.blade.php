@@ -3,7 +3,7 @@
         <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
             <div class="self-end">
                 <div class="">
-                    <a href="/trafo/create">
+                    <a href="/trafo-register">
                         <button
                             class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
                             Add New Transformator
@@ -77,16 +77,16 @@
                             {{$t->capacity}} kVA
                         </td>
                         <td class="px-6 py-4">
-                        @if($t->trafo_performance)
-                        @if ($t->trafo_performance->status === 'Normal')
+                        @if($latestPerformance = $t->trafo_performance()->latest()->first())
+                        @if ($latestPerformance->status === 'Normal')
                             <div class="px-4 rounded-full bg-green-100">
                                 <p class=" text-green-700 font-bold">Normal</p>
                             </div>
-                        @elseif ($t->trafo_performance->status === 'Warning')
+                        @elseif ($latestPerformance->status === 'Warning')
                             <div class="px-4 rounded-full bg-yellow-100">
                                 <p class=" text-yellow-700 font-bold">Warning</p>
                             </div>
-                        @elseif($t->trafo_performance->status === 'Error')
+                        @elseif($latestPerformance->status === 'Error')
                             <div class="px-4 rounded-full bg-red-100">
                                 <p class=" text-red-700 font-bold">Error</p>
                             </div>
@@ -117,7 +117,7 @@
                             <a href="/trafo/{{$t->id}}"
                                 class="font-bold text-blue-800 text-decoration-none">View</a>
                                 <a href="/trafo/add-performance/{{ $t->id }}"
-                                    class="font-bold text-blue-800 text-decoration-none">Add Performance</a>
+                                    class="font-bold text-blue-800 text-decoration-none">Edit Performance</a>
                                 <form id="deleteForm" action="{{route('trafo.destroy', $t->id)}}" method="POST">
                                     @csrf
                                     @method('DELETE')

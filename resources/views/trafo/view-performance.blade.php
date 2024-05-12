@@ -62,14 +62,14 @@
                     </div>
                     
                     <div class="flex flex-col gap-4">
-                        <h1>200 KVA</h1>
+                        {{-- <h1>200 KVA</h1>
                         <h1>20 A</h1>
                         <h1>10 Celcius</h1>
-                        <h1>Active</h1>                      
-                        {{-- <h1>{{$trafo->trafoPerformance->voltage}} KVA</h1>
-                        <h1>{{$trafo->trafoPerformance->current}} A</h1>
-                        <h1>{{$trafo->trafoPerformance->temperature}} Celcius</h1>
-                        <h1>{{$trafo->trafoPerformance->blackout_status}}</h1>                       --}}
+                        <h1>Active</h1>                       --}}
+                        <h1>{{$trafoPerformance->voltage}} KVA</h1>
+                        <h1>{{$trafoPerformance->current}} A</h1>
+                        <h1>{{$trafoPerformance->temperature}} Celcius</h1>
+                        <h1>{{$trafoPerformance->blackout_status}}</h1>                      
                     </div>
                 </div>
                 
@@ -83,14 +83,14 @@
                     </div>
                     
                     <div class="flex flex-col gap-4">
+                        {{-- <h1>Normal</h1>
                         <h1>Normal</h1>
                         <h1>Normal</h1>
-                        <h1>Normal</h1>
-                        <h1>Normal</h1>
-                        {{-- <h1>{{$trafo->performance->load_demand}}</h1>
-                        <h1>{{$trafo->performance->unbalanced_load}}</h1>
-                        <h1>{{$trafo->performance->unbalanced_voltage}}</h1>
-                        <h1>{{$trafo->performance->current_regulation}}</h1> --}}
+                        <h1>Normal</h1> --}}
+                        <h1>{{$trafoAnalysis->load_demand}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_load}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_voltage}}</h1>
+                        <h1>{{$trafoAnalysis->current_regulation}}</h1>
                     </div>
                 </div>
             </div>
@@ -109,14 +109,14 @@
                     </div>
                     
                     <div class="flex flex-col gap-4">
+                        {{-- <h1>20</h1>
                         <h1>20</h1>
                         <h1>20</h1>
-                        <h1>20</h1>
-                        <h1>20</h1>
-                        {{-- <h1>{{$trafo->analysis->temperature_analysis}}</h1>
-                        <h1>{{$trafo->analysis->load_demand_analysis}}</h1>
-                        <h1>{{$trafo->analysis->unbalanced_load_analysis}}</h1>
-                        <h1>{{$trafo->analysis->unbalanced_voltage_analysis}}</h1> --}}
+                        <h1>20</h1> --}}
+                        <h1>{{$trafoAnalysis->temperature_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->load_demand_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_load_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->unbalanced_voltage_analysis}}</h1>
                     </div>
                 </div>
 
@@ -127,10 +127,10 @@
                     </div>
                     
                     <div class="flex flex-col gap-4">
-                        <h1>Normal</h1>
-                        <h1>Normal</h1>
-                        {{-- <h1>{{$trafo->analysis->blackout_status_analysis}}</h1>
-                        <h1>{{$trafo->analysis->blackout_status_analysis}}</h1> --}}
+                        {{-- <h1>Normal</h1>
+                        <h1>Normal</h1> --}}
+                        <h1>{{$trafoAnalysis->current_regulation_analysis}}</h1>
+                        <h1>{{$trafoAnalysis->blackout_status_analysis}}</h1>
                     </div>
                 </div>
             </div>
