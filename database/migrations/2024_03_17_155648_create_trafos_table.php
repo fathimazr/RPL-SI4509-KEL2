@@ -15,7 +15,13 @@ return new class extends Migration
         Schema::create('trafos', function (Blueprint $table) {
             $table->id();
             $table->string('trafo_id');
-            $table->string('brand'); 
+            $table->enum('brand', [
+                'STARLITE',
+                'SCHNEIDER ELECTRIC',
+                'TRAFINDO',
+                'CENTRADO',
+                'UNINDO',
+            ]);
             $table->string('city');
             $table->enum('phase', [1, 3]); 
             $table->string('latitude');
