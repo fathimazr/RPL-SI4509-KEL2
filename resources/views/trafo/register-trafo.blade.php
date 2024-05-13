@@ -8,39 +8,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
-       /* body {
-            height: 100vh;
-            width: 100vw;
-            display: grid;  
-            grid-template-columns: 0.154fr 1fr;
-            grid-template-rows: 0.109fr 1fr;
-            margin: 0;
-            padding: 0;
-            overflow: auto;
-            font-family : inter;
-        }  */
-
-        /* .topbar-placeholder {
-            background-color: white; 
-            grid-column: 2 / 3;
-            grid-row: 1 / 2;
-            margin: 0;
-            z-index: 1;
-            position: sticky;
-            top: 0;
-        }
-
-        .sidebar-placeholder {
-            background-color: #12A2BD; 
-            grid-column: 1 / 2;
-            grid-row: 1 / 3;
-            margin: 0;
-            padding: 10px;
-            display: grid;
-            vertical-align: top;
-            height: 100vh;
-            overflow: auto;
-        } */
 
         .main {
             background-color: #E5E7EB;
@@ -190,11 +157,6 @@
     }
     </style>
 </head>
-<!-- <body> -->
-<!-- <div class="topbar-placeholder">
-</div>
-<div class="sidebar-placeholder"> 
-</div> -->
 <x-app-layout>
     <div class="main">
         <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
@@ -212,7 +174,14 @@
                 </div>
                 <div class="form-group">
                     <label for="brand">Brand</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's brand">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" placeholder="Please select your trafo's brand">
+                    <option value="" disabled selected>Select your trafo's brand</option>
+                        <option value="STARLITE">STARLITE</option>
+                        <option value="SCHNEIDER ELECTRIC">SCHNEIDER ELECTRIC</option>
+                        <option value="TRAFINDO">TRAFINDO</option>
+                        <option value="CENTRADO">CENTRADO</option>
+                        <option value="UNINDO">UNINDO</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="city">City</label>

@@ -11,11 +11,8 @@ class Trafo extends Model
         'current',
         'temperature',
         'blackout_status',
+        'status',
         'installation_date',
-        'voltage',
-        'current',
-        'temperature',
-        'blackout_status'
     ];
 
     protected $casts = [
@@ -29,5 +26,8 @@ class Trafo extends Model
 
     public function trafo_performance(){
         return $this->hasOne(TrafoPerformance::class);
+    }
+    public function trafo_analysis(){
+        return $this->hasOne(TrafoAnalysis::class);
     }
 }

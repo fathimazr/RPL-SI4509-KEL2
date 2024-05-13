@@ -19,7 +19,7 @@ class TrafoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Buat register trafo baru.
      */
     public function create()
     {
@@ -52,9 +52,10 @@ class TrafoController extends Controller
      */
     public function show(string $id)
     {
-        //
-        $trafo = Trafo::find($id);
-        return view('trafo.view-performance', compact(['trafo']));
+        $trafo = Trafo::findOrFail($id);
+        $trafoPerformance = $trafo->trafo_performance; // Memuat data TrafoPerformance yang terkait dengan Trafo
+        $trafoAnalysis = $trafo->trafo_analysis; // Memuat data TrafoAnalysis yang terkait dengan Trafo
+        return view('trafo.view-performance', compact(['trafo', 'trafoPerformance', 'trafoAnalysis']));
     }
 
     /**
@@ -102,6 +103,20 @@ class TrafoController extends Controller
     {
         //
         $trafo = Trafo::all();
+        // dd($trafo);
         return view('tracking.maps', compact(['trafo']));
+    }
+
+    public function pin_color()
+    {
+        //
+        // $trafo = Trafo::findOrFail($id);
+        // // dd($trafo);
+        // $trafoPerformance = $trafo->trafo_performance;
+        // $data_trafo = array_merge($trafo, $trafoPerformance); // untuk mengirimkan data trafo dan trafo_performance ke maps-status-on.blade.php
+        $data_trafo =  Trafo::with('trafo_performance')->get();
+        $data_trafo =  Trafo::all();
+        // dd($data_trafo)
+        return view('tracking.maps-status-on', compact(['data_trafo']));
     }
 }
