@@ -25,13 +25,16 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::get('/trafo-data', [TrafoController::class, 'index'])->middleware(['auth', 'verified'])->name('trafo-data');
     Route::get('/new', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('register-user');
     Route::post('/new', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.regist');
+    Route::get('/trafo-register', function () {
+        return view('trafo.register-trafo');
+    });
     
 });
 
-// Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+Route::post('/mark-as-read', [NotificationController::class, 'markAsRead'])->name('markNotification');    
 
 
-Route::middleware(['auth', 'role:manager'])->group(function () {
+Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
@@ -49,32 +52,7 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     
     Route::get('/trafo-register', function () {
         return view('trafo.register-trafo');
-        });
-
-});
-
-Route::post('/mark-as-read', [NotificationController::class, 'markAsRead'])->name('markNotification');    
-
-
-Route::middleware(['auth', 'role:tim_teknis'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
-    
-    Route::get('/trafo-data', [TrafoController::class, 'index']);
-    
-    Route::get('/maps', [TrafoController::class, 'pin'])->middleware(['auth', 'verified'])->name('maps');
-    Route::get('/maps/on', [TrafoController::class, 'pin_color'])->middleware(['auth', 'verified'])->name('maps_color');
-    Route::get('/trafo/{id}', [TrafoController::class, 'show'])->name('trafo.show');
-    Route::get('/add-performance', function () {
-        return view('trafo.add-performance');
     });
-    // Route for view data trafo
-    Route::get('/view-performance', [TrafoController::class, 'show'])->middleware(['auth', 'verified'])->name('view-performance');
-    
-    Route::get('/trafo-register', function () {
-        return view('trafo.register-trafo');
-        });
 
 });
 
