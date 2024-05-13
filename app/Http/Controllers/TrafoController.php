@@ -55,7 +55,6 @@ class TrafoController extends Controller
         $trafo = Trafo::findOrFail($id);
         $trafoPerformance = $trafo->trafo_performance; // Memuat data TrafoPerformance yang terkait dengan Trafo
         $trafoAnalysis = $trafo->trafo_analysis; // Memuat data TrafoAnalysis yang terkait dengan Trafo
-        // dd($trafo->trafo_analysis);
         return view('trafo.view-performance', compact(['trafo', 'trafoPerformance', 'trafoAnalysis']));
     }
 
@@ -115,7 +114,8 @@ class TrafoController extends Controller
         // // dd($trafo);
         // $trafoPerformance = $trafo->trafo_performance;
         // $data_trafo = array_merge($trafo, $trafoPerformance); // untuk mengirimkan data trafo dan trafo_performance ke maps-status-on.blade.php
-        $data_trafo =  Trafo::with('trafo_performance')->get(); // untuk mengirimkan data trafo dan trafo_performance ke maps-status-on.blade.php
+        $data_trafo =  Trafo::with('trafo_performance')->get();
+        $data_trafo =  Trafo::all();
         // dd($data_trafo)
         return view('tracking.maps-status-on', compact(['data_trafo']));
     }
