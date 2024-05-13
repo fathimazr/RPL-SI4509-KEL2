@@ -167,7 +167,7 @@
     <div class="main">
         <h1 class="form-title">REGISTER NEW USER</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "30px">
+            <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
@@ -175,20 +175,17 @@
         <form id="form" action="{{route('admin.regist')}}" method="POST"> 
                 @csrf
                 <div class="form-group">
-                    <label for="employeeID">Employee ID</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name = "employee_id" type="text" placeholder="">
-                        <option value="" disabled selected>Select your employee id</option>
-                        <option value="Employee ID 1">M001-1</option>
-                        <option value="Employee ID 2">M002-2</option>
-                        <option value="Employee ID 3">T016-1</option>
-                        <option value="Employee ID 4">T100-0</option>
-                        <option value="Employee ID 5">T087-8</option>
-                        <option value="Employee ID 6">M098-1</option>
-                        <option value="Employee ID 7">M120-2</option>
-                        <option value="Employee ID 8">M220-3</option>
-                        <option value="Employee ID 9">T089-2</option>
-                        <option value="Employee ID 10">T450-7</option>
-                    </select>
+                <label for="employeeID">Employee ID</label>
+                <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="employeeID" name="employee_id" type="text" placeholder="">
+                    <option value="" disabled selected>Select your employee id</option>
+                    @foreach($enumValues as $id)
+                        @if(in_array($id, $usedEmployeeIds))
+                            <option value="{{ $id }}" disabled>{{ $id }} (already used)</option>
+                        @else
+                            <option value="{{ $id }}">{{ $id }}</option>
+                        @endif
+                    @endforeach
+                </select>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
