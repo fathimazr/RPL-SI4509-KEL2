@@ -174,7 +174,7 @@
                 </div>
                 <div class="form-group">
                     <label for="brand">Trafo ID</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" placeholder="Please select your trafo's ID">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" placeholder="Please select your trafo's ID">
                     <option value="" disabled selected>Please select your trafo's ID</option>
                         <option value="STARLITE">1101</option>
                         <option value="SCHNEIDER ELECTRIC">1102</option>
@@ -188,7 +188,7 @@
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceDate" name="maintenance_date" type="date" placeholder="Please select maintenance date">
                 </div>
                 <div class="form-group">
-                    <label for="ID">Maintenance Data</label>
+                    <label for="maintenanceData">Maintenance Data</label>
                     <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceData" name="maintenance_data" type="text" placeholder="Describe your trafo's maintenance data">
                 </div>
                 <div class="row">
