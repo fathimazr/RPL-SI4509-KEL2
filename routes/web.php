@@ -54,6 +54,10 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
         return view('trafo.register-trafo');
     });
 
+    Route::get('/maintenance', function(){
+        return view('maintenance');
+    });
+
 });
 
 
