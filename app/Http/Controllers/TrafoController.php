@@ -119,4 +119,8 @@ class TrafoController extends Controller
         // dd($data_trafo)
         return view('tracking.maps-status-on', compact(['data_trafo']));
     }
+
+    public function maintenance(Request $request){
+        dd($request->all());
+    }
 }
