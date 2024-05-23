@@ -54,10 +54,14 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
         return view('trafo.register-trafo');
     });
 
-    Route::get('/maintenance', function(){
-        return view('maintenance');
+    Route::get('/maintenance', function () {
+        return view('maintenance.maintenance-log');
+    });
+    Route::get('/add-maintenance', function () {
+        return view('maintenance.add-maintenance');
     });
 
+   
 });
 
 
@@ -103,10 +107,6 @@ Route::get('/trafo-data', [TrafoController::class, 'index'])->name('trafo-data')
 // });
 
 Route::get('/view-all', [NotificationController::class, 'index'])->name('notification.view-all');
-
-Route::get('/maintenance', function () {
-    return view("maintenance.maintenance-log");
-});
 
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
