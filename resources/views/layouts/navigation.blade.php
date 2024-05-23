@@ -97,7 +97,7 @@
                                             alt=""/>
                                     </div>
                                     
-                                    <a href="{{route('register-user')}}" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                                    <a href="/admin/new" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                         <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Register New User</h1>
                                     </a>
                                 </div>
