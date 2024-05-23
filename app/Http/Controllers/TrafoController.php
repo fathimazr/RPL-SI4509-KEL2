@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Trafo;
 use Illuminate\Http\Request;
 use App\Models\TrafoPerformance;
+use App\Models\User;
 
 class TrafoController extends Controller
 {
@@ -121,6 +122,15 @@ class TrafoController extends Controller
     }
 
     public function maintenance(Request $request){
-        dd($request->all());
+        return view('maintenance.index');
+    }
+
+    public function add_maintenance(Request $request){
+        $employee_id = User::findOrFail($request->employee_id);
+        $trafo = Trafo::findOrFail($request->trafo_id);
+        $trafo->maintenance_date = $request->maintenance_date;
+        $trafo->maintenance_status = $request->maintenance_status;
+        $trafo->save();
+        return redirect('trafo-data');
     }
 }

@@ -54,6 +54,10 @@ class User extends Authenticatable
         return $this->hasMany(Trafo::class, 'user_id', 'id');
     }
 
+    public function maintenance(){
+        return $this->hasMany(Maintenance::class, 'user_id', 'id');
+    }
+
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('role', 'admin')->exists();
