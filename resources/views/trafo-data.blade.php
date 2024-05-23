@@ -2,6 +2,15 @@
     <div class="main" style="display: grid; overflow-y: auto; max-width: 100%;">
         <div class="w-full h-full flex flex-col px-18 py-10 gap-5">
             <div class="self-end">
+                @if(auth()->check() && auth()->user()->role == 'admin')
+                <div class="">
+                    <a href="admin/trafo-register">
+                        <button
+                            class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                            Add New Transformator
+                        </button>
+                </div>
+                @else
                 <div class="">
                     <a href="/trafo-register">
                         <button
@@ -9,6 +18,8 @@
                             Add New Transformator
                         </button>
                 </div>
+                @endif
+
                 </a>
             </div>
         </div>
