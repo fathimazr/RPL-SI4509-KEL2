@@ -54,6 +54,19 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
         return view('trafo.register-trafo');
     });
 
+// routing statistics
+    Route::get('/stats', function () {
+        return view('statistics.index');
+    });
+
+    Route::get('/m', function () {
+        return view('statistics.maintanance');
+    });
+
+    Route::get('/mp', function () {
+        return view('statistics.mainpunc');
+    });
+// 
     Route::get('/maintenance', function () {
         return view('maintenance.maintenance-log');
     });
@@ -110,5 +123,6 @@ Route::get('/view-all', [NotificationController::class, 'index'])->name('notific
 
 Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
+
 
 require __DIR__.'/auth.php';
