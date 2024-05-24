@@ -16,13 +16,11 @@ class LogOutTest extends DuskTestCase
         $this->browse(function (Browser $browser) {
             $browser->visit('/login')
                     ->assertSee('www.gridgeoalert.com')
-                    // ->clickLink('Log in')
-                    // ->assertPathIs('/login')
                     ->type('employee_id', 'manager1')
                     ->type('password', 'manager1pass')
                     ->press('LOG IN')
-                    ->assertPathIs('/dashboard')
-                    // ->press('Log Out')
+                    ->assertPathIs('/')
+                    ->press('ConfirmLogout()')
                     // ->press('Log Out')
                     ;
         });

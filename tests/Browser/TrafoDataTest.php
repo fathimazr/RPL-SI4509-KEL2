@@ -22,6 +22,7 @@ class TrafoDataTest extends DuskTestCase
                     ->type('password', 'manager1pass')
                     ->press('LOG IN')                
                     ->visit('/trafo')
+                    ->press('View')
                     ;
         });
     }

@@ -21,7 +21,7 @@ class LoginTest extends DuskTestCase
                     ->type('employee_id', 'manager1')
                     ->type('password', 'manager1pass')
                     ->press('LOG IN')
-                    ->assertPathIs('/dashboard')
+                    ->assertPathIs('/')
                     ;
         });
     }
