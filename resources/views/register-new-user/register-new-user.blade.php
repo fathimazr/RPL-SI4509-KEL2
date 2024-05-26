@@ -198,15 +198,12 @@
                 </div>
                 <div class="form-group">
                     <label for="phase">Branch Office</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name = "branch_office" placeholder="">
+                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="branch_office" name = "branch_office" placeholder="">
                         <option value="" disabled selected>Select your branch office</option>
-                        <option value="Branch Office 1">Branch Office 1</option>
-                        <option value="Branch Office 2">Branch Office 2</option>
-                        <option value="Branch Office 3">Branch Office 3</option>
-                        <option value="Branch Office 4">Branch Office 4</option>
-                        <option value="Branch Office 5">Branch Office 5</option>
-                        <option value="Branch Office 6">Branch Office 6</option>
-                        <option value="Branch Office 7">Branch Office 7</option>
+                        @foreach($branchOffices as $id => $value)
+                        <option value="{{ $value }}">{{ $value }}</option>
+                    @endforeach
+
                     </select>
                 </div>
                 <div class="row">

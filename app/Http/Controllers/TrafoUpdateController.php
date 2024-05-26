@@ -41,6 +41,23 @@ class TrafoUpdateController extends Controller
         $trafoPerformance->current = $request->current;
         $trafoPerformance->temperature = $request->temperature;
         $trafoPerformance->blackout_status = $request->blackout_status;
+        
+            // Adding the new fields
+        $trafoPerformance->active_power = $request->active_power;
+        $trafoPerformance->reactive_power = $request->reactive_power;
+        $trafoPerformance->apparent_power = $request->apparent_power;
+        $trafoPerformance->voltage_thd = $request->voltage_thd;
+        $trafoPerformance->current_thd = $request->current_thd;
+        $trafoPerformance->total_power_losses = $request->total_power_losses;
+        $trafoPerformance->power_factor = $request->power_factor;
+        $trafoPerformance->frequency = $request->frequency;
+        $trafoPerformance->pressure = $request->pressure;
+        $trafoPerformance->k_factor = $request->k_factor;
+        $trafoPerformance->individual_harmonics = $request->individual_harmonics;
+        $trafoPerformance->tripplen_harmonics = $request->tripplen_harmonics;
+        $trafoPerformance->power_losses = $request->power_losses;
+        $trafoPerformance->oil_pressure = $request->oil_pressure;
+        $trafoPerformance->oil_temperature = $request->oil_temperature;
 
         $trafoPerformance->save();
         // return redirect('trafo-data');

@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrafoUpdateController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DataEntryController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +27,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function(){
     Route::get('/trafo-data', [TrafoController::class, 'index'])->middleware(['auth', 'verified'])->name('trafo-data');
     Route::get('/new', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('register-user');
     Route::post('/new', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.regist');
-    
-});
+    });
 
+    Route::get('/data-entry', [DataEntryController::class, 'create'])->name('data-entry.create');
+    Route::post('/data-entry', [DataEntryController::class, 'store'])->name('data-entry.store');
 // Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
 
@@ -47,9 +50,9 @@ Route::middleware(['auth', 'role:manager'])->group(function () {
     // Route for view data trafo
     Route::get('/view-performance', [TrafoController::class, 'show'])->middleware(['auth', 'verified'])->name('view-performance');
     
-    Route::get('/trafo-register', function () {
-        return view('trafo.register-trafo');
-        });
+    Route::get('/trafo-register', [TrafoController::class, 'create'])->name('trafo-register');
+    Route::post('/trafo-register', [TrafoController::class, 'store'])->name('trafo.store');
+
 
 });
 
@@ -72,10 +75,8 @@ Route::middleware(['auth', 'role:tim_teknis'])->group(function () {
     // Route for view data trafo
     Route::get('/view-performance', [TrafoController::class, 'show'])->middleware(['auth', 'verified'])->name('view-performance');
     
-    Route::get('/trafo-register', function () {
-        return view('trafo.register-trafo');
-        });
-
+    Route::get('/trafo-register', [TrafoController::class, 'create'])->name('trafo-register');
+    Route::post('/trafo-register', [TrafoController::class, 'store'])->name('trafo.store');
 });
 
 

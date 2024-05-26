@@ -159,70 +159,31 @@
 </head>
 <x-app-layout>
     <div class="main">
-        <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
+    <h1 class="form-title">Data Entry</h1>
         <div class="form-header">
             <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('trafo.store') }}" method="POST"> 
+        <form id="form" action="{{ route('data-entry.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="ID">Trafo ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" type="text" placeholder="Please fill with your trafo's ID">
-                </div>
-                <div class="form-group">
-                    <label for="brand">Brand</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" placeholder="">
-                        <option value="" disabled selected>Select your trafo's brand</option>
-                        @foreach($brands as $id => $value)
-                            <option value="{{ $value }}">{{ $value }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="city">City</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" placeholder="">
-                    <option value="" disabled selected>Select your trafo's city</option>  
-                        @foreach($cities as $id => $value)
-                            <option value="{{ $value }}">{{ $value }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="phase">Phase</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="phase" name="phase" placeholder="">
-                        <option value="" disabled selected>Select your trafo's phase</option>
-                        <option value="1">Phase 1 Transformator</option>
-                        <option value="2">Phase 3 Transformator</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="latitude" name="latitude" type="text" placeholder="Please fill with your trafo's installation latitude">
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="longitude" type="text" name="longitude" placeholder="Please fill with your trafo's installation longitude">
-                </div>
-                <div class="form-group">
-                    <label for="capacity">Capacity</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="capacity" name="capacity" type="text" placeholder="Please fill with your trafo's capacity (in kVA)">
-                </div>
-                <div class="form-group">
-                    <label for="installationDate">Installation Date</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="installationDate" name="installation_date" type="date" placeholder="Please select installation date">
-                </div>
-                <div class="form-group">
-                    <label for="category">Category</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category" name="category" placeholder="">
-                    <option value="" disabled selected>Select your trafo's category</option>  
-                    @foreach($categories as $id => $value)
-                        <option value="{{ $value }}">{{ $value }}</option>
-                    @endforeach
-                </select>
-                </div>                
+                        <label for="brand">Trafo's Brand</label>
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's new registered brand">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Trafo's City</label>
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text" placeholder="Please fill with your trafo's new registered city">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Trafo's Category</label>
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category" name="category" type="text" placeholder="Please fill with your trafo's new registered category">
+                    </div>
+                    <div class="form-group">
+                        <label for="branch_office">Employee's Branch Office</label>
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="branch_office" name="branch_office" type="text" placeholder="Please fill with your new registered branch office">
+                    </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
                     <button id="saveButton" type="button">Save</button>

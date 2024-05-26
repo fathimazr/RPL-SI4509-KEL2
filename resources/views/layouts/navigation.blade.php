@@ -105,6 +105,21 @@
                                 </div>
                             </li>
 
+                            <li class="hover:bg-[#15677B] p-2 rounded-xl">
+                                <div class="flex gap-1">
+                                    <div class="self-center">
+                                        <img aria-hidden="true" class="w-full h-full"
+                                            src="{{ asset('images/data-entry.png') }}"
+                                            alt=""/>
+                                    </div>
+                
+                                    <a href="/data-entry" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                                        <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Data Entry</h1>
+                                    </a>
+                                </div>
+                            </li>
+
+
                     @else()
                     <li class="hover:bg-[#15677B] p-2 rounded-xl">
                         <div class="flex gap-1">
