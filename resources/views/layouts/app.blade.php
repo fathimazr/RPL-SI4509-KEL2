@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <link rel="icon" href="{{ url('images/logo-grid-geo-alert.png') }}" type="image/x-icon">
+
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Fonts -->
@@ -22,6 +24,9 @@
 
   {{-- Leaflet Script --}}
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  {{-- Leaflet Geosearch --}}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"/>
 
   {{-- JQuery Script --}}
   <script src="{{ mix('js/app.js') }}" defer></script>
@@ -166,6 +171,7 @@
       </main>
     </div>
   </div>
+  <script src="https://unpkg.com/leaflet-geosearch@latest/dist/bundle.min.js"></script>
 </body>
 
 </html>
