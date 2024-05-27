@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->enum('employee_id', ['admin1', 'manager1', 'manager2', 'manager3', 'teknis1', 'teknis2', 'teknis3'])->unique()->nullable();            $table->enum('role', ['admin', 'manager', 'tim_teknis']);
+            $table->string('employee_id')->unique()->nullable();
+            $table->enum('role', ['admin', 'manager', 'tim_teknis']);
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('branch_office', [
                 'Branch Office 1',

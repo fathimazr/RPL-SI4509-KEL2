@@ -166,11 +166,12 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('trafo.store') }}" method="POST"> 
+        <form id="form" action="{{ route('maintenance.update') }}" method="POST"> 
+                {{-- @method('POST') --}}
                 @csrf
                 <div class="form-group">
                     <label for="ID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="employee_id" type="text" placeholder="Please fill with your employee's ID">
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="employee_id" type="text" value="{{$data->employee_id}}">
                 </div>
                 <div class="form-group">
                     <label for="brand">Trafo ID</label>
@@ -218,7 +219,7 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "trafo/store";
+            window.location.href = "maintenance.update";
             } else {
                 console.log('Cancelled');
             }

@@ -48,18 +48,15 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
         return view('trafo.add-performance');
     });
     // Route for view data trafo
-    Route::get('/view-performance', [TrafoController::class, 'show'])->middleware(['auth', 'verified'])->name('view-performance');
+    // Route::get('/view-performance', [TrafoController::class, 'show'])->middleware(['auth', 'verified'])->name('view-performance');
     
     Route::get('/trafo-register', function () {
         return view('trafo.register-trafo');
     });
 
-    Route::get('/maintenance', function () {
-        return view('maintenance.maintenance-log');
-    });
-    Route::get('/add-maintenance', function () {
-        return view('maintenance.add-maintenance');
-    });
+    Route::get('/maintenance',[TrafoController::class, 'maintenance'])->name('maintenance');
+    Route::get('/add-maintenance', [TrafoController::class, 'get_maintenance'])->name('maintenance.get');
+    Route::post('/add-maintenance', [TrafoController::class, 'update_maintenance'])->name('maintenance.update');
 
    
 });

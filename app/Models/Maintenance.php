@@ -14,9 +14,13 @@ class Maintenance extends Model
         'maintenance_data',
     ];
 
+    protected $casts =[
+        'employee_id' => 'string'
+    ];
+
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function trafo_performance(){
