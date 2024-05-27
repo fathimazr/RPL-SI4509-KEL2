@@ -15,19 +15,14 @@ return new class extends Migration
         Schema::create('trafos', function (Blueprint $table) {
             $table->id();
             $table->string('trafo_id');
-            $table->enum('brand', [
-                'STARLITE',
-                'SCHNEIDER ELECTRIC',
-                'TRAFINDO',
-                'CENTRADO',
-                'UNINDO',
-            ]);
+            $table->string('brand');
             $table->string('city');
             $table->enum('phase', [1, 3]); 
             $table->string('latitude');
             $table->string('longitude');
             $table->integer('capacity');
             $table->date('installation_date');
+            $table->string('category');
             // $table->unsignedBigInteger('trafo_performance_id')->default(0);
             // $table->unsignedBigInteger('user_id')->default(0);
             // $table->foreign('trafo_performance_id')->references('id')->on('trafo_performances')->onDelete('cascade');

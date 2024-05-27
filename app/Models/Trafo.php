@@ -13,6 +13,7 @@ class Trafo extends Model
         'blackout_status',
         'status',
         'installation_date',
+        'category',
     ];
 
     protected $casts = [
