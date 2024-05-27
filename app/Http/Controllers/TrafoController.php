@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trafo;
 use Illuminate\Http\Request;
+use App\Models\DataEntry;
 use App\Models\TrafoPerformance;
 
 class TrafoController extends Controller
@@ -23,8 +24,12 @@ class TrafoController extends Controller
      */
     public function create()
     {
-        return view('trafo.register-trafo');
-    }
+        $brands = DataEntry::where('type', 'Brand')->pluck('value', 'id');
+        $cities = DataEntry::where('type', 'City')->pluck('value', 'id');
+        $categories = DataEntry::where('type', 'Category')->pluck('value', 'id');
+        $branchOffices = DataEntry::where('type', 'Branch Office')->pluck('value', 'id');
+        return view('trafo.register-trafo', compact('brands', 'cities', 'categories', 'branchOffices'));
+        }
 
     /**
      * Store a newly created resource in storage.
@@ -42,6 +47,8 @@ class TrafoController extends Controller
         $trafo->longitude = $request->longitude;
         $trafo->capacity = $request->capacity;
         $trafo->installation_date = $request->installation_date;
+        $trafo->category = $request->category;
+        // Trafo::create($request->all());
         $trafo->save();
         return redirect('trafo-data');
         // Trafo::create($request->except(['_token', 'submit']));
@@ -65,8 +72,8 @@ class TrafoController extends Controller
     {
         if ($id) {
             $trafo = Trafo::find($id);
-            return view('trafo.add-performance', compact('trafo'));
-
+            $types = DataEntry::pluck('value', 'id');
+            return view('trafo.add-performance', compact('trafo', 'types'));
         } else {
             return redirect()->route('/')->withErrors(['error' => 'Invalid request']);
         }

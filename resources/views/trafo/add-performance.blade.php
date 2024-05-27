@@ -227,6 +227,67 @@
                         <option value="Blackout">Blackout</option>
                     </select>
                 </div>
+                <!-- New Fields -->
+                <div class="form-group">
+                    <label for="active_power">Active Power</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="active_power" name="active_power" type="text" placeholder="Active Power (W)">
+                </div>
+                <div class="form-group">
+                    <label for="reactive_power">Reactive Power</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="reactive_power" name="reactive_power" type="text" placeholder="Reactive Power (VAR)">
+                </div>
+                <div class="form-group">
+                    <label for="apparent_power">Apparent Power</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="apparent_power" name="apparent_power" type="text" placeholder="Apparent Power (VA)">
+                </div>
+                <div class="form-group">
+                    <label for="voltage_thd">Voltage THD</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="voltage_thd" name="voltage_thd" type="text" placeholder="Voltage THD (%)">
+                </div>
+                <div class="form-group">
+                    <label for="current_thd">Current THD</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="current_thd" name="current_thd" type="text" placeholder="Current THD (%)">
+                </div>
+                <div class="form-group">
+                    <label for="total_power_losses">Total Power Losses</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="total_power_losses" name="total_power_losses" type="text" placeholder="Total Power Losses (W)">
+                </div>
+                <div class="form-group">
+                    <label for="power_factor">Power Factor</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="power_factor" name="power_factor" type="text" placeholder="Power Factor">
+                </div>
+                <div class="form-group">
+                    <label for="frequency">Frequency</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="frequency" name="frequency" type="text" placeholder="Frequency (Hz)">
+                </div>
+                <div class="form-group">
+                    <label for="pressure">Pressure</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="pressure" name="pressure" type="text" placeholder="Pressure (Pa or bar)">
+                </div>
+                <div class="form-group">
+                    <label for="k_factor">K-Factor</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="k_factor" name="k_factor" type="text" placeholder="K-Factor">
+                </div>
+                <div class="form-group">
+                    <label for="individual_harmonics">Individual Harmonics</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="individual_harmonics" name="individual_harmonics" type="text" placeholder="Individual Harmonics (%)">
+                </div>
+                <div class="form-group">
+                    <label for="tripplen_harmonics">Tripplen Harmonics</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="tripplen_harmonics" name="tripplen_harmonics" type="text" placeholder="Tripplen Harmonics (%)">
+                </div>
+                <div class="form-group">
+                    <label for="power_losses">Power Losses</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="power_losses" name="power_losses" type="text" placeholder="Power Losses (W)">
+                </div>
+                <div class="form-group">
+                    <label for="oil_pressure">Oil Pressure</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="oil_pressure" name="oil_pressure" type="text" placeholder="Oil Pressure (Pa or bar)">
+                </div>
+                <div class="form-group">
+                    <label for="oil_temperature">Oil Temperature</label>
+                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="oil_temperature" name="oil_temperature" type="text" placeholder="Oil Temperature (°C)">
+                </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
                     <button id="saveButton" type="button">Save</button>
