@@ -62,6 +62,8 @@
                 </div>
                 
                 <ul class="space-y-2 font-medium">
+                    
+                    @if(auth()->check() && auth()->user()->role == 'admin')
                     <li class="hover:bg-[#15677B] p-2 rounded-xl">
                         <div class="flex gap-1">
                             <div class="self-center">
@@ -70,25 +72,21 @@
                                 alt=""/>
                             </div>
                         
-                            <a href="/#" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                            <a href="/admin/dashboard" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                 <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Dashboard</h1>
                             </a>
                         </div>
                     </li>
-                    
-                    @if(auth()->check() && auth()->user()->role == 'admin')
-                        <li class="hover:bg-[#15677B] p-2 rounded-xl">
-                                <div class="flex gap-1">
-                                    <div class="self-center">
-                                        <img aria-hidden="true" class="w-full h-full"
-                                         src="{{ asset('images/file.png') }}"
-                                         alt=""/>
-                                    </div>
-                
-                                    <a href="/trafo" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
-                                        <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
-                                    </a>
-                                </div>
+                    <li class="hover:bg-[#15677B] p-2 rounded-xl">
+                        <div class="flex gap-1">
+                            <div class="self-center">
+                                <img aria-hidden="true" class="w-full h-full"
+                                src="{{ asset('images/file.png') }}"
+                                alt=""/>
+                            </div>
+                            <a href="/trafo" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                                <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Trafo Data</h1>
+                            </a>
                             </li>
                 
                             <li class="hover:bg-[#15677B] p-2 rounded-xl">
@@ -98,13 +96,15 @@
                                             src="{{ asset('images/setting.png') }}"
                                             alt=""/>
                                     </div>
-                
+                                    
                                     <a href="{{route('register-user')}}" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                         <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Register New User</h1>
                                     </a>
                                 </div>
                             </li>
 
+
+                            @else()
                             <li class="hover:bg-[#15677B] p-2 rounded-xl">
                                 <div class="flex gap-1">
                                     <div class="self-center">
@@ -157,7 +157,7 @@
                                     alt=""/>
                             </div>
         
-                            <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                            <a href="maintenance" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                 <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Maintenance</h1>
                             </a>
                         </div>
@@ -171,7 +171,7 @@
                                     alt=""/>
                             </div>
         
-                            <a href="#" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
+                            <a href="/stats" class="w-full flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-[#15677B] dark:hover:bg-gray-700 group">
                                 <h1 class="text-[#FFFFFF] text-[20px] font-semibold">Statistics</h1>
                             </a>
                         </div>
