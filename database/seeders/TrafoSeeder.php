@@ -24,6 +24,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.4812439,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
+                'category' => 'Step Up Transformator',
                 // 'user_id' => 1 
             ],[
                 'trafo_id' => '1102',
@@ -34,6 +35,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.4945808,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
+                'category' => 'Step Up Transformator',
                 // 'user_id' => 2 
             ],[
                 'trafo_id' => '1103',
@@ -44,6 +46,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.5866264,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
+                'category' => 'Step Up Transformator',
                 // 'user_id' => 1 
             ],[
                 'trafo_id' => '1104',
@@ -54,6 +57,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.5839274,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
+                'category' => 'Step Up Transformator',
                 // 'user_id' => 1 
             ],[
                 'trafo_id' => '1105',
@@ -64,6 +68,7 @@ class TrafoSeeder extends Seeder
                 'longitude' => 107.5817180,
                 'capacity' => 200,
                 'installation_date' => '3-8-2023',
+                'category' => 'Step Up Transformator',
                 // 'user_id' => 1 
             ]
         ];
