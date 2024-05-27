@@ -54,8 +54,14 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
         return view('trafo.register-trafo');
     });
 
-    Route::get('/maintenance', [TrafoController::class, 'maintenance'])->name('maintenance');
+    Route::get('/maintenance', function () {
+        return view('maintenance.maintenance-log');
+    });
+    Route::get('/add-maintenance', function () {
+        return view('maintenance.add-maintenance');
+    });
 
+   
 });
 
 
