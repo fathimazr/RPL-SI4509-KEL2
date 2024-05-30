@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
 
-class LogOutTest extends DuskTestCase
+class StatisticsTest extends DuskTestCase
 {
     /**
      * A Dusk test example.
@@ -20,8 +20,11 @@ class LogOutTest extends DuskTestCase
                     ->type('password', 'manager1pass')
                     ->press('LOG IN')
                     ->assertPathIs('/')
-                    #Log Out masih error
-                    // ->click('Log Out')
+                    ->visit('/stats')
+                    ->press('Weekly')
+                    ->press('Alerting')
+                    ->press('Maintenance')
+                    ->press('Maintenance Punctuality')
                     ;
         });
     }
