@@ -60,7 +60,7 @@
             provider.search({ query: query }).then(function(result) {
                 if (result && result.length > 0) {
                     const { x, y } = result[0].bounds[0];
-                    map.setView([y, x], 13);
+                    map.setView([y, x], 10);
                 }
             });
         });
