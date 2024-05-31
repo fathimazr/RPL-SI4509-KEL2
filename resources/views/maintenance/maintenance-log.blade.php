@@ -37,42 +37,28 @@
                     </tr>
                 </thead>
                     <tbody>
+                    @foreach ($maintenance as $m)
+                        
                     <tr class="odd:bg-white  even:bg-gray-50  border-b ">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                11/03/2024
+                        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
+                                {{ $m->maintenance_date }}
                             </th>
                             <td class="px-6 py-4">
-                                1101
+                                {{ $m->trafo_id }}
                             </td>
                             <td class="px-6 py-4">
-                                teknis1
+                                {{ $m->employee_id }}
                             </td>
                             <td class="px-6 py-4">
-                                Perbaikan Blackout
+                                {{ $m->maintenance_data }}
                             </td>
                             <td class="px-6 py-4 flex justify-center gap-7 items-center">
                                 <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
                                
                             </td>
                         </tr>
-
-                        <tr class="odd:bg-white even:bg-gray-50  border-b ">
-                            <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap ">
-                                11/03/2024
-                            </th>
-                            <td class="px-6 py-4">
-                                1102
-                            </td>
-                            <td class="px-6 py-4">
-                                teknis1
-                            </td>
-                            <td class="px-6 py-4">
-                                Konfigurasi suhu pada trafo
-                            </td>
-                            <td class="px-6 py-4 flex justify-center gap-7 items-center">
-                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
-                            </td>
-                        </tr>
+                        
+                        @endforeach
 
                     </tbody>
                 

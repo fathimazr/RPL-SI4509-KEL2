@@ -133,7 +133,8 @@ class TrafoController extends Controller
     }
 
     public function maintenance(Request $request){
-        return view('maintenance.maintenance-log');
+        $maintenance = Maintenance::all();
+        return view('maintenance.maintenance-log', compact(['maintenance']));
     }
 
     public function get_maintenance(Request $request){
@@ -184,8 +185,6 @@ class TrafoController extends Controller
     
     
         $user = User::find($request->employee_id);
-        $trafoPerformance = TrafoPerformance::find($request->trafo_performance_id);
-        $trafoAnalysis = TrafoAnalysis::find($request->trafo_analysis_id);
     
         $trafoMaintenance = new Maintenance;
         $trafoMaintenance->employee_id = $user->employee_id;

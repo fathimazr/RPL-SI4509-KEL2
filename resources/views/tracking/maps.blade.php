@@ -27,7 +27,7 @@
         maxZoom: 20,
         minZoom: 6,
         zoomControl: false
-    }).setView([-6.9861,107.6049], 13);
+    }).setView([-7.0610, 107.5000], 12);
     
     L.control.zoom({
         position: 'bottomright'
