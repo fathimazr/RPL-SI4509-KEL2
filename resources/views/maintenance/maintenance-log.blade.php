@@ -8,7 +8,7 @@
                     <h1 class="form-title" style = "font-size: 24px; font-weight: 600; margin-right: 10px;">MAINTENANCE LOG</h1>
                         <a href="/add-maintenance">
                             <button
-                                class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded">
+                                class="w-[225px] bg-[#2264E5] hover:bg-lime-500 text-white shadow-md font-bold py-2 px-4 rounded mr-[50px]">
                                 Add Maintenance Data
                             </button>
                         </a>
