@@ -13,6 +13,12 @@ abstract class DuskTestCase extends BaseTestCase
 {
     use CreatesApplication;
 
+    // Custom browser class. Allows for extending Dusk behaviour
+    protected function newBrowser($driver)
+    {
+        return new DuskBrowser($driver);
+    }
+
     /**
      * Prepare for Dusk test execution.
      */

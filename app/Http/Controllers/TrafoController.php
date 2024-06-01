@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Trafo;
+use App\Models\Maintenance;
 use Illuminate\Http\Request;
+
+use App\Models\TrafoAnalysis;
 use App\Models\DataEntry;
 use App\Models\TrafoPerformance;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 class TrafoController extends Controller
 {
     /**
@@ -125,5 +130,76 @@ class TrafoController extends Controller
         $data_trafo =  Trafo::all();
         // dd($data_trafo)
         return view('tracking.maps-status-on', compact(['data_trafo']));
+    }
+
+    public function maintenance(Request $request){
+        return view('maintenance.maintenance-log');
+    }
+
+    public function get_maintenance(Request $request){
+        $id = Auth::user()->id;
+        $data = User::find($id);
+
+        return view('maintenance.add-maintenance', compact('data'));
+        // dd($data);
+    }
+    // public function update_maintenance(Request $request){
+    //     // $id = Auth::user()->id;
+    //     // $data = User::find($id);
+
+    //     // $data->trafo_id = $request->trafo_id;
+    //     // $data->employee_id = $request->employee_id;
+    //     // $data->maintenance_date = $request->maintenance_date;
+    //     // $data->maintenance_data = $request->maintenance_data;
+    //     // $data->save();
+    //     $request->validate([
+    //         'employee_id' => 'required|string',
+    //         'trafo_id' => 'required|integer|exists:trafos,id',
+    //         'maintenance_date' => 'required|date',
+    //         'maintenance_data' => 'required|string',
+    //     ]);
+    //     $trafoMaintenance = new Maintenance;
+    //     $trafoMaintenance->employee_id = $request->employee_id;
+    //     $trafoMaintenance->trafo_id = $request->trafo_id;
+    //     $trafoMaintenance->maintenance_date = $request->maintenance_date;
+    //     $trafoMaintenance->maintenance_data = $request->maintenance_data;
+    //     $trafoMaintenance->save();
+    //     return redirect()->route('trafo.show', ['id' => $request->trafo_id])->with('success', 'Maintenance data added successfully.');
+    // }
+
+    public function update_maintenance(Request $request){
+        $validated = $request->validate([
+            'employee_id' => 'required|string',
+            'trafo_id' => 'required|integer|exists:trafos,id',
+            'maintenance_date' => 'required|date',
+            'maintenance_data' => 'required|string',
+        ]);
+    
+        Log::info('Request Data: ', $request->all());
+    
+        $user = User::find($request->employee_id);
+        if(!$user){
+            return redirect()->back()->withErrors(['employee_id' => 'Employee not found']);
+        }
+    
+    
+        $user = User::find($request->employee_id);
+        $trafoPerformance = TrafoPerformance::find($request->trafo_performance_id);
+        $trafoAnalysis = TrafoAnalysis::find($request->trafo_analysis_id);
+    
+        $trafoMaintenance = new Maintenance;
+        $trafoMaintenance->employee_id = $user->employee_id;
+        $trafoMaintenance->trafo_id = $request->trafo_id;
+        $trafoMaintenance->maintenance_date = $request->maintenance_date;
+        $trafoMaintenance->maintenance_data = $request->maintenance_data;
+        $trafoMaintenance->save();
+    
+        // $trafoPerformance->maintenance_id = $trafoMaintenance->id;
+        // $trafoPerformance->save();
+    
+        // $trafoAnalysis->maintenance_id = $trafoMaintenance->id;
+        // $trafoAnalysis->save();
+    
+        return redirect('maintenance');
     }
 }
