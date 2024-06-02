@@ -189,11 +189,11 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('data-entry.store') }}" method="POST">
+        <form id="form" action="{{ route('trafo-city.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                         <label for="brand">Trafo's City</label>
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's new registered brand">
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text" placeholder="Please fill with your trafo's new registered brand">
                     </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
