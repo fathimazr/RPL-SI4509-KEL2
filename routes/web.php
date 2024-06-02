@@ -31,6 +31,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
 Route::get('/data-entry', [DataEntryController::class, 'create'])->name('data-entry.create');
 Route::post('/data-entry', [DataEntryController::class, 'store'])->name('data-entry.store');
+Route::get('/trafo-city', function () {
+    return view('data-entry.trafo-city');
+});
+Route::get('/branch-office', function () {
+    return view('data-entry.employee-branch-office');
+});
 
 Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
     Route::get('/', function () {

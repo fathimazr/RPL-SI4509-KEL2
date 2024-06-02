@@ -13,7 +13,7 @@
             background-color: #E5E7EB;
             display: grid;
             grid-template-columns: 0.044fr 0.912fr 0.044fr;
-            grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
+            grid-template-rows: 0.0324074fr auto 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; 
             width: 100%;
@@ -29,10 +29,30 @@
             margin-bottom: 10px;
         }
 
+        .trafo-button {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            display: flex;
+            margin-bottom: 10px;
+            gap:10px;
+
+        }
+
+        .trafo-button button {
+            background-color: #12A2BD;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         .form-header {
             background-color: #12A2BD;
             grid-column: 2 / 3;
-            grid-row: 3 / 4;
+            grid-row: 4 / 5;
             margin: 0px;
             padding: 0px; 
             display: flex;
@@ -55,7 +75,7 @@
         .form-container {
             background-color: white;
             grid-column: 2 / 3;
-            grid-row: 4 / 5;
+            grid-row: 5 / 6;
             margin: 0px; 
             padding: 0px; 
             gap: 10px;
@@ -111,60 +131,61 @@
             background-color: #15677B;
         }
 
-    .custom-swal-container {
-        backdrop-filter: blur(2px);
-        background: rgba(0,0,0,0) !important;
-        width: 1fr;
-        height: 1fr;
-        padding: none;
-    }
+        .custom-swal-container {
+            backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0) !important;
+            width: 1fr;
+            height: 1fr;
+            padding: none;
+        }
 
-    .custom-swal-title {
-        font-size: 40px;
-        font-weight: 700;
-        color: #000000;
-        margin-top: 2px;
-    }
+        .custom-swal-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 2px;
+        }
 
-    .custom-swal-text {
-        font-size: 33px;
-        color: #000000;
-        font-weight: 500;
-    }
+        .custom-swal-text {
+            font-size: 33px;
+            color: #000000;
+            font-weight: 500;
+        }
 
-    .custom-swal-discard-button, .custom-swal-cancel-button {
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 33px;
-        font-weight: 500;
-        cursor: pointer;
-        margin: 10px;
-    }
+        .custom-swal-discard-button, .custom-swal-cancel-button {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 33px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px;
+        }
 
-    .custom-swal-cancel-button {
-        background-color: #000000 !important;
-        color: white !important;
-        border: 2px solid black !important;
-    }
+        .custom-swal-cancel-button {
+            background-color: #000000 !important;
+            color: white !important;
+            border: 2px solid black !important;
+        }
 
-    .custom-swal-discard-button {
-        background-color: white !important;
-        color: black !important;
-        border: 2px solid black !important;
-    }
+        .custom-swal-discard-button {
+            background-color: white !important;
+            color: black !important;
+            border: 2px solid black !important;
+        }
 
-    .swal2-actions {
-        display: flex;
-        flex-direction: row-reverse; 
-    }
+        .swal2-actions {
+            display: flex;
+            flex-direction: row-reverse; 
+        }
     </style>
 </head>
 <x-app-layout>
     <div class="main">
-    <h1 class="form-title">DATA ENTRY</h1>
-        <div class="form-header">
-            <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
-            <h1 class="form-header-title">Filling Form</h1>
+        <h1 class="form-title">DATA ENTRY</h1>
+        <div class="trafo-button">
+            <button onclick="window.location.href='/data-entry'">Trafo's</button>
+            <button onclick="window.location.href='/trafo-city'">Trafo's City</button>
+            <button onclick="window.location.href='/branch-office'">Employee's Branch Office</button>
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
@@ -175,16 +196,8 @@
                         <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's new registered brand">
                     </div>
                     <div class="form-group">
-                        <label for="city">Trafo's City</label>
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="city" name="city" type="text" placeholder="Please fill with your trafo's new registered city">
-                    </div>
-                    <div class="form-group">
                         <label for="category">Trafo's Category</label>
                         <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="category" name="category" type="text" placeholder="Please fill with your trafo's new registered category">
-                    </div>
-                    <div class="form-group">
-                        <label for="branch_office">Employee's Branch Office</label>
-                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="branch_office" name="branch_office" type="text" placeholder="Please fill with your new registered branch office">
                     </div>
                 <div class="row">
                     <button id="discardButton" type="button">Cancel</button>
