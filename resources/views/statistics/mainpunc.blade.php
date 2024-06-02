@@ -6,7 +6,7 @@
                 
                 <div class="flex flex-col gap-5">
                     <h1 class="text-2xl font-bold tracking-tight text-white">Alerting</h1>
-                    <h1 class="text-[50px] font-bold tracking-tight text-white">20</h1>
+                    <h1 class="text-[50px] font-bold tracking-tight text-white">{{ $alertingCount }}</h1>
                 </div>
                 
                 <div class="">
@@ -19,7 +19,7 @@
                 
                 <div class="flex flex-col gap-5">
                     <h1 class="text-2xl font-bold tracking-tight text-white">Maintenance</h1>
-                    <h1 class="text-[50px] font-bold tracking-tight text-white">10</h1>
+                    <h1 class="text-[50px] font-bold tracking-tight text-white">{{ $maintenanceCount }}</h1>
                 </div>
                 
                 <div class="">
@@ -32,7 +32,7 @@
                 
                 <div class="flex flex-col gap-5">
                     <h1 class="text-2xl font-bold tracking-tight text-white">Maintenance <br> Punctuality</h1>
-                    <h1 class="text-[50px] font-bold tracking-tight text-white">80%</h1>
+                    <h1 class="text-[50px] font-bold tracking-tight text-white">{{ number_format($maintenancePunctuality, 2) }}%</h1>
                 </div>
                 
                 <div class="">
@@ -89,29 +89,31 @@
 
     <script>
         // Data untuk Monthly
-        const monthlyData = [
-            { x: "Jan", y: 131 },
-            { x: "Feb", y: 322 },
-            { x: "Mar", y: 63 },
-            { x: "Apr", y: 221 },
-            { x: "May", y: 122 },
-            { x: "Jun", y: 323 },
-            { x: "Jul", y: 611 },
-            { x: "Aug", y: 111 },
-            { x: "Sep", y: 211 },
-            { x: "Oct", y: 511 },
-            { x: "Nov", y: 90 },
-            { x: "Dec", y: 500 },
-        ];
+        const monthlyData = <?php echo json_encode($monthlyDataMainPunc); ?>;
+        // const monthlyData = [
+        //     { x: "Jan", y: 131 },
+        //     { x: "Feb", y: 322 },
+        //     { x: "Mar", y: 63 },
+        //     { x: "Apr", y: 221 },
+        //     { x: "May", y: 122 },
+        //     { x: "Jun", y: 323 },
+        //     { x: "Jul", y: 611 },
+        //     { x: "Aug", y: 111 },
+        //     { x: "Sep", y: 211 },
+        //     { x: "Oct", y: 511 },
+        //     { x: "Nov", y: 90 },
+        //     { x: "Dec", y: 500 },
+        // ];
 
         // Data untuk Weekly
-        const weeklyData = [
-            { x: "Week 1", y: 30 },
-            { x: "Week 2", y: 40 },
-            { x: "Week 3", y: 35 },
-            { x: "Week 4", y: 50 },
+        const weeklyData = <?php echo json_encode($weeklyDataMainPunc); ?>;
+        // const weeklyData = [
+        //     { x: "Week 1", y: 30 },
+        //     { x: "Week 2", y: 40 },
+        //     { x: "Week 3", y: 35 },
+        //     { x: "Week 4", y: 50 },
             
-        ];
+        // ];
 
         const options = {
             colors: ["#12A2BD", "#7EAEBC"],

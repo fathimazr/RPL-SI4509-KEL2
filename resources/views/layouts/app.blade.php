@@ -16,6 +16,8 @@
   
   <!-- script chart -->
   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  
+  <script src="{{ mix('js/app.js') }}" defer></script>
 
   {{-- Maps --}}
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
