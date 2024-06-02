@@ -26,6 +26,7 @@
             font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
+            margin-bottom: 10px;
         }
 
         .form-header {
@@ -36,6 +37,7 @@
             padding: 0px; 
             display: flex;
             align-items: center;
+            padding: 5px;
         }
 
         .form-header-title {

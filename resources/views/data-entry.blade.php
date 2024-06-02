@@ -26,6 +26,7 @@
             font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
+            margin-bottom: 10px;
         }
 
         .form-header {
@@ -36,6 +37,7 @@
             padding: 0px; 
             display: flex;
             align-items: center;
+            padding: 5px;
         }
 
         .form-header-title {
@@ -159,7 +161,7 @@
 </head>
 <x-app-layout>
     <div class="main">
-    <h1 class="form-title">Data Entry</h1>
+    <h1 class="form-title">DATA ENTRY</h1>
         <div class="form-header">
             <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
