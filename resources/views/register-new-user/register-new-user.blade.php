@@ -30,6 +30,7 @@
             font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
+            margin-bottom: 10px;
         }
 
         .form-header {
@@ -40,6 +41,7 @@
             padding: 0px; /* Add padding as needed */
             display: flex;
             align-items: center;
+            padding: 5px;
         }
 
         .form-header-title {
@@ -47,6 +49,7 @@
             font-size: 20px;
             color: white;
             font-weight: 500;
+            
         }
 
         .form-header-icon {
@@ -166,7 +169,7 @@
     <div class="main">
         <h1 class="form-title">REGISTER NEW USER</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "img/Form.png" alt = "Icon" width = "30px">
+            <img class = "form-header-icon" src = "{{ asset('img/Form.png') }}" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
