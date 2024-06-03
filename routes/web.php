@@ -8,6 +8,7 @@ use App\Http\Controllers\TrafoUpdateController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\DataEntryController;
+use App\Http\Controllers\StatisticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,12 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
 Route::get('/data-entry', [DataEntryController::class, 'create'])->name('data-entry.create');
 Route::post('/data-entry', [DataEntryController::class, 'store'])->name('data-entry.store');
+Route::get('/trafo-city', function () {
+    return view('data-entry.trafo-city');
+});
+Route::get('/branch-office', function () {
+    return view('data-entry.employee-branch-office');
+});
 
 Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
     Route::get('/', function () {
@@ -57,17 +64,9 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
     Route::post('/trafo-register', [TrafoController::class, 'store'])->name('trafo.store');
 
     Route::post('/mark-as-read', [NotificationController::class, 'markAsRead'])->name('markNotification');
-    Route::get('/stats', function () {
-        return view('statistics.index');
-    });
-
-    Route::get('/m', function () {
-        return view('statistics.maintanance');
-    });
-
-    Route::get('/mp', function () {
-        return view('statistics.mainpunc');
-    });
+    Route::get('/stats', [StatisticController::class, 'index'])->name('statistics.index');
+    Route::get('/m', [StatisticController::class, 'maintenance'])->name('statistics.maintanance');
+    Route::get('/mp', [StatisticController::class, 'mainpunc'])->name('statistics.mainpunc');
 
     Route::get('/maintenance',[TrafoController::class, 'maintenance'])->name('maintenance');
     Route::get('/add-maintenance', [TrafoController::class, 'get_maintenance'])->name('maintenance.get');

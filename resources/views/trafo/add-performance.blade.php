@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang = "en">
 <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -46,7 +47,7 @@
             background-color: #E5E7EB;
             display: grid;
             grid-template-columns: 0.044fr 0.912fr 0.044fr;
-            grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
+            grid-template-rows: 0.032fr auto 1fr;
             gap: 0px;
             overflow-y: auto; 
             width: 100%;
@@ -59,6 +60,8 @@
             font-weight: 600;
             grid-column: 2 / 3;
             grid-row: 2 / 3;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .form-header {
@@ -69,6 +72,7 @@
             padding: 0px; 
             display: flex;
             align-items: center;
+            padding: 5px;
         }
 
         .form-header-title {
@@ -76,6 +80,7 @@
             font-size: 20px;
             color: white;
             font-weight: 500;
+            
         }
 
         .form-header-icon {
@@ -199,7 +204,7 @@
     <div class="main">
         <h1 class="form-title">UPDATE PERFORMANCE DATA</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "images/form-add-performance.png" alt = "Icon" width = "30px">
+            <img class = "form-header-icon" src = "{{ asset('img/Form.png') }}" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">

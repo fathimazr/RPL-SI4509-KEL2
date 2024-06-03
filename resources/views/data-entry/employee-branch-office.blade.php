@@ -13,7 +13,7 @@
             background-color: #E5E7EB;
             display: grid;
             grid-template-columns: 0.044fr 0.912fr 0.044fr;
-            grid-template-rows: 0.0324074fr 0.05fr 0.0589815fr 1fr;
+            grid-template-rows: 0.0324074fr auto 0.05fr 0.0589815fr 1fr;
             gap: 0px;
             overflow-y: auto; 
             width: 100%;
@@ -29,10 +29,30 @@
             margin-bottom: 10px;
         }
 
+        .trafo-button {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            display: flex;
+            margin-bottom: 10px;
+            gap:10px;
+
+        }
+
+        .trafo-button button {
+            background-color: #12A2BD;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         .form-header {
             background-color: #12A2BD;
             grid-column: 2 / 3;
-            grid-row: 3 / 4;
+            grid-row: 4 / 5;
             margin: 0px;
             padding: 0px; 
             display: flex;
@@ -55,7 +75,7 @@
         .form-container {
             background-color: white;
             grid-column: 2 / 3;
-            grid-row: 4 / 5;
+            grid-row: 5 / 6;
             margin: 0px; 
             padding: 0px; 
             gap: 10px;
@@ -111,94 +131,77 @@
             background-color: #15677B;
         }
 
-    .custom-swal-container {
-        backdrop-filter: blur(2px);
-        background: rgba(0,0,0,0) !important;
-        width: 1fr;
-        height: 1fr;
-        padding: none;
-    }
+        .custom-swal-container {
+            backdrop-filter: blur(2px);
+            background: rgba(0,0,0,0) !important;
+            width: 1fr;
+            height: 1fr;
+            padding: none;
+        }
 
-    .custom-swal-title {
-        font-size: 40px;
-        font-weight: 700;
-        color: #000000;
-        margin-top: 2px;
-    }
+        .custom-swal-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 2px;
+        }
 
-    .custom-swal-text {
-        font-size: 33px;
-        color: #000000;
-        font-weight: 500;
-    }
+        .custom-swal-text {
+            font-size: 33px;
+            color: #000000;
+            font-weight: 500;
+        }
 
-    .custom-swal-discard-button, .custom-swal-cancel-button {
-        border-radius: 4px;
-        padding: 10px 20px;
-        font-size: 33px;
-        font-weight: 500;
-        cursor: pointer;
-        margin: 10px;
-    }
+        .custom-swal-discard-button, .custom-swal-cancel-button {
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 33px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 10px;
+        }
 
-    .custom-swal-cancel-button {
-        background-color: #000000 !important;
-        color: white !important;
-        border: 2px solid black !important;
-    }
+        .custom-swal-cancel-button {
+            background-color: #000000 !important;
+            color: white !important;
+            border: 2px solid black !important;
+        }
 
-    .custom-swal-discard-button {
-        background-color: white !important;
-        color: black !important;
-        border: 2px solid black !important;
-    }
+        .custom-swal-discard-button {
+            background-color: white !important;
+            color: black !important;
+            border: 2px solid black !important;
+        }
 
-    .swal2-actions {
-        display: flex;
-        flex-direction: row-reverse; 
-    }
+        .swal2-actions {
+            display: flex;
+            flex-direction: row-reverse; 
+        }
     </style>
 </head>
 <x-app-layout>
     <div class="main">
-        <h1 class="form-title">ADD MAINTENANCE DATA</h1>
-        <div class="form-header">
-            <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
-            <h1 class="form-header-title">Filling Form</h1>
+        <h1 class="form-title">DATA ENTRY</h1>
+        <div class="trafo-button">
+            <button onclick="window.location.href='/data-entry'">Trafo's</button>
+            <button onclick="window.location.href='/trafo-city'">Trafo's City</button>
+            <button onclick="window.location.href='/branch-office'">Employee's Branch Office</button>
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('maintenance.store') }}" method="POST"> 
-            @csrf
-            <div class="form-group">
-                <label for="ID">Employee ID</label>
-                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="employee_id" type="text" value="{{ $data->employee_id }}">
+        <form id="form" action="{{ route('data-entry.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                        <label for="brand">Employee's Branch Office</label>
+                        <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="brand" name="brand" type="text" placeholder="Please fill with your trafo's new registered brand">
+                    </div>
+                <div class="row">
+                    <button id="discardButton" type="button">Cancel</button>
+                    <button id="saveButton" type="button">Save</button>
+                </div>
+            </form>
             </div>
-            <div class="form-group">
-                <label for="brand">Trafo ID</label>
-                <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" placeholder="Please select your trafo's ID">
-                    <option value="" disabled selected>Please select your trafo's ID</option>
-                    @foreach($trafos as $trafo)
-                        <option value="{{ $trafo->trafo_id }}">{{ $trafo->trafo_id }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="maintenanceDate">Maintenance Date</label>
-                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceDate" name="maintenance_date" type="date" placeholder="Please select maintenance date">
-            </div>
-            <div class="form-group">
-                <label for="maintenanceData">Maintenance Data</label>
-                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceData" name="maintenance_data" type="text" placeholder="Describe your trafo's maintenance data">
-            </div>
-            <div class="row">
-                <button id="discardButton" type="button">Cancel</button>
-                <button id="saveButton" type="button">Next</button>
-            </div>
-        </form>
-        
-        </div>
-        <script>
+            <script>
 
         document.getElementById('discardButton').addEventListener('click', function() {
         Swal.fire({
@@ -219,7 +222,7 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-            window.location.href = "maintenance.store";
+                window.location.href = "trafo/store";
             } else {
                 console.log('Cancelled');
             }
