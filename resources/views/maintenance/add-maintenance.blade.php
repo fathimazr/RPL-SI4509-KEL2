@@ -166,39 +166,37 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('maintenance.update') }}" method="POST"> 
-                {{-- @method('POST') --}}
-                @csrf
-                <div class="form-group">
-                    <label for="ID">Employee ID</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="employee_id" type="text" value="{{$data->employee_id}}">
-                </div>
-                <div class="form-group">
-                    <label for="brand">Trafo ID</label>
-                    <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" placeholder="Please select your trafo's ID">
-                    <option value="" disabled selected>Please select your trafo's ID</option>
-                        <option value="1101">1101</option>
-                        <option value="1102">1102</option>
-                        <option value="1103">1103</option>
-                        <option value="1104">1104</option>
-                        <option value="1105">1105</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="maintenanceDate">Maintenance Date</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceDate" name="maintenance_date" type="date" placeholder="Please select maintenance date">
-                </div>
-                <div class="form-group">
-                    <label for="maintenanceData">Maintenance Data</label>
-                    <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceData" name="maintenance_data" type="text" placeholder="Describe your trafo's maintenance data">
-                </div>
-                <div class="row">
-                    <button id="discardButton" type="button">Cancel</button>
-                    <button id="saveButton" type="button">Next</button>
-                </div>
-            </form>
+        <form id="form" action="{{ route('maintenance.store') }}" method="POST"> 
+            @csrf
+            <div class="form-group">
+                <label for="ID">Employee ID</label>
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="employee_id" type="text" value="{{ $data->employee_id }}">
             </div>
-            <script>
+            <div class="form-group">
+                <label for="brand">Trafo ID</label>
+                <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="ID" name="trafo_id" placeholder="Please select your trafo's ID">
+                    <option value="" disabled selected>Please select your trafo's ID</option>
+                    @foreach($trafos as $trafo)
+                        <option value="{{ $trafo->trafo_id }}">{{ $trafo->trafo_id }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="maintenanceDate">Maintenance Date</label>
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceDate" name="maintenance_date" type="date" placeholder="Please select maintenance date">
+            </div>
+            <div class="form-group">
+                <label for="maintenanceData">Maintenance Data</label>
+                <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="maintenanceData" name="maintenance_data" type="text" placeholder="Describe your trafo's maintenance data">
+            </div>
+            <div class="row">
+                <button id="discardButton" type="button">Cancel</button>
+                <button id="saveButton" type="button">Next</button>
+            </div>
+        </form>
+        
+        </div>
+        <script>
 
         document.getElementById('discardButton').addEventListener('click', function() {
         Swal.fire({
@@ -219,7 +217,7 @@
             }
         }).then((result) => {
             if (result.isConfirmed) {
-            window.location.href = "maintenance.update";
+            window.location.href = "maintenance.store";
             } else {
                 console.log('Cancelled');
             }

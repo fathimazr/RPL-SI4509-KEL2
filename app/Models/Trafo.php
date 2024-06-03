@@ -31,4 +31,8 @@ class Trafo extends Model
     public function trafo_analysis(){
         return $this->hasOne(TrafoAnalysis::class);
     }
+
+    public function maintenance(){
+        return $this->hasOne(Maintenance::class);
+    }
 }

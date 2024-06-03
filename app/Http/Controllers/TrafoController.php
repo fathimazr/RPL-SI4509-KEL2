@@ -56,7 +56,6 @@ class TrafoController extends Controller
         // Trafo::create($request->all());
         $trafo->save();
         return redirect('trafo-data');
-        // Trafo::create($request->except(['_token', 'submit']));
     }
 
     /**
@@ -121,11 +120,6 @@ class TrafoController extends Controller
 
     public function pin_color()
     {
-        //
-        // $trafo = Trafo::findOrFail($id);
-        // // dd($trafo);
-        // $trafoPerformance = $trafo->trafo_performance;
-        // $data_trafo = array_merge($trafo, $trafoPerformance); // untuk mengirimkan data trafo dan trafo_performance ke maps-status-on.blade.php
         $data_trafo =  Trafo::with('trafo_performance')->get();
         $data_trafo =  Trafo::all();
         // dd($data_trafo)
@@ -133,6 +127,7 @@ class TrafoController extends Controller
     }
 
     public function maintenance(Request $request){
+        $maintenance = Maintenance::with('trafo')->get();
         $maintenance = Maintenance::all();
         return view('maintenance.maintenance-log', compact(['maintenance']));
     }
@@ -140,51 +135,18 @@ class TrafoController extends Controller
     public function get_maintenance(Request $request){
         $id = Auth::user()->id;
         $data = User::find($id);
+        $trafos = Trafo::all();
 
-        return view('maintenance.add-maintenance', compact('data'));
+        return view('maintenance.add-maintenance', compact('data', 'trafos'));
         // dd($data);
     }
-    // public function update_maintenance(Request $request){
-    //     // $id = Auth::user()->id;
-    //     // $data = User::find($id);
 
-    //     // $data->trafo_id = $request->trafo_id;
-    //     // $data->employee_id = $request->employee_id;
-    //     // $data->maintenance_date = $request->maintenance_date;
-    //     // $data->maintenance_data = $request->maintenance_data;
-    //     // $data->save();
-    //     $request->validate([
-    //         'employee_id' => 'required|string',
-    //         'trafo_id' => 'required|integer|exists:trafos,id',
-    //         'maintenance_date' => 'required|date',
-    //         'maintenance_data' => 'required|string',
-    //     ]);
-    //     $trafoMaintenance = new Maintenance;
-    //     $trafoMaintenance->employee_id = $request->employee_id;
-    //     $trafoMaintenance->trafo_id = $request->trafo_id;
-    //     $trafoMaintenance->maintenance_date = $request->maintenance_date;
-    //     $trafoMaintenance->maintenance_data = $request->maintenance_data;
-    //     $trafoMaintenance->save();
-    //     return redirect()->route('trafo.show', ['id' => $request->trafo_id])->with('success', 'Maintenance data added successfully.');
-    // }
-
-    public function update_maintenance(Request $request){
-        $validated = $request->validate([
-            'employee_id' => 'required|string',
-            'trafo_id' => 'required|integer|exists:trafos,id',
-            'maintenance_date' => 'required|date',
-            'maintenance_data' => 'required|string',
-        ]);
+    public function store_maintenance(Request $request){
+        $user = User::where('employee_id', $request->employee_id)->first();
     
-        Log::info('Request Data: ', $request->all());
-    
-        $user = User::find($request->employee_id);
         if(!$user){
             return redirect()->back()->withErrors(['employee_id' => 'Employee not found']);
         }
-    
-    
-        $user = User::find($request->employee_id);
     
         $trafoMaintenance = new Maintenance;
         $trafoMaintenance->employee_id = $user->employee_id;
@@ -192,13 +154,10 @@ class TrafoController extends Controller
         $trafoMaintenance->maintenance_date = $request->maintenance_date;
         $trafoMaintenance->maintenance_data = $request->maintenance_data;
         $trafoMaintenance->save();
-    
-        // $trafoPerformance->maintenance_id = $trafoMaintenance->id;
-        // $trafoPerformance->save();
-    
-        // $trafoAnalysis->maintenance_id = $trafoMaintenance->id;
-        // $trafoAnalysis->save();
-    
-        return redirect('maintenance');
+        
+        // dd($trafoMaintenance);
+        return redirect('trafo')->with('success', 'Maintenance data added successfully.');
     }
+    
+    
 }

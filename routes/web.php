@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
 
     Route::get('/maintenance',[TrafoController::class, 'maintenance'])->name('maintenance');
     Route::get('/add-maintenance', [TrafoController::class, 'get_maintenance'])->name('maintenance.get');
-    Route::post('/add-maintenance', [TrafoController::class, 'update_maintenance'])->name('maintenance.update');
+    Route::post('/add-maintenance', [TrafoController::class, 'store_maintenance'])->name('maintenance.store');
 
 });
 
@@ -94,7 +94,7 @@ Route::resource('trafo', TrafoController::class)->middleware('auth');
 
 Route::get('/view-all', [NotificationController::class, 'index'])->name('notification.view-all');
 
-Route::get('trafo/add-performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
+Route::get('trafo/performance/{id}', [TrafoUpdateController::class, 'edit'])->name('add-performance');
 Route::post('/trafo-performance/{id}/store', [TrafoUpdateController::class, 'store'])->name('trafo-performance-store');
 
 require __DIR__ . '/auth.php';

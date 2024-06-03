@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('trafos', function (Blueprint $table) {
             $table->id();
-            $table->string('trafo_id');
+            $table->string('trafo_id')->unique()->nullable();
             $table->string('brand');
             $table->string('city');
             $table->enum('phase', [1, 3]); 

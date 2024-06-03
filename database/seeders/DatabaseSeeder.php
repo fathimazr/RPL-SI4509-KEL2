@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Maintenance;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,13 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             // AdminSeeder::class,
             UsersSeeder::class,
-            TrafoSeeder::class
+            TrafoSeeder::class,
+            MaintenanceSeeder::class
         ]);
-        // User::factory(3)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

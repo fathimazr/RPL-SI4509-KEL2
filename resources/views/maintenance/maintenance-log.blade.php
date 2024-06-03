@@ -53,7 +53,7 @@
                                 {{ $m->maintenance_data }}
                             </td>
                             <td class="px-6 py-4 flex justify-center gap-7 items-center">
-                                <a href="/view-performance" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
+                                <a href="/trafo/{{ $m->id }}" class="font-bold text-blue-800 text-decoration-none underline">View Data</a>
                                
                             </td>
                         </tr>

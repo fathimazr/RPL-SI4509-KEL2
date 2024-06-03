@@ -23,10 +23,7 @@ class Maintenance extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function trafo_performance(){
-        return $this->hasOne(TrafoPerformance::class);
-    }
-    public function trafo_analysis(){
-        return $this->hasOne(TrafoAnalysis::class);
+    public function trafo(){
+        return $this->belongsTo(Trafo::class);
     }
 }
