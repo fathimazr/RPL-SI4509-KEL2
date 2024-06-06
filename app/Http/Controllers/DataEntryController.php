@@ -6,42 +6,60 @@ use Illuminate\Http\Request;
 use App\Models\DataEntry;
 use Illuminate\Support\Facades\Log;
 
-
 class DataEntryController extends Controller
 {
-
-    public function create()
+    public function createTrafo()
     {
-        return view('/data-entry');
+        return view('data-entry');
     }
 
-    public function store(Request $request)
+    public function createTrafoCity()
     {
-        Log::info('Store method reached.'); // Log that the store method is reached
-        Log::info('Request data: ' . json_encode($request->all())); // Log the data received from the request
-        
+        return view('data-entry.trafo-city');
+    }
+
+    public function createBranchOffice()
+    {
+        return view('data-entry.employee-branch-office');
+    }
+
+    public function storeTrafo(Request $request)
+    {
         $request->validate([
-            'brand' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-            'branch_office' => 'required|string|max:255',
+            'brand' => 'nullable|string|max:255',
+            'category' => 'nullable|string|max:255',
         ]);
-    
-        $dataEntries = [
-            new DataEntry(['type' => 'brand', 'value' => $request->brand]),
-            new DataEntry(['type' => 'city', 'value' => $request->city]),
-            new DataEntry(['type' => 'category', 'value' => $request->category]),
-            new DataEntry(['type' => 'branch_office', 'value' => $request->branch_office]),
-        ];
-    
-        // Dump the data for inspection
-        // dd($dataEntries);
-    
-        // Save each DataEntry instance
-        foreach ($dataEntries as $dataEntry) {
-            $dataEntry->save();
+
+        if ($request->filled('brand')) {
+            DataEntry::create(['type' => 'brand', 'value' => $request->brand]);
         }
 
-        return redirect('data-entry');
+        if ($request->filled('category')) {
+            DataEntry::create(['type' => 'category', 'value' => $request->category]);
+        }
+
+        return redirect()->back()->with('success', 'Trafo data has been saved successfully!');
+    }
+
+    public function storeTrafoCity(Request $request)
+    {
+        $request->validate([
+            'city' => 'required|string|max:255',
+        ]);
+
+        DataEntry::create(['type' => 'city', 'value' => $request->city]);
+
+        return redirect()->back()->with('success', 'Trafo city data has been saved successfully!');
+    }
+
+    public function storeBranchOffice(Request $request)
+    {
+        $request->validate([
+            'branch_office' => 'required|string|max:255',
+        ]);
+
+        DataEntry::create(['type' => 'branch_office', 'value' => $request->branch_office]);
+
+        return redirect()->back()->with('success', 'Branch office data has been saved successfully!');
     }
 }
