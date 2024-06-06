@@ -115,7 +115,19 @@
                             </div>
                             @endif
                         </td>
-                        <!-- Menggunakan formulir untuk metode DELETE -->
+                        @if(auth()->check() && auth()->user()->role == 'admin')
+                        <td class="px-6 py-4 flex gap-7 items-center">
+                            <a href="admin/trafo/{{$t->id}}"
+                                class="font-bold text-blue-800 text-decoration-none">View</a>
+                                <a href="trafo/performance/{{ $t->id }}"
+                                    class="font-bold text-blue-800 text-decoration-none">Edit Performance</a>
+                                <form id="deleteForm" action="{{route('trafo.destroy', $t->id)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="#" class="font-bold text-red-700 text-decoration-none" data-url="{{ route('trafo.destroy', $t->id) }}" onclick="confirmation(event)">Delete</a>
+                                </form>
+                        </td>
+                        @else()
                         <td class="px-6 py-4 flex gap-7 items-center">
                             <a href="/trafo/{{$t->id}}"
                                 class="font-bold text-blue-800 text-decoration-none">View</a>
@@ -126,8 +138,8 @@
                                     @method('DELETE')
                                     <a href="#" class="font-bold text-red-700 text-decoration-none" data-url="{{ route('trafo.destroy', $t->id) }}" onclick="confirmation(event)">Delete</a>
                                 </form>
-                            </td>
-
+                        </td>
+                        @endif
                     </tr>
 
                 </tbody>

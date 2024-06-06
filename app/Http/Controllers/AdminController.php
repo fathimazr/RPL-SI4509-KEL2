@@ -26,7 +26,7 @@ class AdminController extends Controller
             'employee_id' => $check['employee_id'],
             'password' => $check['password']
         ])){
-            return redirect()->route('admin.dashboard')->with('error', 'Admin Login Successfully');
+            return redirect()->route('admin.adm-dash')->with('error', 'Admin Login Successfully');
         }else{
             return back()->with('error', 'Invalid ID or Password');
         };

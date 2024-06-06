@@ -28,6 +28,10 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/trafo-data', [TrafoController::class, 'index'])->middleware(['auth', 'verified'])->name('trafo-data');
     Route::get('/trafo-register', [TrafoController::class, 'create'])->name('trafo-register');
     Route::post('/trafo-register', [TrafoController::class, 'store'])->name('trafo.store');
+    Route::get('/trafo/{id}', [TrafoController::class, 'show'])->name('trafo.show');
+    Route::get('/add-performance', function () {
+        return view('trafo.add-performance');
+    });
     Route::get('/new', [UserController::class, 'create'])->middleware(['auth', 'verified'])->name('register-user');
     Route::post('/new', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.regist');
 });

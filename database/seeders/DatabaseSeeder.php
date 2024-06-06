@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             // AdminSeeder::class,
             UsersSeeder::class,
             TrafoSeeder::class,
-            MaintenanceSeeder::class
+            MaintenanceSeeder::class,
+            DataEntrySeeder::class
         ]);
     }
 }

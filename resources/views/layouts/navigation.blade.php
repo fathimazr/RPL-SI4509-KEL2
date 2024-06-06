@@ -53,8 +53,9 @@
     <aside class="w-[250px] h-full bg-[#12A2BD] md:block flex-shrink-0 border" aria-label="Sidebar">
         <div class="h-screen flex flex-col gap-5 p-5 overflow-y-auto rounded-xl dark:bg-gray-800 justify-between">
             <div class="flex flex-col gap-5 items-center">
+                @if(auth()->check() && auth()->user()->role == 'admin')
                 <div class="">
-                    <a href="/#">
+                    <a href="dashboard">
                         <img aria-hidden="true" class="w-full h-full"
                             src="{{ asset('images/logo-grid-geo-alert.png') }}"
                             alt=""/>
@@ -63,7 +64,6 @@
                 
                 <ul class="space-y-2 font-medium">
                     
-                    @if(auth()->check() && auth()->user()->role == 'admin')
                         <li class="hover:bg-[#15677B] p-2 rounded-xl">
                             <div class="flex gap-1">
                                 <div class="self-center">
@@ -122,6 +122,15 @@
 
 
                     @else()
+                    <div class="">
+                        <a href="/">
+                            <img aria-hidden="true" class="w-full h-full"
+                                src="{{ asset('images/logo-grid-geo-alert.png') }}"
+                                alt=""/>
+                        </a>
+                    </div>
+                    
+                    <ul class="space-y-2 font-medium">
                     <li class="hover:bg-[#15677B] p-2 rounded-xl">
                         <div class="flex gap-1">
                             <div class="self-center">
