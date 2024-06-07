@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\DataEntry;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,9 @@ class ProfileController extends Controller
     {
         $id = Auth::user()->id;
         $data = User::find($id);
+        $branchOffices = DataEntry::where('type', 'branch_office')->pluck('value');
 
-        return view('register-new-user.profile', compact('data'));
+        return view('register-new-user.profile', compact('data', 'branchOffices'));
     }
 
     /**
