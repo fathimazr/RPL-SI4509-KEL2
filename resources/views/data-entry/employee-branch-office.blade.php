@@ -189,7 +189,7 @@
         </div>
         <div class="form-container">
         <!-- tambahin action ke route utk store data -->
-        <form id="form" action="{{ route('data-entry.store') }}" method="POST">
+        <form id="form" action="{{ route('branch-office.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                         <label for="brand">Employee's Branch Office</label>

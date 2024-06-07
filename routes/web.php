@@ -36,14 +36,13 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::post('/new', [UserController::class, 'store'])->middleware(['auth', 'verified'])->name('admin.regist');
 });
 
-Route::get('/data-entry', [DataEntryController::class, 'create'])->name('data-entry.create');
-Route::post('/data-entry', [DataEntryController::class, 'store'])->name('data-entry.store');
-Route::get('/trafo-city', function () {
-    return view('data-entry.trafo-city');
-});
-Route::get('/branch-office', function () {
-    return view('data-entry.employee-branch-office');
-});
+Route::get('/data-entry', [DataEntryController::class, 'createTrafo'])->name('data-entry.create');
+Route::post('/data-entry', [DataEntryController::class, 'storeTrafo'])->name('data-entry.store');
+Route::get('/trafo-city', [DataEntryController::class, 'createTrafoCity'])->name('trafo-city.create');
+Route::post('/trafo-city', [DataEntryController::class, 'storeTrafoCity'])->name('trafo-city.store');
+Route::get('/branch-office', [DataEntryController::class, 'createBranchOffice'])->name('branch-office.create');
+Route::post('/branch-office', [DataEntryController::class, 'storeBranchOffice'])->name('branch-office.store');
+
 
 Route::middleware(['auth', 'role:tim_teknis,manager'])->group(function () {
     Route::get('/', function () {
