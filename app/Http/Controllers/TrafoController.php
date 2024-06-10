@@ -156,7 +156,7 @@ class TrafoController extends Controller
         $trafoMaintenance->save();
         
         // dd($trafoMaintenance);
-        return redirect('trafo')->with('success', 'Maintenance data added successfully.');
+        return redirect('maintenance')->with('success', 'Maintenance data added successfully.');
     }
     
     
