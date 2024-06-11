@@ -161,7 +161,7 @@
     <div class="main">
         <h1 class="form-title">REGISTER NEW TRANSFORMATOR</h1>
         <div class="form-header">
-            <img class = "form-header-icon" src = "img/form.png" alt = "Icon" width = "30px">
+            <img class = "form-header-icon" src = "{{ asset('img/Form.png') }}" alt = "Icon" width = "30px">
             <h1 class="form-header-title">Filling Form</h1>
         </div>
         <div class="form-container">
